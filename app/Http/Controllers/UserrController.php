@@ -4,82 +4,55 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
 
 class UserrController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function profile($id)
     {
-        //
-    }
+        $user = User::where('id', $id)->first();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        return view('home.profile',compact('user'));
+        
+    }//end of profile
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update_prfile(Request $request,$id)
     {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
+        $user = User::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
+        $request->validate([
+            'name'        => 'required',
+            'email'       => ['required', Rule::unique('users')->ignore($user->id)],
+            'image'       => 'image',
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
+        $request_data = $request->except(['image']);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(User $user)
-    {
-        //
-    }
-}
+        if ($request->image) {
+
+            if ($user->image != 'default.png') {
+
+                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+
+            } //end of inner if
+
+            Image::make($request->image)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+
+            $request_data['image'] = $request->image->hashName();
+
+        } //end of if
+
+        $user->update($request_data);
+        session()->flash('success', __('dashboard.added_successfully'));
+        return redirect()->back();
+
+
+    }//end of update_prfile
+    
+}//end of controller

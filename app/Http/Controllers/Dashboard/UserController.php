@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
@@ -19,7 +19,7 @@ class UserController extends Controller
         $this->middleware(['permission:users_update'])->only('edit');
         $this->middleware(['permission:users_delete'])->only('destroy');
 
-    }//end of constructor
+    } //end of constructor
 
     public function index(Request $request)
     {
@@ -28,29 +28,27 @@ class UserController extends Controller
 
         return view('dashboard.users.index', compact('users'));
 
-    }//end of index
+    } //end of index
 
-    public
-    function create()
+    public function create()
     {
         return view('dashboard.users.create');
 
-    }//end of create
+    } //end of create
 
-    public
-    function store(Request $request)
+    public function store(Request $request)
     {
         // dd($request->all());
-        
+
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|unique:users',
-            'image' => 'image',
-            'password' => 'required|confirmed',
-            'permissions' => 'required|min:1'
+            'name'        => 'required',
+            'email'       => 'required|unique:users',
+            'image'       => 'image',
+            'password'    => 'required|confirmed',
+            'permissions' => 'required|min:1',
         ]);
 
-        $request_data = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
+        $request_data             = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
         $request_data['password'] = bcrypt($request->password);
 
         if ($request->image) {
@@ -63,7 +61,7 @@ class UserController extends Controller
 
             $request_data['image'] = $request->image->hashName();
 
-        }//end of if
+        } //end of if
 
         $user = User::create($request_data);
         // dd($request->all());
@@ -73,23 +71,21 @@ class UserController extends Controller
         session()->flash('success', __('dashboard.added_successfully'));
         return redirect()->route('dashboard.users.index');
 
-    }//end of store
+    } //end of store
 
-    public
-    function edit(User $user)
+    public function edit(User $user)
     {
         return view('dashboard.users.edit', compact('user'));
 
-    }//end of user
+    } //end of user
 
-    public
-    function update(Request $request, User $user)
+    public function update(Request $request, User $user)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => ['required', Rule::unique('users')->ignore($user->id),],
-            'image' => 'image',
-            'permissions' => 'required|min:1'
+            'name'        => 'required',
+            'email'       => ['required', Rule::unique('users')->ignore($user->id)],
+            'image'       => 'image',
+            'permissions' => 'required|min:1',
         ]);
 
         $request_data = $request->except(['permissions', 'image']);
@@ -100,7 +96,7 @@ class UserController extends Controller
 
                 Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
 
-            }//end of inner if
+            } //end of inner if
 
             Image::make($request->image)
                 ->resize(300, null, function ($constraint) {
@@ -110,7 +106,7 @@ class UserController extends Controller
 
             $request_data['image'] = $request->image->hashName();
 
-        }//end of external if
+        } //end of external if
 
         $user->update($request_data);
 
@@ -118,21 +114,20 @@ class UserController extends Controller
         session()->flash('success', __('dashboard.updated_successfully'));
         return redirect()->route('dashboard.users.index');
 
-    }//end of update
+    } //end of update
 
-    public
-    function destroy(User $user)
+    public function destroy(User $user)
     {
         if ($user->image != 'default.png') {
 
             Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
 
-        }//end of if
+        } //end of if
 
         $user->delete();
         session()->flash('success', __('dashboard.deleted_successfully'));
         return redirect()->route('dashboard.users.index');
 
-    }//end of destroy
+    } //end of destroy
 
-}//end of controller
+} //end of controller

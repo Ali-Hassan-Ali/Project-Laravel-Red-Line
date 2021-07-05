@@ -18,6 +18,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    @if (app()->getLocale() == 'ar')
+            
+    @else
+
+    @endif
 </head>
 <body>
     <div id="app">
