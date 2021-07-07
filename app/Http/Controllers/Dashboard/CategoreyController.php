@@ -14,10 +14,10 @@ class CategoreyController extends Controller
     public function __construct()
     {
         //create read update delete
-        $this->middleware(['permission:categorey_read'])->only('index');
-        $this->middleware(['permission:categorey_create'])->only('create');
-        $this->middleware(['permission:categorey_update'])->only('edit');
-        $this->middleware(['permission:categorey_delete'])->only('destroy');
+        $this->middleware(['permission:categoreys_read'])->only('index');
+        $this->middleware(['permission:categoreys_create'])->only('create','store');
+        $this->middleware(['permission:categoreys_update'])->only('edit','update');
+        $this->middleware(['permission:categoreys_delete'])->only('destroy');
 
     }//end of constructor
 
@@ -25,13 +25,13 @@ class CategoreyController extends Controller
     {
         $categoreys = Categorey::whenSearch(request()->search)->orderBy('id', 'DESC')->paginate(10);
 
-        return view('dashboard.categorey.index', compact('categoreys'));
+        return view('dashboard.categoreys.index', compact('categoreys'));
     }//end of index
 
     
     public function create()
     {
-        return view('dashboard.categorey.create');
+        return view('dashboard.categoreys.create');
     }//end of create
 
     
@@ -53,7 +53,7 @@ class CategoreyController extends Controller
             ]);
 
             session()->flash('success', __('dashboard.added_successfully'));
-            return redirect()->route('dashboard.categorey.index');
+            return redirect()->route('dashboard.categoreys.index');
 
         } catch (\Exception $e) {
 
@@ -66,14 +66,12 @@ class CategoreyController extends Controller
     
     public function edit(Categorey $categorey)
     {
-        return view('dashboard.categorey.edit', compact('categorey'));
+        return view('dashboard.categoreys.edit', compact('categorey'));
     }//end of edit
 
     
     public function update(Request $request, Categorey $categorey)
     {
-
-        // dd($request->all());
         
         $request->validate([
             'name_ar'   => ['required'],
@@ -90,7 +88,7 @@ class CategoreyController extends Controller
             ]);
 
             session()->flash('success', __('dashboard.updated_successfully'));
-            return redirect()->route('dashboard.categorey.index');
+            return redirect()->route('dashboard.categoreys.index');
 
          } catch (\Exception $e) {
 
@@ -107,7 +105,7 @@ class CategoreyController extends Controller
 
             $categorey->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));
-            return redirect()->route('dashboard.categorey.index');
+            return redirect()->route('dashboard.categoreys.index');
 
          } catch (\Exception $e) {
 

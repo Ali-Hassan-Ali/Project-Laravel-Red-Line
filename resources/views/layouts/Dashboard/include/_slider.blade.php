@@ -18,8 +18,12 @@
                 <li><a href="{{ route('dashboard.users.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.users')</span></a></li>
             @endif
 
-            @if (auth()->user()->hasPermission('categorey_read'))
-                <li><a href="{{ route('dashboard.categorey.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.categorey')</span></a></li>
+            @if (auth()->user()->hasPermission('categoreys_read'))
+                <li><a href="{{ route('dashboard.categoreys.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.categorey')</span></a></li>
+            @endif
+
+            @if (auth()->user()->hasPermission('products_read'))
+                <li><a href="{{ route('dashboard.products.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.products')</span></a></li>
             @endif
 
         </ul>

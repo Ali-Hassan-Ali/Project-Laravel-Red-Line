@@ -8,10 +8,10 @@ use Spatie\Translatable\HasTranslations;
 class Categorey extends Model
 {
     use HasTranslations;
+
+    protected $guarded = [];
     
     public $translatable = ['name'];
-
-    public $guarded = [];
 
     public function scopeWhenSearch($query , $search) 
     {
@@ -22,5 +22,10 @@ class Categorey extends Model
             // ->orWhere('phone', 'like', "%$search%");
         });
     }//end ofscopeWhenSearch
+
+    public function proudut()
+    {
+        return $this->hasMany(Product::class,'category_id');
+    }//end of belongsTo category
     
 }//end of model

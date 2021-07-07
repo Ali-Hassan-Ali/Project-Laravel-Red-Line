@@ -13,291 +13,53 @@
     <!--end of slider section-->
 
 
-    <!-- of text section-->
+    <!--start of text section-->
     <section class="py-3 text-center">
         <p class="anmation-color font-weight-bold fw-500 wow flash text-danger" data-wow-duration="4s" data-wow-offset="0">Lorem ipsum dolor sit amet autem beatae nulla in.</p>
     </section>
     <!--end of text section-->
+    
 
+    <!--start of OwlCarouse section-->
     <section id="OwlCarouse">
 
-
         <h2 class="text-center text-white mb-5">Category <span class="text-danger">Shoping</span></h2>
-        <div class="row text-white justify-content-between category__name">
-            <h4 class="mr-sm-0 ml-5">Name Category</h4>
-            <a href="" class="mr-5 mr-5 text-danger align-self-center">See ALl</a>
-        </div>
 
-        <div class="owl-carousel owl-category mb-5 wow lightSpeedIn" data-wow-duration="4s" data-wow-offset="0">
-            <div class="item">
-                <img src="./dist/images/demo/006.jpg" class="imgBx" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/004.jpg" class="imgBx" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/002.jpg" class="imgBx" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/001.jpg" class="imgBx" width="1080" height="320" alt="">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/008.jpg" class="imgBx" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/005.jpg" class="imgBx" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/009.jpg" class="imgBx" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/007.jpg" class="imgBx" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/002.jpg" class="imgBx" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
+        @foreach ($categories as $category)
+            
+            <div class="row text-white justify-content-between category__name">
+                <h4 class="mr-sm-0 ml-5 pl-5">{{ $category->name }}</h4>
+                <a href="" class="mr-5 mr-5 text-danger align-self-center">See ALl</a>
             </div>
 
-        </div>
+            <div class="owl-carousel owl-category mb-5 wow lightSpeedIn" data-wow-duration="4s" data-wow-offset="0">
+                
+            @foreach ($category->proudut as $product)
+                <div class="item">
+                    <img src="{{ $product->image_path }}" class="imgBx" alt="" height="320">
+                    <div class="item__details">
+                        <div class="row">
+                            <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
+                                <i class="fa fa-cart-plus"></i> Add Card
+                            </a>
+                            <a href="./show.html" class="btn btn-outline-light col-md-12">
+                                <i class="fa fa-eye"></i> Show Product
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
 
-
-        <div class="row text-white justify-content-between category__name">
-            <h4 class="mr-sm-0 ml-5">Name Category</h4>
-            <a href="" class="mr-5 mr-5 text-danger align-self-center">See ALl
-        </a>
-        </div>
-
-        <div class="owl-carousel owl-category wow lightSpeedIn" data-wow-duration="4s" data-wow-offset="0">
-            <div class="item">
-                <img src="./dist/images/demo/001.jpg" width="1080" height="320" alt="">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/002.jpg" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/003.jpg" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/004.jpg" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/005.jpg" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/006.jpg" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/007.jpg" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/008.jpg" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <img src="./dist/images/demo/009.jpg" alt="" height="320">
-                <div class="item__details">
-                    <div class="row">
-                        <a href="./cart.html" class="btn btn  -danger col-md-12 mb-2">
-                            <i class="fa fa-cart-plus"></i> Add Card
-                        </a>
-                        <a href="./show.html" class="btn btn-outline-light col-md-12">
-                            <i class="fa fa-eye">
-                        </i> Show Product
-                        </a>
-                    </div>
-                </div>
             </div>
 
-        </div>
+        @endforeach
+                
         <div class="container d-flex justify-content-center pt-5">
             <a href="./AllCategory.html" class="btn btn-outline-light btn-sm flash" data-wow-duration="4s" data-wow-offset="0">All Category</a>
         </div>
+
     </section>
+    <!--end of OwlCarouse section-->
 
     <section id="service" class="text-white bg-dark py-5">
         <h2 class="text-center pb-4 ser wow flash" data-wow-duration="4s" data-wow-offset="0">Our <span class="text-danger">Services</span></h2>

@@ -10,7 +10,7 @@
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li><a href="{{ route('dashboard.categorey.index') }}"> @lang('dashboard.categorey')</a></li>
+                <li><a href="{{ route('dashboard.categoreys.index') }}"> @lang('dashboard.categoreys')</a></li>
                 <li class="active">@lang('dashboard.edit')</li>
             </ol>
         </section>
@@ -27,7 +27,7 @@
 
                     @include('partials._errors')
 
-                    <form action="{{ route('dashboard.categorey.update', $categorey->id) }}" method="post">
+                    <form action="{{ route('dashboard.categoreys.update', $categorey->id) }}" method="post">
 
                         {{ csrf_field() }}
                         {{ method_field('put') }}

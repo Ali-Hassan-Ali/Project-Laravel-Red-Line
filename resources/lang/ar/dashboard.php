@@ -3,6 +3,7 @@
 return [
 
     'dashboard'             => 'الرئسيه',
+    'action'                => 'الاحداث',
     'no_data_found'         => 'للاسف لايوجد اي بينات',
     'added_successfully'    => 'تمت الاضافه بنجاح',
     'updated_successfully'  => 'تمت التعيل بنجاح',
@@ -34,9 +35,14 @@ return [
     'delete'           => 'حذف',
     
     'categorey'        => 'الاقسام',
+    'categoreys'       => 'الاقسام',
     'name_ar'          => 'الاسم بلغه العربية',
     'name_en'          => 'الاسم بلغه الانجلزية',
 
-
-
+    'products'          => 'المنتجات',
+    'description'       => 'الوصف',
+    'price'             => 'السعر',
+    'quantity'          => 'الكمية',
+    'descp_ar'          => 'الوصف بلغه العربية',
+    'descp_en'          => 'الوصف بلغه الانجلزية',
 ];

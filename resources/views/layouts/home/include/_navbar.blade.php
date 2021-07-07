@@ -69,9 +69,13 @@
                                 @lang('home.category')
                             </a>
                             <div class="dropdown-menu border-none" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Category 1</a>
-                                <a class="dropdown-item" href="#">Category 2</a>
-                                <a class="dropdown-item" href="#">Category 3</a>
+                                
+                                @foreach (App\Models\Categorey::all() as $category)
+                                    
+                                    <a class="dropdown-item" href="#">{{ $category->name }}</a>
+
+                                @endforeach
+
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -112,7 +116,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); 
                                             document.getElementById('logout-form').submit();">@lang('home.logout')
                                 </a>
-                                <form id="logout-form" action="{{  \LaravelLocalization::localizeURL('/logout') }}" method="POST" style="display: none;">
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>

@@ -14,12 +14,15 @@ return [
     'roles_structure' => [
         
         'super_admin' => [
-            'dashboard' => 'r',
-            'users'     => 'c,r,u,d',
-            'categorey' => 'c,r,u,d',
+            'dashboard'  => 'r',
+            'users'      => 'c,r,u,d',
+            'categoreys' => 'c,r,u,d',
+            'products'   => 'c,r,u,d',
         ],
 
-        'admin' => [],
+        'admin' => [
+            'dashboard' => 'r',
+        ],
     ],
 
     'permissions_map' => [

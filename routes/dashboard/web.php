@@ -10,8 +10,11 @@ function () {
         //user routes
         Route::resource('users', 'UserController')->except(['show']);
 
-        //categorey routes
-        Route::resource('categorey', 'CategoreyController')->except(['show']);
+        //categoreys routes
+        Route::resource('categoreys', 'CategoreyController')->except(['show']);
+
+        //products routes
+        Route::resource('products', 'ProductController')->except(['show']);
 
     }); //end of dashboard routes
 

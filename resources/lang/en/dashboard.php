@@ -3,6 +3,7 @@
 return [
 
     'dashboard'             => 'Dashboard',
+    'action'                => 'Action',
     'no_data_found'         => 'No Data Found',
     'added_successfully'    => 'Added Successfully',
     'updated_successfully'  => 'Updated Successfully',
@@ -33,7 +34,15 @@ return [
     'delete'           => 'Delete',
 
     'categorey'        => 'Category',
+    'categoreys'       => 'Category',
     'name_ar'          => 'The name is in Arabic',
     'name_en'          => 'The name is in English',
+
+    'products'          => 'Products',
+    'description'       => 'Description',
+    'price'             => 'Price',
+    'quantity'          => 'Quantity',
+    'descp_ar'          => 'The name is in Arabic',
+    'descp_en'          => 'The name is in English',
 
 ];

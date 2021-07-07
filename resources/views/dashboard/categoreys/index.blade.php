@@ -10,7 +10,7 @@
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li class="active">@lang('dashboard.categorey')</li>
+                <li class="active">@lang('dashboard.categoreys')</li>
             </ol>
         </section>
 
@@ -20,9 +20,9 @@
 
                 <div class="box-header with-border">
 
-                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.categorey') <small>{{ $categoreys->total() }}</small></h3>
+                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.categoreys') <small>{{ $categoreys->total() }}</small></h3>
 
-                    <form action="{{ route('dashboard.categorey.index') }}" method="get">
+                    <form action="{{ route('dashboard.categoreys.index') }}" method="get">
 
                         <div class="row">
 
@@ -32,8 +32,8 @@
 
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('dashboard.search')</button>
-                                @if (auth()->user()->hasPermission('categorey_create'))
-                                    <a href="{{ route('dashboard.categorey.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
+                                @if (auth()->user()->hasPermission('categoreys_create'))
+                                    <a href="{{ route('dashboard.categoreys.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @else
                                     <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @endif
@@ -63,13 +63,13 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $categorey->name }}</td>
                                     <td>
-                                        @if (auth()->user()->hasPermission('categorey_update'))
-                                            <a href="{{ route('dashboard.categorey.edit', $categorey->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                        @if (auth()->user()->hasPermission('categoreys_update'))
+                                            <a href="{{ route('dashboard.categoreys.edit', $categorey->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                         @else
                                             <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                         @endif
-                                        @if (auth()->user()->hasPermission('categorey_delete'))
-                                            <form action="{{ route('dashboard.categorey.destroy', $categorey->id) }}" method="post" style="display: inline-block">
+                                        @if (auth()->user()->hasPermission('categoreys_delete'))
+                                            <form action="{{ route('dashboard.categoreys.destroy', $categorey->id) }}" method="post" style="display: inline-block">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
                                                 <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
