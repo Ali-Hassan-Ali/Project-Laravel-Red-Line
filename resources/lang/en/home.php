@@ -3,6 +3,7 @@
 return [
 
     //navbar
+    'redline'     => 'RedLine',
     'home'        => 'Home',
     'shop'        => 'Shop',
     'category'    => 'Category',
@@ -38,5 +39,12 @@ return [
     'enter_email' => 'Enter Emdil',
     'enter_passs' => 'Enter Password',
     'update'      => 'Update',
-  
+    
+    //section category
+    'category'    => 'Category',
+    'shoping'     => 'Shoping',
+    'show'        => 'Show',
+    'product'     => 'Product',
+    'show_product'=> 'Show Product',
+    'add_card'    => 'Add Card',
 ];

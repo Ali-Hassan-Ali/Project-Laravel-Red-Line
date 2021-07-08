@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>@yield('title')</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ __('home.redline') }} | @yield('title')</title>
     <!--Link Icon Title-->
     <link href="{{ asset('home_files/images/icon.PNG') }}" rel="icon">
 
@@ -39,6 +42,20 @@
 
     <!-- vendor min  css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('home_files/css/vendor.min.css') }}">
+
+        <!-- vendor min  css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('home_files/plugins/sweetalert/sweetalert2.min.css') }}">
+
+    <style type="text/css">
+        .swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right)>.swal2-modal {
+                border-radius: 43px;
+                background: #1b1b1b!important;
+            }
+            .swal2-title {
+                
+                color: #fff!important;
+            }
+    </style>
 
 
     <!-- font arbic -->
@@ -79,5 +96,52 @@
 
     <!-- min scripts -->
     <script src="{{ asset('home_files/js/main.min.js') }}"></script>
+
+        <!-- min sweetalert -->
+    <script src="{{ asset('home_files/plugins/sweetalert/sweetalert2.all.min.js') }}"></script>
+
+    @stack('cart')
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".add-cart").click(function(e){
+                e.preventDefault();
+                
+                var url     = $(this).data('url');
+                var method  = $(this).data('method');
+                var name    = $(this).data('name');
+                var price   = $(this).data('price');
+                var image   = $(this).data('image');
+                // var count   = $('#data-count').attr('data-count').text('22');
+
+                var num = $('#data-count').data('count') + 1;       
+                
+
+                console.log($('#data-count').attr('data-count', 1 ));
+                
+
+                swal({
+                    title: "@lang('home.added_successfully')",
+                    type: "success",
+                    icon: 'success',
+                    showCancelButton: false,
+                    timer: 150000
+                },
+                $.ajax({
+                    url: url,
+                    method: method,
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    success: function(data) {
+
+                        // $('#data-count').attr("data-count");
+                        $('#carted').append('<div class="item-cart row mt-2"><img src="'+image+'" class="px-3 border-image" alt="" width="100"><small class="text-flix">'+name+'<br>'+data.price+'</small></div>')
+                        
+                    }, error: function(data) {
+                        console.log(data);
+                    },
+                })); //end of ajax  swal
+            });//end of click
+        });//end of document
+    </script>
 
 </body>

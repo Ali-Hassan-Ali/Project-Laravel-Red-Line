@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', 'Home')
+@section('title', __('home.home'))
 
 	<!--start of slider section-->
     <section id="slider">
@@ -23,7 +23,7 @@
     <!--start of OwlCarouse section-->
     <section id="OwlCarouse">
 
-        <h2 class="text-center text-white mb-5">Category <span class="text-danger">Shoping</span></h2>
+        <h2 class="text-center text-white mb-5">@lang('home.category') <span class="text-danger">@lang('home.shoping')</span></h2>
 
         @foreach ($categories as $category)
             
@@ -39,11 +39,16 @@
                     <img src="{{ $product->image_path }}" class="imgBx" alt="" height="320">
                     <div class="item__details">
                         <div class="row">
-                            <a href="./cart.html" class="btn btn-danger col-md-12 mb-2">
-                                <i class="fa fa-cart-plus"></i> Add Card
-                            </a>
-                            <a href="./show.html" class="btn btn-outline-light col-md-12">
-                                <i class="fa fa-eye"></i> Show Product
+                            <div class="btn btn-danger col-md-12 mb-2 add-cart" style="cursor: pointer;" 
+                                data-url="{{ route('wallet.store',$product) }}"
+                                data-method="post"
+                                data-price="{{ $product->price }}"
+                                data-image="{{ $product->image_path }}"
+                                data-name="{{ $product->name }}">
+                                <i class="fa fa-cart-plus"></i> @lang('home.add_card')
+                            </div>
+                            <a href="{{ route('show',$product->id) }}" class="btn btn-outline-light col-md-12">
+                                <i class="fa fa-eye"></i> @lang('home.show_product')
                             </a>
                         </div>
                     </div>

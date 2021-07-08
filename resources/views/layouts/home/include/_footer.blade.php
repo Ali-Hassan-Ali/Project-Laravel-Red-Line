@@ -38,9 +38,9 @@
                     <div class="payment">
                         <p>Payment Methods</p>
                         <ul style="list-style: none" class="pl-0 pt-4">
-                            <li class="img mr-5 Pop"><img src="./dist/images/pay/11.png" width="70" height="70" class="Pop"></li>
-                            <li class="img mr-5"><img src="./dist/images/pay/12.jpg" width="70" height="70"></li>
-                            <li class="img mr-5"><img src="./dist/images/pay/13.png" width="70" height="70"></li>
+                            <li class="img mr-5 Pop"><img src="{{ asset('home_files/images/pay/11.png') }}" width="70" height="70" class="Pop"></li>
+                            <li class="img mr-5"><img src="{{ asset('home_files/images/pay/12.jpg') }}" width="70" height="70"></li>
+                            <li class="img mr-5"><img src="{{ asset('home_files/images/pay/13.png') }}" width="70" height="70"></li>
                         </ul>
                     </div>
                 </div>

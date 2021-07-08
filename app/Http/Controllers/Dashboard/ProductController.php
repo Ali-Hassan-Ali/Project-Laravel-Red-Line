@@ -64,10 +64,10 @@ class ProductController extends Controller
                 Image::make($request->image)
                     ->resize(300, null, function ($constraint) {
                         $constraint->aspectRatio();
-                    })
-                    ->save(public_path('uploads/product_image/' . $request->image->hashName()));
+                    })//resize image
+                    ->save(public_path('uploads/product_image/' . $request->image->hashName()));//move foder image
 
-                $request_data['image'] = $request->image->hashName();
+                $request_data['image'] = $request->image->hashName();//rename image
 
             } //end of if
 
@@ -115,17 +115,17 @@ class ProductController extends Controller
 
                 if ($product->image != 'default.jpg') {
 
-                    Storage::disk('public_uploads')->delete('/product_image/' . $product->image);
+                    Storage::disk('public_uploads')->delete('/product_image/' . $product->image);//deleted odl image
 
                 } //end of inner if
 
                 Image::make($request->image)
                     ->resize(300, null, function ($constraint) {
                         $constraint->aspectRatio();
-                    })
-                    ->save(public_path('uploads/product_image/' . $request->image->hashName()));
+                    })//resize image
+                    ->save(public_path('uploads/product_image/' . $request->image->hashName()));//move folder image
 
-                $request_data['image'] = $request->image->hashName();
+                $request_data['image'] = $request->image->hashName();//rename image
 
             } //end of if
 

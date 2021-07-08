@@ -9,30 +9,29 @@
                 </a>
 
                 <div class="dropdown {{ app()->getLocale() == 'ar' ? 'ml-5' : 'mr-5' }} mr-md-0 ml-0 ml-md-5">
-                    <span class="fa-stack fa-2x has-badge" data-count="2" style="font-size: 22px;">
+                    <span class="fa-stack fa-2x has-badge" id="data-count" data-count="{{ Cart::count() }}" style="font-size: 22px;">
                         <i class="fa fa-circle fa-stack-2x d-flex justify-content-center"></i>
                         <i class="fa fa-shopping-cart fa-stack-1x fa-inverse d-flex justify-content-center"></i>
                     </span>
                     <div class="dropdown-content mr-sm-2">
-                        <div class="">
-                            <div class="item-cart row">
-                                <img src="{{ asset('home_files/images/demo/004.jpg') }}" class="px-3 border-image" alt="" width="100">
-                                <small class="text-flix">Producte ditalse ditalse ditalse ditalse ditalse ditalse 
-                                    <br>20$
-                                </small>
-                            </div>
-                            <div class="item-cart row mt-3">
-                                <img src="{{ asset('home_files/images/demo/006.jpg') }}" class="px-3 border-image" alt="" width="100">
-                                <small class="text-flix">Producte ditalse
-                                    <br>10$
-                                </small>
-                            </div>
+                        <div id="carted">
+                            @foreach (Cart::content() as $product)
+                                
+                                <div class="item-cart row mt-2">
+                                    <img src="{{ $product->model->image_path }}" class="px-3 border-image" alt="" width="100">
+                                    <small class="text-flix">{{ $product->model->name }}
+                                        <br>{{ $product->model->quantity }}
+                                        <br>{{ $product->model->price }}
+                                    </small>
+                                </div>
+
+                            @endforeach
                         </div>
                         <div class="btn btn-dark d-block my-2 border-10">
-                            <small>Totle Price 30$</small>
+                            <small>Totle Price {{ Cart::subtotal() }} - {{ Cart::count() }}</small>
                         </div>
-                        <a href="./cart.html" class="btn btn-danger btn-sm borderi mt-3 px-2 py-1 mr-3">go to card</a>
-                        <a href="./cart.html" class="btn btn-outline-light btn-sm borderi mt-3 px-2 py-1">go to card</a>
+                        <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi mt-3 px-2 py-1 mr-3">go to card</a>
+                        <a href="{{ route('wallet.index') }}" class="btn btn-outline-light btn-sm borderi mt-3 px-2 py-1">go to card</a>
                     </div>
                 </div>
 

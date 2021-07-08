@@ -3,7 +3,8 @@
 return [
 
     //navbar
-    'home' 		  => 'الرئيسية',
+    'redline'     => 'ردلاين',
+    'home'        => 'الرئيسية',
     'shop'        => 'تسويق',
     'category'    => 'الاقسام ',
     'language'    => 'اللغة',
@@ -38,5 +39,13 @@ return [
     'enter_email' => 'ادخل الاميل',
     'enter_passs' => 'ادخل كلمه المرور',
     'update'      => 'تعديل',
+    
+    //section category
+    'category'    => 'الاقسام',
+    'shoping'     => '',
+    'show'        => 'عرض',
+    'product'     => 'المنتج',
+    'show_product'=> 'عرض تفاصيل المنتج',
+    'add_card'    => 'اضافة الى السلة',
   
 ];

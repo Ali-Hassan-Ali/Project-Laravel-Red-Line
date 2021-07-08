@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', 'Profile')
+@section('title', __('home.profile'))
 
 	<!--start of contant section-->
 

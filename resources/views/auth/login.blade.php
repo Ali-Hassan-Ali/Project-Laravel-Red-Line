@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', 'Login')    
+@section('title', __('home.login'))    
 
 <!--start of login-->
 
