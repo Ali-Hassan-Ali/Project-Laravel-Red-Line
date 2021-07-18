@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('title', __('home.dashboard'))
+
     <div class="content-wrapper">
 
         <section class="content-header">

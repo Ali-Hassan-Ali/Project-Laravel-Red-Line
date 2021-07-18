@@ -45,4 +45,6 @@ return [
     'descp_ar'          => 'The name is in Arabic',
     'descp_en'          => 'The name is in English',
 
+    'settings'          => 'Settings',
+
 ];

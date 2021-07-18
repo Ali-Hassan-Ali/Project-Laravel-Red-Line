@@ -42,6 +42,8 @@ return [
     
     //section category
     'category'    => 'الاقسام',
+    'categoriy'   => 'قسم',
+    'see_all'     => 'عرض الكل',
     'shoping'     => '',
     'show'        => 'عرض',
     'product'     => 'المنتج',

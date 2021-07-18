@@ -29,7 +29,7 @@
             
             <div class="row text-white justify-content-between category__name">
                 <h4 class="mr-sm-0 ml-5 pl-5">{{ $category->name }}</h4>
-                <a href="" class="mr-5 mr-5 text-danger align-self-center">See ALl</a>
+                <a href="{{ route('category.show',$category->id ) }}" class="mr-5 mr-5 text-danger align-self-center">@lang('home.see_all')</a>
             </div>
 
             <div class="owl-carousel owl-category mb-5 wow lightSpeedIn" data-wow-duration="4s" data-wow-offset="0">
@@ -40,11 +40,8 @@
                     <div class="item__details">
                         <div class="row">
                             <div class="btn btn-danger col-md-12 mb-2 add-cart" style="cursor: pointer;" 
-                                data-url="{{ route('wallet.store',$product) }}"
-                                data-method="post"
-                                data-price="{{ $product->price }}"
-                                data-image="{{ $product->image_path }}"
-                                data-name="{{ $product->name }}">
+                                data-url="{{ route('wallet.store',$product->id) }}"
+                                data-method="post">
                                 <i class="fa fa-cart-plus"></i> @lang('home.add_card')
                             </div>
                             <a href="{{ route('show',$product->id) }}" class="btn btn-outline-light col-md-12">

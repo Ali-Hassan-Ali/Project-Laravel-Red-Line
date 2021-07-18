@@ -43,8 +43,11 @@
     <!-- vendor min  css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('home_files/css/vendor.min.css') }}">
 
-        <!-- vendor min  css -->
+    <!-- vendor min  css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('home_files/plugins/sweetalert/sweetalert2.min.css') }}">
+
+    <!-- vendor min  css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('home_files/plugins/auto-compolted-search/easy-autocomplete.min.css') }}">
 
     <style type="text/css">
         .swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right)>.swal2-modal {
@@ -55,6 +58,10 @@
                 
                 color: #fff!important;
             }
+            .aa {
+            }
+            /*#searching:hover {width: 1200px !important}*/
+            /*.search-container .search-input {width: 300px;}*/
     </style>
 
 
@@ -100,6 +107,9 @@
         <!-- min sweetalert -->
     <script src="{{ asset('home_files/plugins/sweetalert/sweetalert2.all.min.js') }}"></script>
 
+            <!-- min compolted  search -->
+    <script src="{{ asset('home_files/plugins/auto-compolted-search/jquery.easy-autocomplete.min.js') }}"></script>
+
     @stack('cart')
 
     <script type="text/javascript">
@@ -109,23 +119,17 @@
                 
                 var url     = $(this).data('url');
                 var method  = $(this).data('method');
-                var name    = $(this).data('name');
-                var price   = $(this).data('price');
-                var image   = $(this).data('image');
-                // var count   = $('#data-count').attr('data-count').text('22');
 
-                var num = $('#data-count').data('count') + 1;       
+                var count    = +$('#data-count').attr('data-count');
                 
-
-                console.log($('#data-count').attr('data-count', 1 ));
-                
+                $('#data-count').attr('data-count', count + 1);
 
                 swal({
-                    title: "@lang('home.added_successfully')",
+                    title: "@lang('dashboard.added_successfully')",
                     type: "success",
                     icon: 'success',
                     showCancelButton: false,
-                    timer: 150000
+                    timer: 1000
                 },
                 $.ajax({
                     url: url,
@@ -133,14 +137,25 @@
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     success: function(data) {
 
-                        // $('#data-count').attr("data-count");
-                        $('#carted').append('<div class="item-cart row mt-2"><img src="'+image+'" class="px-3 border-image" alt="" width="100"><small class="text-flix">'+name+'<br>'+data.price+'</small></div>')
-                        
+
                     }, error: function(data) {
                         console.log(data);
                     },
                 })); //end of ajax  swal
             });//end of click
+
+            var options = {
+                data: ["blue", "green", "pink", "red", "yellow"]
+            };
+
+            $('.search-input[type="text"]').easyAutocomplete(options);
+
+
+            setInterval(function() {
+
+                $("#cart-content").load(window.location.href + " #cart-content");
+        
+            }, 2000);
         });//end of document
     </script>
 

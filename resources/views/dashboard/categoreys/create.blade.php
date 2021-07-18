@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.categorey')  .' - '. __('dashboard.add'))
+
     <div class="content-wrapper">
 
         <section class="content-header">
@@ -13,6 +15,7 @@
                 <li><a href="{{ route('dashboard.categoreys.index') }}"> @lang('dashboard.categoreys')</a></li>
                 <li class="active">@lang('dashboard.add')</li>
             </ol>
+
         </section>
 
         <section class="content">

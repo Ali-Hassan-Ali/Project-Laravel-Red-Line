@@ -17,7 +17,7 @@ class ProductController extends Controller
     {
         $product = Product::FindOrFail($product);
 
-        $product = Cart::add($product->id, $product->name, 1, $product->price)
+        $product = Cart::add($product->id, $product->name, 1 , $product->price)
             ->associate('App\Models\Product');
 
         return response()->json($product);

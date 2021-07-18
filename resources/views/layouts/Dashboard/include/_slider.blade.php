@@ -12,6 +12,7 @@
         </div>
 
         <ul class="sidebar-menu" data-widget="tree">
+
             <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-th"></i><span>@lang('dashboard.dashboard')</span></a></li>
 
             @if (auth()->user()->hasPermission('users_read'))
@@ -25,6 +26,20 @@
             @if (auth()->user()->hasPermission('products_read'))
                 <li><a href="{{ route('dashboard.products.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.products')</span></a></li>
             @endif
+
+            <li class="treeview" style="height: auto;">
+              
+              <a href="#">
+                <i class="fa fa-gear"></i> <span>@lang('dashboard.settings')</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+                <li><a href="{{ route('dashboard.service.index') }}"><i class="fa fa-circle-o"></i> عن الاكادميه</a></li>
+              </ul>
+
+            </li>
 
         </ul>
 

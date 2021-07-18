@@ -27,4 +27,14 @@ class WelcomController extends Controller
         
     }//end of  index
 
+    public function category_show($id)
+    {
+        $products = Product::where('category_id',$id)->get();
+
+        $category_name = Product::where('id', $id)->first();
+
+        return view('home.category_show',compact('products','category_name'));
+
+    }//end of function
+
 }//end of controller

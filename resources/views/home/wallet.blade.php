@@ -43,7 +43,7 @@
 	                    </div>
 	                    <div class="product-price">{{ $product->model->price }}</div>
 	                    <div class="product-quantity">
-	                        <input type="number" value="{{ $product->model->quantity }}" min="1">
+	                        <input type="number" value="{{ $product->qty }}" min="1">
 	                        {{-- <input type="number" value="2" min="1"> --}}
 	                    </div>
 	                    <div class="product-removal">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="totals-item totals-item-total">
                         <label>Grand Total</label>
-                        <div class="totals-value" id="cart-total">90.57</div>
+                        <div class="totals-value" id="cart-total">{{ Cart::subtotal() }}</div>
                     </div>
                     <!-- <div class="totals-item totals-item-total">
                         <form action="">
@@ -150,13 +150,15 @@
 	                    success: function(data) {
 	                        $('#delete-cart-row'+id).remove();
 	                        swal({
-	                            title: "@lang('home.deleted_successfully')",
+	                            title: "@lang('dashboard.deleted_successfully')",
 	                            type: "success",
-	                            icon: 'success',
+	                            icon: '{{ asset("home_files/images/icon.png") }}',
 	                            showCancelButton: false,
 	                            timer: 15000
 	                        }),
 	                        removeItem(this);
+
+                            $('#proudut-'+id).remove();
 	                    },
 	                    error: function(data) {
 

@@ -2,11 +2,13 @@
 
 @section('content')
 
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.products')  .' - '. __('dashboard.add'))
+
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.categorey')</h1>
+            <h1>@lang('dashboard.products')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>

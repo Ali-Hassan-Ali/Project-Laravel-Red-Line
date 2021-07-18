@@ -16,6 +16,8 @@ function () {
         //products routes
         Route::resource('products', 'ProductController')->except(['show']);
 
+        Route::get('service_index', 'SettingController@service_index')->name('service.index');
+
     }); //end of dashboard routes
 
 });//LaravelLocalization

@@ -9,48 +9,47 @@
                 </a>
 
                 <div class="dropdown {{ app()->getLocale() == 'ar' ? 'ml-5' : 'mr-5' }} mr-md-0 ml-0 ml-md-5">
-                    <span class="fa-stack fa-2x has-badge" id="data-count" data-count="{{ Cart::count() }}" style="font-size: 22px;">
-                        <i class="fa fa-circle fa-stack-2x d-flex justify-content-center"></i>
-                        <i class="fa fa-shopping-cart fa-stack-1x fa-inverse d-flex justify-content-center"></i>
-                    </span>
-                    <div class="dropdown-content mr-sm-2">
-                        <div id="carted">
-                            @foreach (Cart::content() as $product)
-                                
-                                <div class="item-cart row mt-2">
-                                    <img src="{{ $product->model->image_path }}" class="px-3 border-image" alt="" width="100">
-                                    <small class="text-flix">{{ $product->model->name }}
-                                        <br>{{ $product->model->quantity }}
-                                        <br>{{ $product->model->price }}
-                                    </small>
-                                </div>
+                    <div id="cart-content">
+                        
+                        <span class="fa-stack fa-2x has-badge" id="data-count" data-count="{{ Cart::count() }}" style="font-size: 22px;">
+                            <i class="fa fa-circle fa-stack-2x d-flex justify-content-center"></i>
+                            <i class="fa fa-shopping-cart fa-stack-1x fa-inverse d-flex justify-content-center"></i>
+                        </span>
+                        <div class="dropdown-content mr-sm-2">
+                            <div id="carted"> 
+                                @foreach (Cart::content() as $product)
+                                    
+                                    <div class="item-cart row mt-2">
+                                        <img src="{{ $product->model->image_path }}" class="px-3 border-image" alt="" width="100">
+                                        <small class="text-flix">{{ $product->model->name }}
+                                            <br>{{ $product->qty }}
+                                            <br>{{ $product->model->price }}
+                                        </small>
+                                    </div>
 
-                            @endforeach
+                                @endforeach
+                            </div>
+                            <div class="btn btn-dark d-block my-2 border-10">
+                                 <small>Totle Price</small> <small id="totle-price">{{ Cart::subtotal() }}</small>
+                            </div>
+                            <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi mt-3 px-2 py-1 mr-3">go to card</a>
+                            <a href="{{ route('wallet.index') }}" class="btn btn-outline-light btn-sm borderi mt-3 px-2 py-1">go to card</a>
                         </div>
-                        <div class="btn btn-dark d-block my-2 border-10">
-                            <small>Totle Price {{ Cart::subtotal() }} - {{ Cart::count() }}</small>
-                        </div>
-                        <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi mt-3 px-2 py-1 mr-3">go to card</a>
-                        <a href="{{ route('wallet.index') }}" class="btn btn-outline-light btn-sm borderi mt-3 px-2 py-1">go to card</a>
+
                     </div>
                 </div>
 
-                <!-- <span class="fa-stack fa-2x has-badge mx-md-5" data-count="5" style="font-size: 22px;">
-                    <i class="fa fa-circle fa-stack-2x d-flex justify-content-center"></i>
-                    <i class="fa fa-shopping-cart fa-stack-1x fa-inverse d-flex justify-content-center"></i>
-                </span> -->
-
                 <div id="searching" class="search-container bg-transparent ml-3">
-                    <input type="text" name="search" placeholder="Search..." class="search-input text-light">
+                    <input type="tex" name="search" placeholder="Search..." class="search-input text-light">
                     <a href="#" class="search-btn btn btn btn-danger">
                         <i class="fa fa-search"></i>
                     </a>
                 </div>
-                <!-- <a href="./search.html" class="btn btn-danger mr-2 ml-sm-0 ml-md-3" style="border-radius: 50%"><i class="fa fa-search"></i></a> -->
-                <!-- <a href="./cart.html" class="btn btn-danger mr-0" style="border-radius: 50%"><i class="fa fa-cart-plus"></i></a> -->
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <div class="collapse navbar-collapse col-md-8" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto wow flipInX" data-wow-duration="4s" data-wow-offset="0">
@@ -71,7 +70,7 @@
                                 
                                 @foreach (App\Models\Categorey::all() as $category)
                                     
-                                    <a class="dropdown-item" href="#">{{ $category->name }}</a>
+                                    <a class="dropdown-item" href="{{ route('category.show',$category->id ) }}">{{ $category->name }}</a>
 
                                 @endforeach
 

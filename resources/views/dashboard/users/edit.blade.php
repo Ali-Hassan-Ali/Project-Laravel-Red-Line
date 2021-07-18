@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.users')  .' - '. __('dashboard.edit'))
+
     <div class="content-wrapper">
 
         <section class="content-header">

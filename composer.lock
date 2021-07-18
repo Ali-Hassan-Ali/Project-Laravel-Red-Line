@@ -4,8 +4,72 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cd985215745b9d1b1558203c1900d9be",
+    "content-hash": "efac65330647ca45f374d145a98b9c93",
     "packages": [
+        {
+            "name": "anlutro/l4-settings",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/anlutro/laravel-settings.git",
+                "reference": "179b2719b13d37f054895193cfd82bd0f32adbca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/anlutro/laravel-settings/zipball/179b2719b13d37f054895193cfd82bd0f32adbca",
+                "reference": "179b2719b13d37f054895193cfd82bd0f32adbca",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": ">=4.2 <9.0",
+                "illuminate/support": ">=4.2 <9.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "laravel/framework": ">=4.2",
+                "mockery/mockery": "^1.2",
+                "phpunit/phpunit": "^8.0"
+            },
+            "suggest": {
+                "illuminate/database": "Save settings to a database table.",
+                "illuminate/filesystem": "Save settings to a JSON file."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Setting": "anlutro\\LaravelSettings\\Facade"
+                    },
+                    "providers": [
+                        "anlutro\\LaravelSettings\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "anlutro\\LaravelSettings\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Lutro",
+                    "email": "anlutro@gmail.com"
+                }
+            ],
+            "description": "Persistent settings in Laravel.",
+            "support": {
+                "issues": "https://github.com/anlutro/laravel-settings/issues",
+                "source": "https://github.com/anlutro/laravel-settings/tree/v1.0.0"
+            },
+            "time": "2020-09-09T13:15:05+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.0.3",

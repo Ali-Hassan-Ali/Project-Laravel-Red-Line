@@ -27,6 +27,7 @@ function () {
 
     //profile rout
     Route::get('/show/{id}', 'WelcomController@show')->name('show');
+    Route::get('/category/{id}', 'WelcomController@category_show')->name('category.show');
 
     //profile rout
     Route::get('/cart', 'ProductController@index')->name('wallet.index');
@@ -34,5 +35,17 @@ function () {
     Route::delete('/wallet/{id}', 'ProductController@destroy')->name('wallet.delete');
 
     Auth::routes();
+
+    Route::get('/clear', function() {
+
+       Artisan::call('cache:clear');
+       Artisan::call('config:clear');
+       Artisan::call('config:cache');
+       Artisan::call('view:clear');
+       Artisan::call('view:cache');
+
+       return "Cleared!";
+
+    });
 
 });//LaravelLocalization

@@ -42,6 +42,8 @@ return [
     
     //section category
     'category'    => 'Category',
+    'categoriy'   => 'Category',
+    'see_all'     => 'See All',
     'shoping'     => 'Shoping',
     'show'        => 'Show',
     'product'     => 'Product',
