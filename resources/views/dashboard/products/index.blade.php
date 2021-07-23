@@ -60,6 +60,7 @@
                                 <th>@lang('dashboard.description')</th>
                                 <th>@lang('dashboard.image')</th>
                                 <th>@lang('dashboard.price')</th>
+                                <th>@lang('dashboard.stars')</th>
                                 <th>@lang('dashboard.quantity')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
@@ -71,9 +72,14 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $product->name }}</td>
                                     <td>{{ $product->category->name }}</td>
-                                    <td>{{ $product->description }}</td>
+                                    <td>{!! $product->description !!}</td>
                                     <td><img src="{{ $product->image_path }}" alt="" width="100"></td>
                                     <td>{{ $product->price }}</td>
+                                    <td>
+                                        @for ($i = 0; $i < $product->stars; $i++)
+                                            <i class="fa fa-star" style="color: #ffe066;"></i>
+                                        @endfor
+                                    </td>
                                     <td>{{ $product->quantity }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('products_update'))

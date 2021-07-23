@@ -26,8 +26,9 @@ function () {
     Route::put('/update_prfile/{id}', 'UserrController@update_prfile')->name('update_prfile')->middleware('auth');
 
     //profile rout
-    Route::get('/show/{id}', 'WelcomController@show')->name('show');
+    Route::get('/show/{product}', 'WelcomController@show')->name('show');
     Route::get('/category/{id}', 'WelcomController@category_show')->name('category.show');
+    Route::get('/shop', 'WelcomController@shop')->name('shop.show');
 
     //profile rout
     Route::get('/cart', 'ProductController@index')->name('wallet.index');

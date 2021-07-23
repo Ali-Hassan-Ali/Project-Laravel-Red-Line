@@ -18,12 +18,11 @@ class WelcomController extends Controller
         
     }//end of  index
 
-    public function show($id)
+    public function show(Product $product)
     {
-        $products      = Product::where('id',$id)->first();
         $reand_product = Product::inRandomOrder()->get();
 
-        return view('home.show',compact('products','reand_product'));
+        return view('home.show',compact('product','reand_product'));
         
     }//end of  index
 
@@ -34,6 +33,14 @@ class WelcomController extends Controller
         $category_name = Product::where('id', $id)->first();
 
         return view('home.category_show',compact('products','category_name'));
+
+    }//end of function
+
+    public function shop()
+    {
+        $products = Product::all();
+
+        return view('home.shop',compact('products'));
 
     }//end of function
 

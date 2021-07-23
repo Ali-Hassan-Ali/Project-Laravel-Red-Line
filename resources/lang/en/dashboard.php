@@ -41,6 +41,7 @@ return [
     'products'          => 'Products',
     'description'       => 'Description',
     'price'             => 'Price',
+    'stars'             => 'Stars',
     'quantity'          => 'Quantity',
     'descp_ar'          => 'The name is in Arabic',
     'descp_en'          => 'The name is in English',

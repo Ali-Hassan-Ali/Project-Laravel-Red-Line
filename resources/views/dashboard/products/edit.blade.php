@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.products')  .' - '. __('dashboard.edit'))
+@section('title', __('dashboard.products')  .' - '. __('dashboard.edit'))
 
     <div class="content-wrapper">
 
@@ -83,6 +83,15 @@
                         <div class="form-group">
                             <label>@lang('dashboard.quantity')</label>
                             <input type="number" name="quantity" class="form-control" value="{{ $product->quantity }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>@lang('dashboard.stars')</label>
+                            <select name="stars" class="form-control">
+                                @for ($i = 1; $i < 7; $i++)
+                                    <option value="{{ $i }}" {{ $product->stars == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                @endfor
+                            </select>
                         </div>
 
                         <div class="form-group">

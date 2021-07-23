@@ -21,12 +21,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="{{ $products->image_path }}" class="imgBx" alt="" style="width: 100%;">
+                        <img src="{{ $product->image_path }}" class="imgBx" alt="" style="width: 100%;">
                     </div>
-                    <div class="col-md-8 text-white">
-                        <h4 class="text-dark mt-sm-5 mt-md-0">{{ $products->name }}</h4>
+                    <div class="col-md-4 text-white">
+                        <h4 class="text-dark mt-sm-5 mt-md-0 mt-3 mt-md-0">{{ $product->name }}</h4>
                         <p>
-                            {!! $products->description !!}
+                            {!! $product->description !!}
                         </p>
                         <table>
                             <tbody>
@@ -57,15 +57,27 @@
                             </tbody>
                         </table>
 
-                        <div class="row mt-5 container">
+                    </div>
+                    <div class="col-md-4" style="border: 1px solid #fff;">
+                        
+                        <div class="row mx-1">
 
-                            <form action="">
-                                <input type="number" name="" hidden="">
-                                <input type="number" name="" hidden="">
-                                <a href="./cart.html" class="btn btn-outline-light"><i class="fa fa-cart-plus"></i> Add Cart</a>
-                            </form>
+                            <div class="btn btn-outline-light mb-2 add-cart col-12" style="cursor: pointer; margin-top: 100px;" 
+                                data-url="{{ route('wallet.store',$product->id) }}"
+                                data-method="post">
+                                <i class="fa fa-cart-plus"></i> @lang('home.add_card')
+                            </div>
 
-                            <a href="./AllCategory.html" class="btn btn-light ml-2">Shop</a>
+                            <a href="{{ route('shop.show') }}" class="btn btn-light hvr-pop col-12">
+                                <i class="fa fa-cart-plus"></i> @lang('home.shop')
+                            </a>
+
+                            <div class="btn btn-light hvr-pop col-12 mt-2">
+                                @for ($i = 0; $i < $product->stars; $i++)
+                                    <i class="fa fa-star" style="color: #ffe066;"></i>
+                                @endfor
+                            </div>
+
                         </div>
 
                     </div>

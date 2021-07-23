@@ -42,6 +42,7 @@ return [
     'products'          => 'المنتجات',
     'description'       => 'الوصف',
     'price'             => 'السعر',
+    'stars'             => 'التقيم',
     'quantity'          => 'الكمية',
     'descp_ar'          => 'الوصف بلغه العربية',
     'descp_en'          => 'الوصف بلغه الانجلزية',

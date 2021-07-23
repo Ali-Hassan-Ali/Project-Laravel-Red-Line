@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->string('image')->default('default.jpg');
             $table->double('price');
+            $table->double('stars')->default('3');
             $table->double('quantity')->default('0');
 
             $table->bigInteger('category_id')->unsigned();

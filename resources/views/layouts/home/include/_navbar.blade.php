@@ -22,18 +22,18 @@
                                     <div class="item-cart row mt-2">
                                         <img src="{{ $product->model->image_path }}" class="px-3 border-image" alt="" width="100">
                                         <small class="text-flix">{{ $product->model->name }}
-                                            <br>{{ $product->qty }}
-                                            <br>{{ $product->model->price }}
+                                            <br>@lang('home.quantity') - {{ $product->qty }}
+                                            <br>@lang('home.price') - {{ $product->model->price }}
                                         </small>
                                     </div>
 
                                 @endforeach
                             </div>
                             <div class="btn btn-dark d-block my-2 border-10">
-                                 <small>Totle Price</small> <small id="totle-price">{{ Cart::subtotal() }}</small>
+                                 <small>@lang('home.totle_price') - </small> <small id="totle-price">{{ Cart::subtotal() }}</small>
                             </div>
-                            <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi mt-3 px-2 py-1 mr-3">go to card</a>
-                            <a href="{{ route('wallet.index') }}" class="btn btn-outline-light btn-sm borderi mt-3 px-2 py-1">go to card</a>
+                            <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi col-12 mt-3 px-1 py-1 mr-0">@lang('home.go_card')</a>
+                            <a href="{{ route('wallet.index') }}" class="btn btn-outline-light btn-sm col-12 borderi mt-3 px-2 py-1">go to card</a>
                         </div>
 
                     </div>
@@ -57,7 +57,7 @@
                             <a class="nav-link active" href="/">@lang('home.home') <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./AllCategory.html">@lang('home.shop')</a>
+                            <a class="nav-link" href="{{ route('shop.show') }}">@lang('home.shop')</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="#service">Our Services</a>

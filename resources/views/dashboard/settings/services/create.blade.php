@@ -36,7 +36,7 @@
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['name_ar','name_en'];
+                            $names = ['wholesale_sale_ar','wholesale_sale_en'];
                         @endphp
 
                         @foreach ($names as $name)

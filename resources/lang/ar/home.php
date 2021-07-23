@@ -5,7 +5,11 @@ return [
     //navbar
     'redline'     => 'ردلاين',
     'home'        => 'الرئيسية',
+    'go_card'     => 'الذهاب الي السلة',
     'shop'        => 'تسويق',
+    'price'       => 'السعر',
+    'quantity'    => 'الكمية',
+    'totle_price' => 'المجموع',
     'category'    => 'الاقسام ',
     'language'    => 'اللغة',
     'contact_us'  => 'تواصل معنا',

@@ -5,7 +5,11 @@ return [
     //navbar
     'redline'     => 'RedLine',
     'home'        => 'Home',
+    'go_card'     => 'Go to card',
     'shop'        => 'Shop',
+    'price'       => 'Price',
+    'quantity'    => 'Quantity',
+    'totle_price' => 'Totle Price',
     'category'    => 'Category',
     'language'    => 'Language',
     'contact_us'  => 'Contact Us',
