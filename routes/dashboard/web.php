@@ -16,6 +16,7 @@ function () {
         //products routes
         Route::resource('products', 'ProductController')->except(['show']);
 
+        Route::post('settings.store', 'SettingController@store')->name('settings.store');
         Route::get('service_index', 'SettingController@service_index')->name('service.index');
 
     }); //end of dashboard routes

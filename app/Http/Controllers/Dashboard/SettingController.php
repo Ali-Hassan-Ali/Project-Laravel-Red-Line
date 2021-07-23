@@ -7,11 +7,15 @@ use Illuminate\Http\Request;
 
 class SettingController extends Controller
 {
-    
+    public function service_index()
+    {
+        return view('dashboard.settings.services.create');
+    }
+
     public function store(Request $request)
     {
         setting($request->all())->save();
-        session()->flash('success', 'Data added successfully');
+        session()->flash('success', 'dashboard.updated_successfully');
         return redirect()->back();
 
     }// end of store

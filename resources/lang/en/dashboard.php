@@ -46,5 +46,6 @@ return [
     'descp_en'          => 'The name is in English',
 
     'settings'          => 'Settings',
+    'services'          => 'Services',
 
 ];

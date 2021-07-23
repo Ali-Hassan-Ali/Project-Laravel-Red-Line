@@ -34,6 +34,10 @@ function () {
     Route::post('/wallet/{product}', 'ProductController@add_card')->name('wallet.store');
     Route::delete('/wallet/{id}', 'ProductController@destroy')->name('wallet.delete');
 
+    //login rout
+    Route::get('login/{provider}', 'LoginController@redirectToProvider')->where('provider', 'facebook|google');
+    Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback')->where('provider', 'facebook|google');
+
     Auth::routes();
 
     Route::get('/clear', function() {

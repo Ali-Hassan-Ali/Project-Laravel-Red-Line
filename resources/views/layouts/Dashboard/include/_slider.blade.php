@@ -27,19 +27,21 @@
                 <li><a href="{{ route('dashboard.products.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.products')</span></a></li>
             @endif
 
-            <li class="treeview" style="height: auto;">
-              
-              <a href="#">
-                <i class="fa fa-gear"></i> <span>@lang('dashboard.settings')</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-              </a>
-              <ul class="treeview-menu" style="display: none;">
-                <li><a href="{{ route('dashboard.service.index') }}"><i class="fa fa-circle-o"></i> عن الاكادميه</a></li>
-              </ul>
+            {{-- @if (auth()->user()->hasPermission('settings_read')) --}}
+                <li class="treeview" style="height: auto;">
+                  
+                  <a href="#">
+                    <i class="fa fa-gear"></i> <span>@lang('dashboard.settings')</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">
+                    <li><a href="{{ route('dashboard.service.index') }}"><i class="fa fa-circle-o"></i> @lang('dashboard.services')</a></li>
+                  </ul>
 
-            </li>
+                </li>
+            {{-- @endif --}}
 
         </ul>
 

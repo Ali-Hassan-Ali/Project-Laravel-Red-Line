@@ -69,12 +69,14 @@
                         <hr>
                         <!--                    Login by Gmail and Facebook-->
                         <div class="form-group ">
-                            <button class="btn btn-block btn-primary" style="background: #3b5998 "><span
-                                class="fa fa-facebook"></span> @lang('home.Login_goole')
-                        </button>
-                            <button class="btn btn-block btn-primary " style="background: #ea4335 "><span
-                                class="fa fa-google "></span> @lang('home.Login_face')
-                        </button>
+
+                            <a href="/{{ app()->getLocale() }}/login/google" class="btn btn-block btn-primary" style="background: #3b5998 ">
+                                <span class="fa fa-facebook"></span> @lang('home.Login_goole')
+                            </a>
+                            <a href="/{{ app()->getLocale() }}/login/facebook" class="btn btn-block btn-primary" style="background: #ea4335 ">
+                                <span class="fa fa-google"></span> @lang('home.Login_face')
+                            </a>
+
                         </div>
 
                     </form>
