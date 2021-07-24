@@ -23,7 +23,7 @@
                                         <img src="{{ $product->model->image_path }}" class="px-3 border-image" alt="" width="100">
                                         <small class="text-flix">{{ $product->model->name }}
                                             <br>@lang('home.quantity') - {{ $product->qty }}
-                                            <br>@lang('home.price') - {{ $product->model->price }}
+                                            <br>@lang('home.price') - {{ $product->price * $product->qty }}
                                         </small>
                                     </div>
 

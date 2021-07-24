@@ -44,7 +44,6 @@
 	                    <div class="product-price">{{ $product->model->price }}</div>
 	                    <div class="product-quantity">
 	                        <input type="number" value="{{ $product->qty }}" min="1">
-	                        {{-- <input type="number" value="2" min="1"> --}}
 	                    </div>
 	                    <div class="product-removal">
 	                        <button class="btn btn-danger btn-sm"
@@ -54,7 +53,7 @@
                     				<i class="fa fa-trash"></i>
                 			</button>
 	                    </div>
-	                    <div class="product-line-price">{{ $product->model->price * $product->model->quantity }}</div>
+	                    <div class="product-line-price">{{ $product->price * $product->qty }}</div>
 	                </div>
 
                 @endforeach
@@ -99,7 +98,7 @@
                         <input type="text" hidden>
                         <button class="btn btn-outline-light col-12">Add <i class="fa fa-plus"></i></button>
                     </form>
-                    <a href="./AllCategory.html" class="btn btn-danger col-12 my-2">shop <i class="fa fa-cart-plus"></i></a>
+                    <a href="{{ route('shop.show') }}" class="btn btn-danger col-12 my-2">@lang('home.shop') <i class="fa fa-cart-plus"></i></a>
                 </div>
 
             </div>
@@ -133,11 +132,11 @@
 	            var id      = $(this).data('id');
 
 	            swal({
-                    title: "@lang('home.confirm_delete')",
+                    title: "@lang('dashboard.confirm_delete')",
 	                type: "error",
 	                icon: 'error',
-	                confirmButtonText: "Yes!",
-	                showCancelButton: true,
+	                confirmButtonText: "@lang('dashboard.yes')",
+	                showCancelButton: "@lang('dashboard.no')",
 	            })
 
 	            .then((willDelete) => {

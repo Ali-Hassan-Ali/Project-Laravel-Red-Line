@@ -113,6 +113,11 @@
                             <a href="{{ route('show',$product->id) }}" class="btn btn-outline-light col-md-12">
                                 <i class="fa fa-eye"></i> @lang('home.show_product')
                             </a>
+                            <div class="btn btn-danger col-md-12 mt-2" style="cursor: pointer;">
+                                @for ($i = 0; $i < $product->stars; $i++)
+                                    <i class="fa fa-star" style="color: #ffe066;"></i>
+                                @endfor
+                            </div>
                         </div>
                     </div>
                 </div>
