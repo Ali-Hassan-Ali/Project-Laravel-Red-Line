@@ -40,7 +40,7 @@
                 </div>
 
                 <div id="searching" class="search-container bg-transparent ml-3">
-                    <input type="tex" name="search" placeholder="Search..." class="search-input text-light">
+                    <input type="text" name="search" placeholder="Search..." class="search-input text-light">
                     <a href="#" class="search-btn btn btn btn-danger">
                         <i class="fa fa-search"></i>
                     </a>

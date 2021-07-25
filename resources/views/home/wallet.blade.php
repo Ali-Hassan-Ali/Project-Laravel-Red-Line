@@ -2,13 +2,13 @@
 
 @section('content')
 
-@section('title', __('home.wallet'))
+@section('title', __('home.cart').__('home.shoping'))
 
 	<!--start  of contant section-->
 
 	<div style="padding: 100px 100px">
         <h1 class="text-center text-white">
-            <a href="index.html" class="text-danger"><i class="fa fa-home"></i></a> / Shopping <span class="text-danger">Cart</span>
+            <a href="/" class="text-danger"><i class="fa fa-home"></i></a> / @lang('home.cart') <span class="text-danger">@lang('home.shoping')</span>
         </h1>
     </div>
 
@@ -17,18 +17,18 @@
     <!--start of profile section-->
 
     <section id="cart" class="text-white">
-        <h1 class="text-center py-5 mb-5">Products</h1>
+        <h1 class="text-center py-5 mb-5">@lang('home.products')</h1>
         <div class="container">
 
             <div class="shopping-cart">
 
                 <div class="column-labels">
-                    <label class="product-image">Image</label>
-                    <label class="product-details">Product</label>
-                    <label class="product-price">Price</label>
-                    <label class="product-quantity">Quantity</label>
-                    <label class="product-removal">Remove</label>
-                    <label class="product-line-price">Total</label>
+                    <label class="product-image">@lang('dashboard.image')</label>
+                    <label class="product-details">@lang('home.product')</label>
+                    <label class="product-price">@lang('home.price')</label>
+                    <label class="product-quantity">@lang('home.quantity')</label>
+                    <label class="product-removal">@lang('home.remove')</label>
+                    <label class="product-line-price">@lang('home.total')</label>
                 </div>
 
                 @foreach (Cart::content() as $product)
@@ -134,13 +134,13 @@
 	            swal({
                     title: "@lang('dashboard.confirm_delete')",
 	                type: "error",
-	                icon: 'error',
-	                confirmButtonText: "@lang('dashboard.yes')",
-	                showCancelButton: "@lang('dashboard.no')",
+	                icon: "warning",
+                    buttons: {cancel: "@lang('dashboard.no')",defeat:"@lang('dashboard.yes')"},
+                    dangerMode: true
 	            })
 
 	            .then((willDelete) => {
-	            if (willDelete.value == true) {
+	            if (willDelete) {
 
 	                $.ajax({
 	                    url: url,
@@ -151,8 +151,8 @@
 	                        swal({
 	                            title: "@lang('dashboard.deleted_successfully')",
 	                            type: "success",
-	                            icon: '{{ asset("home_files/images/icon.png") }}',
-	                            showCancelButton: false,
+	                            icon: '{{ asset("home_files/images/success.png") }}',
+	                            buttons: false,
 	                            timer: 15000
 	                        }),
 	                        removeItem(this);

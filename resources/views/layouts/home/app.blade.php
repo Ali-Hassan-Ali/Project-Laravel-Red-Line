@@ -50,15 +50,32 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('home_files/plugins/auto-compolted-search/easy-autocomplete.min.css') }}">
 
     <style type="text/css">
-        .swal2-container:not(.swal2-top):not(.swal2-top-start):not(.swal2-top-end):not(.swal2-top-left):not(.swal2-top-right):not(.swal2-center-start):not(.swal2-center-end):not(.swal2-center-left):not(.swal2-center-right):not(.swal2-bottom):not(.swal2-bottom-start):not(.swal2-bottom-end):not(.swal2-bottom-left):not(.swal2-bottom-right)>.swal2-modal {
+            .swal-modal {
                 border-radius: 43px;
                 background: #1b1b1b!important;
             }
-            .swal2-title {
-                
+            .swal-title {
                 color: #fff!important;
+                margin-bottom: 70px !important;
             }
-            .aa {
+            .swal-text {
+                color: #fff !important;
+            }
+            .swal-button{
+                width: 170px;
+            }
+            .swal-footer{
+                display: flex;
+                justify-content: space-around!important;
+            }
+            #searching{
+                position: absolute;
+            }
+            .search-input{
+                width: 0px; 
+            }
+            .search-container {
+                width: 300px;
             }
             /*#searching:hover {width: 1200px !important}*/
             /*.search-container .search-input {width: 300px;}*/
@@ -110,6 +127,8 @@
             <!-- min compolted  search -->
     <script src="{{ asset('home_files/plugins/auto-compolted-search/jquery.easy-autocomplete.min.js') }}"></script>
 
+
+
     @stack('cart')
 
     <script type="text/javascript">
@@ -127,21 +146,22 @@
                 swal({
                     title: "@lang('dashboard.added_successfully')",
                     type: "success",
-                    icon: 'success',
-                    showCancelButton: false,
-                    timer: 1000
-                },
+                    icon: '{{ asset("home_files/images/success.png") }}',
+                    buttons: false,
+                    timer: 15000
+                }); //end of  swal
+
                 $.ajax({
                     url: url,
                     method: method,
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     success: function(data) {
 
-
                     }, error: function(data) {
                         console.log(data);
                     },
-                })); //end of ajax  swal
+                });//end of ajax
+
             });//end of click
 
             var options = {

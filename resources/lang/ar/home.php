@@ -48,10 +48,16 @@ return [
     'category'    => 'الاقسام',
     'categoriy'   => 'قسم',
     'see_all'     => 'عرض الكل',
-    'shoping'     => '',
+    'shoping'     => 'التسوق',
     'show'        => 'عرض',
     'product'     => 'المنتج',
     'show_product'=> 'عرض تفاصيل المنتج',
     'add_card'    => 'اضافة الى السلة',
+
+    //section category
+    'cart'        => 'عربة ',
+    'products'    => 'المنتاجات',
+    'total'       => 'المجموع',
+    'remove'      => 'حذف',
   
 ];

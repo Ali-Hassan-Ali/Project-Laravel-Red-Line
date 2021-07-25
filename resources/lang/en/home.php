@@ -53,4 +53,10 @@ return [
     'product'     => 'Product',
     'show_product'=> 'Show Product',
     'add_card'    => 'Add Card',
+
+    //section category
+    'cart'        => 'Cart',
+    'products'    => 'Products',
+    'total'       => 'Total',
+    'remove'      => 'Remove',
 ];
