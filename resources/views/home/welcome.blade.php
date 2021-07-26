@@ -69,31 +69,31 @@
     <!--end of OwlCarouse section-->
 
     <section id="service" class="text-white bg-dark py-5">
-        <h2 class="text-center pb-4 ser wow flash" data-wow-duration="4s" data-wow-offset="0">Our <span class="text-danger">Services</span></h2>
+        <h2 class="text-center pb-4 pb-5 ser wow flash" data-wow-duration="4s" data-wow-offset="0">@lang('home.our') <span class="text-danger">@lang('home.services')</span></h2>
         <div class="container">
-            <div class="row">
+            <div class="row pt-4">
                 <div class="col-lg-4 col-sm-6 mb-4 hvr-grow-shadow wow bounceInLeft" data-wow-duration="2s" data-wow-offset="0">
                     <div class="card border-0 shadow rounded-xs pt-5 bg-danger ali">
                         <div class="card-body">
                             <i class="fa fa-viadeo icon-lg icon-primary icon-bg-primary icon-bg-circle mb-3"></i>
-                            <h4 class="mt-4 mb-3">Occasions</h4>
-                            <p>For what reason would it be advisable for me to think about business content?</p>
+                            <h4 class="mt-4 mb-3">@lang('home.occasions')</h4>
+                            <p>{{ app()->getLocale() == 'ar' ?  setting('occasions_ar') : setting('occasions_en') }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 mb-4 hvr-grow-shadow wow bounceInUp" data-wow-duration="2s" data-wow-offset="0">
                     <div class="card border-0 shadow rounded-xs pt-5 bg-danger">
                         <div class="card-body"><i class="fa fa-handshake-o icon-lg icon-yellow icon-bg-yellow icon-bg-circle mb-3"></i>
-                            <h4 class="mt-4 mb-3">Social Activity</h4>
-                            <p>For what reason would it be advisable for me to think about business content?</p>
+                            <h4 class="mt-4 mb-3">@lang('home.customer_order')</h4>
+                            <p>{{ app()->getLocale() == 'ar' ?  setting('customer_order_ar') : setting('customer_order_en') }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 mb-4 hvr-grow-shadow wow bounceInRight" data-wow-duration="2s" data-wow-offset="0">
                     <div class="card border-0 shadow rounded-xs pt-5 bg-danger">
                         <div class="card-body"><i class="fa fa-truck icon-lg icon-purple icon-bg-purple icon-bg-circle mb-3"></i>
-                            <h4 class="mt-4 mb-3">Wholesale Sale</h4>
-                            <p>For what reason would it be advisable for me to think about business content?</p>
+                            <h4 class="mt-4 mb-3">@lang('home.delivery')</h4>
+                            <p>{{ app()->getLocale() == 'ar' ?  setting('delivery_ar') : setting('delivery_en') }}</p>
                         </div>
                     </div>
                 </div>

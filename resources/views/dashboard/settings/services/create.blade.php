@@ -8,12 +8,11 @@
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.categorey')</h1>
+            <h1>@lang('dashboard.services')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li><a href="{{ route('dashboard.categoreys.index') }}"> @lang('dashboard.categoreys')</a></li>
-                <li class="active">@lang('dashboard.add')</li>
+                <li class="active">@lang('dashboard.services')</li>
             </ol>
 
         </section>
@@ -23,7 +22,7 @@
             <div class="box box-primary">
 
                 <div class="box-header">
-                    <h3 class="box-title">@lang('dashboard.add')</h3>
+                    <h3 class="box-title">@lang('dashboard.edit')</h3>
                 </div><!-- end of box header -->
 
                 <div class="box-body">
@@ -36,14 +35,14 @@
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['wholesale_sale_ar','wholesale_sale_en'];
+                            $names = ['delivery_ar','delivery_en','customer_order_ar','customer_order_en','occasions_ar','occasions_en'];
                         @endphp
 
                         @foreach ($names as $name)
 
                             <div class="form-group">
                                 <label>@lang('dashboard.' . $name)</label>
-                                <input type="text" name="{{ $name }}" class="form-control" value="{{ setting('name') }}">
+                                <input type="text" name="{{ $name }}" class="form-control" value="{{ setting($name) }}">
                             </div>
                             
                         @endforeach

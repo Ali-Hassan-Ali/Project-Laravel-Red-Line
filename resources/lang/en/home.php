@@ -59,4 +59,11 @@ return [
     'products'    => 'Products',
     'total'       => 'Total',
     'remove'      => 'Remove',
+
+    //Our Services
+    'our'               => 'Our',
+    'services'          => 'Services',
+    'delivery'          => 'Delivery',
+    'customer_order'    => 'Customer Order',
+    'occasions'         => 'Occasions',
 ];

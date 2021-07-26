@@ -48,5 +48,11 @@ return [
 
     'settings'          => 'Settings',
     'services'          => 'Services',
+    'delivery_ar'       => 'Enter delivery arabic',
+    'delivery_en'       => 'Enter delivery english',
+    'customer_order_ar' => 'Enter customer order arabic',
+    'customer_order_en' => 'Enter customer order english',
+    'occasions_ar'      => 'Enter qccasions arabic',
+    'occasions_en'      => 'Enter qccasions english',
 
 ];

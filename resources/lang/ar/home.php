@@ -59,5 +59,12 @@ return [
     'products'    => 'المنتاجات',
     'total'       => 'المجموع',
     'remove'      => 'حذف',
+    
+    //Our Services
+    'our'               => 'عن',
+    'services'          => 'خدماتنا',
+    'delivery'          => 'توصيل',
+    'customer_order'    => 'طلب الزبائن',
+    'occasions'         => 'مناسبات',
   
 ];
