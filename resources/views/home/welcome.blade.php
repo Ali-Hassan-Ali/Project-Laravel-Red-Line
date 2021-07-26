@@ -5,20 +5,22 @@
 @section('title', __('home.home'))
 
 	<!--start of slider section-->
+
     <section id="slider">
         <div class="bg_slider mt-5">
             <img src="{{ asset('home_files/images/bg-slider.jpg') }}" class="slider" alt="" width="100%" style="border-radius: 0px;">
         </div>
     </section>
+
     <!--end of slider section-->
 
-
     <!--start of text section-->
+
     <section class="py-3 text-center">
         <p class="anmation-color font-weight-bold fw-500 wow flash text-danger" data-wow-duration="4s" data-wow-offset="0">Lorem ipsum dolor sit amet autem beatae nulla in.</p>
     </section>
+
     <!--end of text section-->
-    
 
     <!--start of OwlCarouse section-->
     <section id="OwlCarouse">
@@ -68,6 +70,8 @@
     </section>
     <!--end of OwlCarouse section-->
 
+    <!--end of service section-->
+    
     <section id="service" class="text-white bg-dark py-5">
         <h2 class="text-center pb-4 pb-5 ser wow flash" data-wow-duration="4s" data-wow-offset="0">@lang('home.our') <span class="text-danger">@lang('home.services')</span></h2>
         <div class="container">
@@ -101,13 +105,16 @@
         </div>
     </section>
 
+    <!--end of service section-->
+
+    <!--start of image section-->
+
     <section id="image">
         <div class="container pb-5 wow bounce" data-wow-duration="2s" data-wow-offset="0">
             <h2 class="text-center text-light py-5 wow flash" data-wow-duration="4s" data-wow-offset="0">image <span class="text-danger">privew</span></h2>
 
             <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/001.jpg') }}" data-caption="My caption">
                 <img src="{{ asset('home_files/images/demo/001.jpg') }}" class="image-gallery" width="200">
-                <!-- <i class="fa fa-home icon-image"></i> -->
             </a>
 
             <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/002.jpg') }}" data-caption="My caption">
@@ -149,6 +156,10 @@
 
         </div>
     </section>
+
+    <!--end of image section-->
+    
+    <!--start of support section-->
 
     <section id="support" class="text-white bg-dark py-5">
         <div class="container">
@@ -183,5 +194,7 @@
             </div>
         </div>
     </section>
+
+    <!--start of support section-->
 
 @endsection

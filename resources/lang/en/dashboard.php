@@ -55,4 +55,10 @@ return [
     'occasions_ar'      => 'Enter qccasions arabic',
     'occasions_en'      => 'Enter qccasions english',
 
+    'gallerys'         => 'Gallerys',
+    'image'            => 'Image',
+    'title'            => 'Title',
+    'title_ar'         => 'Title in english',
+    'title_en'         => 'Title in arabic',
+
 ];

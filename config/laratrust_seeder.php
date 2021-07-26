@@ -19,6 +19,7 @@ return [
             'categoreys' => 'c,r,u,d',
             'products'   => 'c,r,u,d',
             'settings'   => 'c,r,u,d',
+            'gallerys'   => 'c,r,u,d',
         ],
 
         'admin' => [
