@@ -73,4 +73,10 @@ return [
     'phone_one'        => 'Phone One',
     'payments'         => 'Payment methods image',
 
+    'social_links'     => 'Social links',
+    'facebook'         => 'facebook',
+    'youtube'          => 'youtube',
+    'twitter'          => 'twitter',
+    'instagram'        => 'instagram',
+
 ];

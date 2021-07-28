@@ -28,6 +28,7 @@ function () {
         Route::post('settings.store', 'SettingController@store')->name('settings.store');
         Route::get('service_index', 'SettingController@service_index')->name('service.index');
         Route::get('contact_us', 'SettingController@contact_index')->name('contact_us.index');
+        Route::get('social_links', 'SettingController@social_links')->name('social_links.index');
 
     }); //end of dashboard routes
 

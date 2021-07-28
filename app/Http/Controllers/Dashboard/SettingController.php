@@ -17,6 +17,11 @@ class SettingController extends Controller
         return view('dashboard.settings.services.contact_us');   
     }//end of settings contacts
 
+    public function social_links()
+    {
+        return view('dashboard.settings.services.social_links');   
+    }
+
     public function store(Request $request)
     {
         setting($request->all())->save();

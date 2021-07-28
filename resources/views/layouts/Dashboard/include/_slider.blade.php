@@ -51,6 +51,7 @@
                   <ul class="treeview-menu" style="display: none;">
                     <li><a href="{{ route('dashboard.service.index') }}"><i class="fa fa-circle-o"></i> @lang('dashboard.services')</a></li>
                     <li><a href="{{ route('dashboard.contact_us.index') }}"><i class="fa fa-circle-o"></i> @lang('dashboard.contact_us')</a></li>
+                    <li><a href="{{ route('dashboard.social_links.index') }}"><i class="fa fa-circle-o"></i> @lang('dashboard.social_links')</a></li>
                   </ul>
 
                 </li>
