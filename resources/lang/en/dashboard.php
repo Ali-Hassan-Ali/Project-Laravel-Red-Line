@@ -17,7 +17,8 @@ return [
     'edit'                  => 'Edit',
     'search'                => 'Search',
 
-    'users'                 => 'users',
+    'admins'                => 'Users',
+    'users'                 => 'Admins',
     'name'                  => 'Name',
     'email'                 => 'Email',
     'image'                 => 'Image',
@@ -60,5 +61,7 @@ return [
     'title'            => 'Title',
     'title_ar'         => 'Title in english',
     'title_en'         => 'Title in arabic',
+
+    'supports'         => 'Supports',
 
 ];

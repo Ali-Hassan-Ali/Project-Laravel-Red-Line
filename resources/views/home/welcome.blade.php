@@ -111,48 +111,26 @@
 
     <section id="image">
         <div class="container pb-5 wow bounce" data-wow-duration="2s" data-wow-offset="0">
-            <h2 class="text-center text-light py-5 wow flash" data-wow-duration="4s" data-wow-offset="0">image <span class="text-danger">privew</span></h2>
 
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/001.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/001.jpg') }}" class="image-gallery" width="200">
-            </a>
+            <h2 class="text-center text-light py-5 wow flash" data-wow-duration="4s" data-wow-offset="0">@lang('home.gallery') 
+                <span class="text-danger">@lang('home.photo')</span>
+            </h2>
 
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/002.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/002.jpg') }}" class="image-gallery" width="200">
-            </a>
+            @if ($gallerys->count() > 0)
+                
+                @foreach ($gallerys as $gallery)
+                    
+                    <a data-fancybox="gallery" class="m-2 hovering" href="{{ $gallery->gallery_path }}" data-caption="{{ $gallery->title }}">
+                        <img src="{{ $gallery->gallery_path }}" class="image-gallery" width="200">
+                    </a>
 
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/004.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/004.jpg') }}" class="image-gallery" width="200">
-            </a>
+                @endforeach
 
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/005.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/005.jpg') }}" class="image-gallery" width="200">
-            </a>
+            @else
 
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/006.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/006.jpg') }}" class="image-gallery" width="200">
-            </a>
+                <h2 class="text-light text-center">@lang('dashboard.no_data_found')</h2>
 
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/001.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/001.jpg') }}" class="image-gallery" width="200">
-            </a>
-
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/002.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/002.jpg') }}" class="image-gallery" width="200">
-            </a>
-
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/004.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/004.jpg') }}" class="image-gallery" width="200">
-            </a>
-
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/005.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/005.jpg') }}" class="image-gallery" width="200">
-            </a>
-
-            <a data-fancybox="gallery" class="m-2 hovering" href="{{ asset('home_files/images/demo/006.jpg') }}" data-caption="My caption">
-                <img src="{{ asset('home_files/images/demo/006.jpg') }}" class="image-gallery" width="200">
-            </a>
-
+            @endif
 
         </div>
     </section>
@@ -163,32 +141,43 @@
 
     <section id="support" class="text-white bg-dark py-5">
         <div class="container">
-            <h2 class="text-center text-light wow flash" data-wow-duration="4s" data-wow-offset="0">technical <span class="text-danger">support</span></h2>
+            <h2 class="text-center text-light wow flash" data-wow-duration="4s" data-wow-offset="0">@lang('home.connect') 
+                <span class="text-danger">@lang('home.us')</span>
+            </h2>
 
             <div class="py-5 wow bounceInUp" data-wow-duration="2s" data-wow-offset="0">
                 <form>
                     <div class="form-row">
                         <div class="col-12 my-3 col-md-6">
-                            <input type="text" class="form-control bg-transparent text-light" placeholder="Enter First Name">
+                            <input type="text" name="first_name" id="first-name" class="form-control bg-transparent text-light" placeholder="@lang('home.first_name')">
+                            <span class="text-danger" id="error-first-name"></span>
                         </div>
                         <div class="col-12 my-3 col-md-6">
-                            <input type="text" class="form-control bg-transparent text-light" placeholder="Enter Last Name">
+                            <input type="text" name="last_name" id="last-name" class="form-control bg-transparent text-light" placeholder="@lang('home.last_name')">
+                            <span class="text-danger" id="error-last-name"></span>
                         </div>
                         <div class="col-12 my-3 col-md-6">
-                            <input type="text" class="form-control bg-transparent text-light" placeholder="Enter Email">
+                            <input type="number" name="phone" id="number-phone" class="form-control bg-transparent text-light" placeholder="@lang('dashboard.phone')">
+                            <span class="text-danger" id="error-phone-our"></span>
                         </div>
                         <div class="col-12 my-3 col-md-6">
-                            <input type="text" class="form-control bg-transparent text-light" placeholder="Enter Phone">
+                            <input type="email" name="email" id="our-email" class="form-control bg-transparent text-light" placeholder="@lang('dashboard.email')">
+                            <span class="text-danger" id="error-email-our"></span>
                         </div>
                         <div class="col-12 my-3">
-                            <input type="text" class="form-control bg-transparent text-light" placeholder="Enter Title">
+                            <input type="text" name="title" id="our-title" class="form-control bg-transparent text-light" placeholder="@lang('home.title')">
+                            <span class="text-danger" id="error-title-our"></span>
                         </div>
                         <div class="col-12 my-3 col-md-12">
                             <div class="form-group">
-                                <textarea class="form-control bg-transparent text-light" rows="3" placeholder="Enter Body"></textarea>
+                                <textarea id="our-body" name="body" class="form-control bg-transparent text-light" rows="3" placeholder="@lang('home.body')"></textarea>
+                                <span class="text-danger" id="error-body-our"></span>
                             </div>
                         </div>
-                        <button class="btn btn-danger mb-2 d-block col-12">submit</button>
+                        <button class="btn btn-danger mb-2 d-block col-12 add-suport"
+                                data-url="{{ route('store.connect') }}"
+                                data-method="post"
+                        >@lang('dashboard.add')</button>
                     </div>
                 </form>
             </div>
@@ -198,3 +187,78 @@
     <!--start of support section-->
 
 @endsection
+
+@push('welcome')
+    
+    <script>
+        $(document).ready(function() {
+
+            $(".add-suport").click(function(e){
+                e.preventDefault();
+                
+                var url     = $(this).data('url');
+                var method  = $(this).data('method');
+
+                var fName   = $('#first-name').val();
+                var lName   = $('#last-name').val();
+                var phone   = $('#number-phone').val();
+                var email   = $('#our-email').val();
+                var title   = $('#our-title').val();
+                var body    = $('#our-body').val();
+
+                $('#error-first-name').text('');
+                $('#error-last-name').text('');
+                $('#error-phone-our').text('');
+                $('#error-email-our').text('');
+                $('#error-title-our').text('');
+                $('#error-body-our').text('');
+
+                $.ajax({
+                    url: url,
+                    method: method,
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data:{
+                        first_name: fName,
+                        last_name: lName,
+                        phone: phone,
+                        email: email,
+                        title: title,
+                        body: body,
+                    },
+                    success: function(data) {
+
+                        if (data.success == true) {
+
+                                $('#error-first-name').val('');
+                                $('#error-last-name').val('');
+                                $('#error-phone-our').val('');
+                                $('#error-email-our').val('');
+                                $('#error-title-our').val('');
+                                $('#error-body-our').val('');
+                            
+                            swal({
+                                title: "@lang('dashboard.added_successfully')",
+                                type: "success",
+                                icon: '{{ asset("home_files/images/success.png") }}',
+                                buttons: false,
+                                timer: 1500
+                            }); //end of  swal
+
+                        } //end of if
+
+                    }, error: function(data) {
+                        $('#error-first-name').text(data.responseJSON.errors.first_name);
+                        $('#error-last-name').text(data.responseJSON.errors.last_name);
+                        $('#error-phone-our').text(data.responseJSON.errors.phone);
+                        $('#error-email-our').text(data.responseJSON.errors.email);
+                        $('#error-title-our').text(data.responseJSON.errors.title);
+                        $('#error-body-our').text(data.responseJSON.errors.body);
+                    },
+                });//end of ajax
+
+            });//end of click
+
+        });//end of document ready
+    </script>
+
+@endpush

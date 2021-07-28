@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Categorey;
+use App\Models\Gallery;
 use App\Models\Product;
 
 class WelcomController extends Controller
@@ -13,8 +14,9 @@ class WelcomController extends Controller
     public function index()
     {
         $categories = Categorey::with('proudut')->limit(3)->get();
+        $gallerys = Gallery::all();
 
-        return view('home.welcome',compact('categories'));
+        return view('home.welcome',compact('categories','gallerys'));
         
     }//end of  index
 

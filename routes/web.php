@@ -24,6 +24,7 @@ function () {
     //profile rout
     Route::get('/profile/{id}', 'UserrController@profile')->name('profile')->middleware('auth');
     Route::put('/update_prfile/{id}', 'UserrController@update_prfile')->name('update_prfile')->middleware('auth');
+    Route::post('store.connect', 'UserrController@connect')->name('store.connect');
 
     //profile rout
     Route::get('/show/{product}', 'WelcomController@show')->name('show');

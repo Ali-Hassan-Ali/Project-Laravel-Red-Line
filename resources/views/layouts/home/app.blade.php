@@ -128,6 +128,7 @@
     <script src="{{ asset('home_files/plugins/auto-compolted-search/jquery.easy-autocomplete.min.js') }}"></script>
 
 
+    @stack('welcome')
 
     @stack('cart')
 

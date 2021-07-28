@@ -51,14 +51,14 @@
 
                 {{--clients--}}
                 <div class="col-lg-3 col-xs-6">
-                    <div class="small-box bg-red">
+                    <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>coachess_count</h3>
+                            <h3>{{ $users_count }}</h3>
 
-                            <p>المدربين</p>
+                            <p>@lang('dashboard.admins')</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-user"></i>
+                            <i class="fa fa-users"></i>
                         </div>
                         <a href="" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -66,14 +66,14 @@
 
                 {{--users--}}
                 <div class="col-lg-3 col-xs-6">
-                    <div class="small-box bg-yellow">
+                    <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>{{ $users_count }}</h3>
+                            <h3>{{ $admins_count }}</h3>
 
                             <p>@lang('dashboard.users')</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-user"></i>
                         </div>
                         <a href="{{ route('dashboard.users.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -99,7 +99,7 @@
 
 @endsection
 
-@push('scripts')
+@push('welcome')
 
 
 @endpush

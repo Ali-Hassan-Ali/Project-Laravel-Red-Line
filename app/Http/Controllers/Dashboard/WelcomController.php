@@ -19,11 +19,12 @@ class WelcomController extends Controller
 
     public function index()
     {
-        $users_count = User::whereRoleIs('admin')->count();
+        $admins_count    = User::whereRoleIs('admin')->count();
+        $users_count     = User::count();
         $categorys_count = Categorey::count();
         $products_count  = Product::count();
 
-        return view('dashboard.welcome',compact('users_count','categorys_count','products_count'));
+        return view('dashboard.welcome',compact('admins_count','users_count','categorys_count','products_count'));
     }//end of index
     
 }//end of controller

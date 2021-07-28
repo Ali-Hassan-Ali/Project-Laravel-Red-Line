@@ -66,5 +66,18 @@ return [
     'delivery'          => 'توصيل',
     'customer_order'    => 'طلب الزبائن',
     'occasions'         => 'مناسبات',
+
+    //image privew
+    'photo'        => 'الصور',
+    'gallery'      => 'معرض',
+
+    //Connect  us
+    'connect'      => 'تواصل',
+    'us'           => 'معنا',
+    'first_name'   => 'الاسم الاول',
+    'last_name'    => 'الاسم الثاني',
+    'title'        => 'العنوان',
+    'body'         => 'الموضع',
+
   
 ];

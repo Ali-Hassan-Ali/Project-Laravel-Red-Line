@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Support;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
@@ -54,5 +55,23 @@ class UserrController extends Controller
 
 
     }//end of update_prfile
+
+
+    public function connect(Request $request)
+    {
+        $request->validate([
+            'first_name'  => 'required',
+            'last_name'   => 'required',
+            'phone'       => 'required',
+            'email'       => 'required',
+            'title'       => 'required',
+            'body'        => 'required',
+        ]);
+
+        Support::create($request->all());
+
+        return response(['success' => true]);
+        
+    }//end of connect
     
 }//end of controller

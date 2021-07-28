@@ -20,6 +20,7 @@ return [
             'products'   => 'c,r,u,d',
             'settings'   => 'c,r,u,d',
             'gallerys'   => 'c,r,u,d',
+            'supports'   => 'c,r,u,d',
         ],
 
         'admin' => [

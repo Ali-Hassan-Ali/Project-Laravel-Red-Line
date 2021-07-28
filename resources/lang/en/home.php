@@ -66,4 +66,16 @@ return [
     'delivery'          => 'Delivery',
     'customer_order'    => 'Customer Order',
     'occasions'         => 'Occasions',
+
+    //image privew
+    'photo'        => 'Photo',
+    'gallery'      => 'Gallery',
+
+    //Connect  us
+    'connect'      => 'Contct',
+    'us'           => 'Us',
+    'first_name'   => 'First Name',
+    'last_name'    => 'Last Name',
+    'title'        => 'Subject',
+    'body'         => 'Body',
 ];

@@ -38,7 +38,6 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
 
         $request->validate([
             'name'        => 'required',
@@ -48,28 +47,36 @@ class UserController extends Controller
             'permissions' => 'required|min:1',
         ]);
 
-        $request_data             = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
-        $request_data['password'] = bcrypt($request->password);
+        try {
 
-        if ($request->image) {
+            $request_data             = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
+            $request_data['password'] = bcrypt($request->password);
 
-            Image::make($request->image)
-                ->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+            if ($request->image) {
 
-            $request_data['image'] = $request->image->hashName();
+                Image::make($request->image)
+                    ->resize(300, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })
+                    ->save(public_path('uploads/user_images/' . $request->image->hashName()));
 
-        } //end of if
+                $request_data['image'] = $request->image->hashName();
 
-        $user = User::create($request_data);
-        // dd($request->all());
-        $user->attachRole('admin');
-        $user->syncPermissions($request->permissions);
+            } //end of if
 
-        session()->flash('success', __('dashboard.added_successfully'));
-        return redirect()->route('dashboard.users.index');
+            $user = User::create($request_data);
+            // dd($request->all());
+            $user->attachRole('admin');
+            $user->syncPermissions($request->permissions);
+
+            session()->flash('success', __('dashboard.added_successfully'));
+            return redirect()->route('dashboard.users.index');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     } //end of store
 
@@ -88,45 +95,63 @@ class UserController extends Controller
             'permissions' => 'required|min:1',
         ]);
 
-        $request_data = $request->except(['permissions', 'image']);
 
-        if ($request->image) {
+        try {
 
-            if ($user->image != 'default.png') {
+            $request_data = $request->except(['permissions', 'image']);
 
-                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+            if ($request->image) {
 
-            } //end of inner if
+                if ($user->image != 'default.png') {
 
-            Image::make($request->image)
-                ->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+                    Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
 
-            $request_data['image'] = $request->image->hashName();
+                } //end of inner if
 
-        } //end of external if
+                Image::make($request->image)
+                    ->resize(300, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })
+                    ->save(public_path('uploads/user_images/' . $request->image->hashName()));
 
-        $user->update($request_data);
+                $request_data['image'] = $request->image->hashName();
 
-        $user->syncPermissions($request->permissions);
-        session()->flash('success', __('dashboard.updated_successfully'));
-        return redirect()->route('dashboard.users.index');
+            } //end of external if
+
+            $user->update($request_data);
+
+            $user->syncPermissions($request->permissions);
+            session()->flash('success', __('dashboard.updated_successfully'));
+            return redirect()->route('dashboard.users.index');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     } //end of update
 
     public function destroy(User $user)
     {
-        if ($user->image != 'default.png') {
 
-            Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+        try {
 
-        } //end of if
+            if ($user->image != 'default.png') {
 
-        $user->delete();
-        session()->flash('success', __('dashboard.deleted_successfully'));
-        return redirect()->route('dashboard.users.index');
+                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+
+            } //end of if
+
+            $user->delete();
+            session()->flash('success', __('dashboard.deleted_successfully'));
+            return redirect()->route('dashboard.users.index');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     } //end of destroy
 

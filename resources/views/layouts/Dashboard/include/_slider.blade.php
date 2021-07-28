@@ -31,6 +31,10 @@
                 <li><a href="{{ route('dashboard.gallerys.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.gallerys')</span></a></li>
             @endif
 
+            @if (auth()->user()->hasPermission('supports_read'))
+                <li><a href="{{ route('dashboard.supports.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.supports')</span></a></li>
+            @endif
+
             {{-- @if (auth()->user()->hasPermission('settings_read')) --}}
                 <li class="treeview" style="height: auto;">
                   

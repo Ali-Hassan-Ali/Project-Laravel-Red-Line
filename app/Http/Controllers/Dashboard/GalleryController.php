@@ -45,25 +45,33 @@ class GalleryController extends Controller
             'title_en'       => 'required',
         ]);
 
-        $request_data             = $request->except(['image','title_ar','title_en']);
-        $request_data['title']    = ['ar' => $request->title_ar, 'en' => $request->title_en];
+        try {
 
-        if ($request->image) {
+            $request_data             = $request->except(['image','title_ar','title_en']);
+            $request_data['title']    = ['ar' => $request->title_ar, 'en' => $request->title_en];
 
-            Image::make($request->image)
-                ->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save(public_path('uploads/gallery_image/' . $request->image->hashName()));
+            if ($request->image) {
 
-            $request_data['image'] = $request->image->hashName();
+                Image::make($request->image)
+                    ->resize(null, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })
+                    ->save(public_path('uploads/gallery_image/' . $request->image->hashName()));
 
-        } //end of if
+                $request_data['image'] = $request->image->hashName();
 
-        Gallery::create($request_data);
+            } //end of if
 
-        session()->flash('success', __('dashboard.added_successfully'));
-        return redirect()->route('dashboard.gallerys.index');
+            Gallery::create($request_data);
+
+            session()->flash('success', __('dashboard.added_successfully'));
+            return redirect()->route('dashboard.gallerys.index');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of store
 
@@ -83,10 +91,46 @@ class GalleryController extends Controller
             'title_en'    => 'required',
         ]);
 
-        $request_data             = $request->except(['image', 'title_ar','title_en']);
-        $request_data['title']    = ['ar' => $request->title_ar, 'en' => $request->title_en];
+        try {
 
-        if ($request->image) {
+            $request_data             = $request->except(['image', 'title_ar','title_en']);
+            $request_data['title']    = ['ar' => $request->title_ar, 'en' => $request->title_en];
+
+            if ($request->image) {
+
+                if ($gallery->image != 'default.png') {
+
+                    Storage::disk('public_uploads')->delete('/gallery_image/' . $gallery->image);
+
+                } //end of if
+
+                Image::make($request->image)
+                    ->resize(null, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })
+                    ->save(public_path('uploads/gallery_image/' . $request->image->hashName()));
+
+                $request_data['image'] = $request->image->hashName();
+
+            } //end of if
+
+            $gallery->update($request_data);
+
+            session()->flash('success', __('dashboard.updated_successfully'));
+            return redirect()->route('dashboard.gallerys.index');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
+
+    }//end of update
+
+
+    public function destroy(Gallery $gallery)
+    {
+        try {
 
             if ($gallery->image != 'default.png') {
 
@@ -94,35 +138,15 @@ class GalleryController extends Controller
 
             } //end of if
 
-            Image::make($request->image)
-                ->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save(public_path('uploads/gallery_image/' . $request->image->hashName()));
+            $gallery->delete();
+            session()->flash('success', __('dashboard.deleted_successfully'));
+            return redirect()->route('dashboard.gallerys.index');
 
-            $request_data['image'] = $request->image->hashName();
+        } catch (\Exception $e) {
 
-        } //end of if
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
-        $gallery->update($request_data);
-
-        session()->flash('success', __('dashboard.updated_successfully'));
-        return redirect()->route('dashboard.gallerys.index');
-
-    }//end of update
-
-
-    public function destroy(Gallery $gallery)
-    {
-        if ($gallery->image != 'default.png') {
-
-            Storage::disk('public_uploads')->delete('/gallery_image/' . $gallery->image);
-
-        } //end of if
-
-        $gallery->delete();
-        session()->flash('success', __('dashboard.deleted_successfully'));
-        return redirect()->route('dashboard.gallerys.index');
+        }//end try
 
     }//endo of destroy
 

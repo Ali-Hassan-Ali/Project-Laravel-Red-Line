@@ -19,6 +19,9 @@ function () {
         //products routes
         Route::resource('gallerys', 'GalleryController')->except(['show']);
 
+        //products routes
+        Route::resource('supports', 'SupportController');
+
         Route::post('settings.store', 'SettingController@store')->name('settings.store');
         Route::get('service_index', 'SettingController@service_index')->name('service.index');
 

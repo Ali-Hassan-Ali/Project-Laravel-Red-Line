@@ -311,6 +311,6 @@
     });//end of ready
     
 </script>
-@stack('scripts')
+@stack('welcome')
 </body>
 </html>
