@@ -2,18 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.gallerys')  .' - '. __('dashboard.add'))
+@section('title', __('dashboard.contact_us'))
 
-    <div class="content-wrapper">
+	    <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.gallerys')</h1>
+            <h1>@lang('dashboard.contact_us')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li><a href="{{ route('dashboard.gallerys.index') }}"> @lang('dashboard.gallerys')</a></li>
-                <li class="active">@lang('dashboard.add')</li>
+                <li class="active">@lang('dashboard.contact_us')</li>
             </ol>
 
         </section>
@@ -23,39 +22,30 @@
             <div class="box box-primary">
 
                 <div class="box-header">
-                    <h3 class="box-title">@lang('dashboard.add')</h3>
+                    <h3 class="box-title">@lang('dashboard.edit')</h3>
                 </div><!-- end of box header -->
 
                 <div class="box-body">
 
                     @include('partials._errors')
 
-                    <form action="{{ route('dashboard.gallerys.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.settings.store') }}" method="post">
 
                         {{ csrf_field() }}
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['title_ar','title_en'];
+                            $names  = ['about_ar','about_en','phone','phone_one','whatsapp','email','map_one','map_tow'];
                         @endphp
 
                         @foreach ($names as $name)
 
                             <div class="form-group">
                                 <label>@lang('dashboard.' . $name)</label>
-                                <input type="text" name="{{ $name }}" class="form-control" value="{{ old($name) }}">
+                                <input type="text" name="{{ $name }}" class="form-control" value="{{ setting($name) }}">
                             </div>
                             
                         @endforeach
-
-                        <div class="form-group">
-                            <label>@lang('dashboard.image')</label>
-                            <input type="file" name="image" class="form-control image">
-                        </div>
-
-                        <div class="form-group">
-                            <img src="{{ asset('uploads/gallery_image/default.jpg') }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
-                        </div>
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</button>

@@ -35,6 +35,10 @@
                 <li><a href="{{ route('dashboard.supports.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.supports')</span></a></li>
             @endif
 
+            @if (auth()->user()->hasPermission('payments_read'))
+                <li><a href="{{ route('dashboard.payments.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.payments')</span></a></li>
+            @endif
+
             {{-- @if (auth()->user()->hasPermission('settings_read')) --}}
                 <li class="treeview" style="height: auto;">
                   
@@ -46,6 +50,7 @@
                   </a>
                   <ul class="treeview-menu" style="display: none;">
                     <li><a href="{{ route('dashboard.service.index') }}"><i class="fa fa-circle-o"></i> @lang('dashboard.services')</a></li>
+                    <li><a href="{{ route('dashboard.contact_us.index') }}"><i class="fa fa-circle-o"></i> @lang('dashboard.contact_us')</a></li>
                   </ul>
 
                 </li>

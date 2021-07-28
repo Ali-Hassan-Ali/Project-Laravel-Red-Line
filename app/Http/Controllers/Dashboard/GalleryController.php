@@ -23,7 +23,7 @@ class GalleryController extends Controller
 
     public function index()
     {   
-        $gallerys = Gallery::whenSearch(request()->search)->orderBy('id', 'DESC')->paginate(10);
+        $gallerys = Gallery::whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.gallerys.index',compact('gallerys'));
 

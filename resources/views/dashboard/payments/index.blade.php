@@ -2,17 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.gallerys'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.payments'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.gallerys')</h1>
+            <h1>@lang('dashboard.payments')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li class="active">@lang('dashboard.gallerys')</li>
+                <li class="active">@lang('dashboard.payments')</li>
             </ol>
         </section>
 
@@ -22,9 +22,9 @@
 
                 <div class="box-header with-border">
 
-                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.gallerys') <small>{{ $gallerys->count() }}</small></h3>
+                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.payments') <small>{{ $payments->count() }}</small></h3>
 
-                    <form action="{{ route('dashboard.gallerys.index') }}" method="get">
+                    <form action="{{ route('dashboard.payments.index') }}" method="get">
 
                         <div class="row">
 
@@ -34,8 +34,8 @@
 
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('dashboard.search')</button>
-                                @if (auth()->user()->hasPermission('gallerys_create'))
-                                    <a href="{{ route('dashboard.gallerys.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
+                                @if (auth()->user()->hasPermission('payments_create'))
+                                    <a href="{{ route('dashboard.payments.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @else
                                     <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @endif
@@ -48,7 +48,7 @@
 
                 <div class="box-body">
 
-                    @if ($gallerys->count() > 0)
+                    @if ($payments->count() > 0)
 
                         <table class="table table-hover">
 
@@ -56,25 +56,23 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('dashboard.image')</th>
-                                <th>@lang('dashboard.title')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
                             </thead>
                             
                             <tbody>
-                            @foreach ($gallerys as $index=>$gallery)
+                            @foreach ($payments as $index=>$payment)
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td><img src="{{ $gallery->gallery_path }}"></td>
-                                    <td>{{ $gallery->title }}</td>
+                                    <td><img src="{{ $payment->payment_path }}"></td>
                                     <td>
-                                        @if (auth()->user()->hasPermission('gallerys_update'))
-                                            <a href="{{ route('dashboard.gallerys.edit', $gallery->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                        @if (auth()->user()->hasPermission('payments_update'))
+                                            <a href="{{ route('dashboard.payments.edit', $payment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                         @else
                                             <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                         @endif
-                                        @if (auth()->user()->hasPermission('gallerys_delete'))
-                                            <form action="{{ route('dashboard.gallerys.destroy', $gallery->id) }}" method="post" style="display: inline-block">
+                                        @if (auth()->user()->hasPermission('payments_delete'))
+                                            <form action="{{ route('dashboard.payments.destroy', $payment->id) }}" method="post" style="display: inline-block">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
                                                 <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
@@ -90,7 +88,7 @@
 
                         </table><!-- end of table -->
                         
-                        {{ $gallerys->appends(request()->query())->links() }}
+                        {{ $payments->appends(request()->query())->links() }}
                         
                     @else
                         

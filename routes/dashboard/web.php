@@ -20,10 +20,14 @@ function () {
         Route::resource('gallerys', 'GalleryController')->except(['show']);
 
         //products routes
-        Route::resource('supports', 'SupportController');
+        Route::resource('supports', 'SupportController')->except(['show']);
+
+        //payments routes
+        Route::resource('payments', 'PaymentController')->except(['show']);
 
         Route::post('settings.store', 'SettingController@store')->name('settings.store');
         Route::get('service_index', 'SettingController@service_index')->name('service.index');
+        Route::get('contact_us', 'SettingController@contact_index')->name('contact_us.index');
 
     }); //end of dashboard routes
 

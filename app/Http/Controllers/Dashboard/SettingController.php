@@ -10,7 +10,12 @@ class SettingController extends Controller
     public function service_index()
     {
         return view('dashboard.settings.services.create');
-    }
+    }//end of settings services
+
+    public function contact_index()
+    {
+        return view('dashboard.settings.services.contact_us');   
+    }//end of settings contacts
 
     public function store(Request $request)
     {

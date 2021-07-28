@@ -21,6 +21,7 @@ return [
             'settings'   => 'c,r,u,d',
             'gallerys'   => 'c,r,u,d',
             'supports'   => 'c,r,u,d',
+            'payments'   => 'c,r,u,d',
         ],
 
         'admin' => [

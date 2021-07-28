@@ -63,5 +63,14 @@ return [
     'title_en'         => 'Title in arabic',
 
     'supports'         => 'Supports',
+    'contact_us'       => 'Contact Us',
+    'about_ar'         => 'About Read-Line arbic',
+    'about_en'         => 'About Read-Line english',
+    'whatsapp'         => 'Whatsapp phone',
+    'map'              => 'link url goole map',
+    'map_one'          => 'link url goole map one',
+    'map_tow'          => 'link url goole map tow',
+    'phone_one'        => 'Phone One',
+    'payments'         => 'Payment methods image',
 
 ];

@@ -17,7 +17,9 @@
     <!--start of text section-->
 
     <section class="py-3 text-center">
-        <p class="anmation-color font-weight-bold fw-500 wow flash text-danger" data-wow-duration="4s" data-wow-offset="0">Lorem ipsum dolor sit amet autem beatae nulla in.</p>
+        <p class="anmation-color font-weight-bold fw-500 wow flash text-danger" data-wow-duration="4s" data-wow-offset="0">
+            {{ app()->getLocale() == 'ar' ?  setting('about_ar') : setting('about_en') }}
+        </p>
     </section>
 
     <!--end of text section-->

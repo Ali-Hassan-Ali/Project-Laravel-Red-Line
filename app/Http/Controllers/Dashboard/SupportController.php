@@ -22,7 +22,7 @@ class SupportController extends Controller
 
     public function index()
     {
-        $supports = Support::whenSearch(request()->search)->paginate(10);
+        $supports = Support::whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.supports.index', compact('supports'));
 

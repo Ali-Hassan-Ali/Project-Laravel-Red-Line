@@ -77,6 +77,9 @@
             .search-container {
                 width: 300px;
             }
+            .fa-map-marker {
+                font-size: 40px!important;
+            }
             /*#searching:hover {width: 1200px !important}*/
             /*.search-container .search-input {width: 300px;}*/
     </style>

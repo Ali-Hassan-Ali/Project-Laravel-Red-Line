@@ -8,11 +8,11 @@
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.gallerys')</h1>
+            <h1>@lang('dashboard.payments')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li><a href="{{ route('dashboard.gallerys.index') }}"> @lang('dashboard.gallerys')</a></li>
+                <li><a href="{{ route('dashboard.payments.index') }}"> @lang('dashboard.payments')</a></li>
                 <li class="active">@lang('dashboard.add')</li>
             </ol>
 
@@ -30,23 +30,10 @@
 
                     @include('partials._errors')
 
-                    <form action="{{ route('dashboard.gallerys.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.payments.store') }}" method="post" enctype="multipart/form-data">
 
                         {{ csrf_field() }}
                         {{ method_field('post') }}
-
-                        @php
-                            $names = ['title_ar','title_en'];
-                        @endphp
-
-                        @foreach ($names as $name)
-
-                            <div class="form-group">
-                                <label>@lang('dashboard.' . $name)</label>
-                                <input type="text" name="{{ $name }}" class="form-control" value="{{ old($name) }}">
-                            </div>
-                            
-                        @endforeach
 
                         <div class="form-group">
                             <label>@lang('dashboard.image')</label>
@@ -54,7 +41,7 @@
                         </div>
 
                         <div class="form-group">
-                            <img src="{{ asset('uploads/gallery_image/default.jpg') }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
+                            <img src="{{ asset('uploads/payment_image/default.png') }}"  style="width: 100px" class="img-thumbnail image-preview" alt="">
                         </div>
 
                         <div class="form-group">

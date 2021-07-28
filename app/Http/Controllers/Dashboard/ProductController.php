@@ -25,7 +25,7 @@ class ProductController extends Controller
  
     public function index()
     {
-        $products = Product::whenSearch(request()->search)->orderBy('id', 'DESC')->paginate(10);
+        $products = Product::whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.products.index', compact('products'));
     }//end of index

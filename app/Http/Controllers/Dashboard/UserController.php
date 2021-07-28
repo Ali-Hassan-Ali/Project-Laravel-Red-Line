@@ -24,7 +24,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
 
-        $users = User::whereRoleIs('admin')->whenSearch(request()->search)->orderBy('id', 'DESC')->paginate(10);
+        $users = User::whereRoleIs('admin')->whenSearch(request()->search)->latest()->paginate(10);
 
         return view('dashboard.users.index', compact('users'));
 

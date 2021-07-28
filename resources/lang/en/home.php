@@ -78,4 +78,8 @@ return [
     'last_name'    => 'Last Name',
     'title'        => 'Subject',
     'body'         => 'Body',
+    
+    'contct'       => 'Contct',
+    'cus'          => 'Us',
+    'payments'     => 'Payment methods',
 ];

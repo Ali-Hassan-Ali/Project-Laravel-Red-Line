@@ -178,5 +178,11 @@ return [
         'new_confirm_password'  => 'اعاده كلمه المرور',
         'phone_number'          => 'رقم الهاتف',
 
+        'first_name'            => 'الاسم الاول',
+        'last_name'             => 'الاسم الثاني',
+        'title'                 => 'العنوان',
+        'body'                  => 'الموضع',
+        'phone'                 => 'رقم الهاتف',
+
     ],
 ];
