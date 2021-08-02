@@ -50,7 +50,7 @@
 
                     @if ($products->count() > 0)
 
-                        <table class="table table-hover">
+                        <table class="table table-hover responsive">
 
                             <thead>
                             <tr>
@@ -62,6 +62,7 @@
                                 <th>@lang('dashboard.price')</th>
                                 <th>@lang('dashboard.stars')</th>
                                 <th>@lang('dashboard.quantity')</th>
+                                <th>@lang('dashboard.created_at')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
                             </thead>
@@ -81,6 +82,7 @@
                                         @endfor
                                     </td>
                                     <td>{{ $product->quantity }}</td>
+                                    <td>{{ $product->created_at->toFormattedDateString() }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('products_update'))
                                             <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>

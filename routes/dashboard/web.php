@@ -16,6 +16,9 @@ function () {
         //products routes
         Route::resource('products', 'ProductController')->except(['show']);
 
+        //cupons routes
+        Route::resource('cupons', 'CuponController')->except(['show']);
+
         //products routes
         Route::resource('gallerys', 'GalleryController')->except(['show']);
 
@@ -25,6 +28,7 @@ function () {
         //payments routes
         Route::resource('payments', 'PaymentController')->except(['show']);
 
+        //settings routes
         Route::post('settings.store', 'SettingController@store')->name('settings.store');
         Route::get('service_index', 'SettingController@service_index')->name('service.index');
         Route::get('contact_us', 'SettingController@contact_index')->name('contact_us.index');

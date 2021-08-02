@@ -112,6 +112,7 @@ class CategoreyController extends Controller
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
 
         }//end try
+        
     }//end pf destroy
 
 }//end pf controller

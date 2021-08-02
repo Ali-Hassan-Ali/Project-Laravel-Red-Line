@@ -73,8 +73,45 @@
                         <div class="totals-value" id="cart-shipping">15.00</div>
                     </div>
                     <div class="totals-item totals-item-total">
-                        <label>Grand Total</label>
-                        <div class="totals-value" id="cart-total">{{ Cart::subtotal() }}</div>
+                        {{-- <label>Grand Total</label> --}}
+                        
+                        @if (session()->has('coupon'))
+                            
+                            <label>old Total</label>
+
+                            <div class="totals-value" id="cart-total">
+
+                                 {{ Cart::subtotal() }}
+
+                            </div>
+
+                            <label>new Total</label>
+
+                            <div class="totals-value" id="cart-total">
+                                {{ Cart::subtotal() - session()->get('coupon') }}.00
+                                 <form action="{{ route('coupon.delete') }}" method="delete" style="display:block">
+                                    {{ csrf_field() }}
+                                    {{ method_field('delete') }}
+                                    <button class="text-danger delete-coupon"
+                                        data-url="{{ route('coupon.delete') }}"
+                                        data-method="delete"
+                                    ><i class="fa fa-trash"></i></button>
+                                 </form>
+                            </div>
+
+
+                        @else
+
+                            <label>Grand Total</label>
+
+                            <div class="totals-value" id="cart-total">
+
+                                 {{ Cart::subtotal() }}
+
+                            </div>
+
+                        @endif
+
                     </div>
                     <!-- <div class="totals-item totals-item-total">
                         <form action="">
@@ -83,10 +120,23 @@
                     </div> -->
                     <div class="">
                         <div class="input-group d-flex justify-content-end">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-danger px-4"><i class="fa fa-plus"></i></button>
-                            </div>
-                            <input type="text" class="form-control col-12 col-md-3 bg-transparent text-light" placeholder="Enter Coupn">
+                            @if (session()->has('coupon'))
+                                
+
+
+                            @else
+
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-danger px-4 coupon-code"
+                                            data-url="{{ route('coupon.store') }}"
+                                            data-method="post">
+                                            <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                                <input type="text" class="form-control col-12 col-md-3 bg-transparent text-light"
+                                       name="coupon_code" placeholder="Enter Coupn">
+
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -113,6 +163,103 @@
     
     <script>
         $(document).ready(function() {
+
+            $(".coupon-code").click(function(e){
+                e.preventDefault();
+
+                var coupon_code = $("input[name=coupon_code]").val();
+                var url         = $(this).data('url');
+                var method      = $(this).data('method');
+
+                $.ajax({
+                    url: url,
+                    method: method,
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data:{
+                      coupon_code:coupon_code,
+                    },
+                    success: function (response) {
+                        if (response.success == true) {
+
+                            swal({
+                                title: "@lang('dashboard.deleted_successfully')",
+                                type: "success",
+                                icon: '{{ asset("home_files/images/success.png") }}',
+                                buttons: false,
+                                timer: 15000
+                            }),
+
+                            location.reload();
+
+                        } else {
+
+                            swal({
+                                title: "@lang('dashboard.deleted_successfully')",
+                                type: "error",
+                                icon: 'error',
+                                buttons: false,
+                                timer: 1500
+                            })
+                        
+                        }//endof if
+
+                    },//end of success
+
+                });//this ajax
+
+            });//coupon-code
+
+            $(".delete-coupon").click(function(e){
+                e.preventDefault();
+                // alert('delete coupon');
+
+                var url     = $(this).data('url');
+                var method  = $(this).data('method');
+
+
+                swal({
+                    title: "@lang('dashboard.confirm_delete')",
+                    type: "error",
+                    icon: "warning",
+                    buttons: {cancel: "@lang('dashboard.no')",defeat:"@lang('dashboard.yes')"},
+                    dangerMode: true
+                })
+
+                .then((willDelete) => {
+                if (willDelete) {
+
+                    $.ajax({
+                        url: url,
+                        method: method,
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        success: function(data) {
+                            console.log(data);                            
+                            if (data.success == true) {
+
+                                swal({
+                                    title: "@lang('dashboard.deleted_successfully')",
+                                    type: "success",
+                                    icon: '{{ asset("home_files/images/success.png") }}',
+                                    buttons: false,
+                                    timer: 15000
+                                }),
+
+                                location.reload();
+
+                            }
+                            
+                        },
+                        error: function(data) {
+
+                            console.log(data);
+
+                        },
+                    });//this ajax 
+                }; //end of if
+                });//then
+
+                
+            });//delete-coupon
 
             /* Set rates + misc */
             var taxRate = 0.05;
@@ -161,12 +308,6 @@
 	                    },
 	                    error: function(data) {
 
-	                        swal({
-	                            title: 'Opps...',
-	                            text: data.message,
-	                            type: 'error',
-	                            timer: '1500'
-	                        })
 
 	                    },
 	                });//this ajax 

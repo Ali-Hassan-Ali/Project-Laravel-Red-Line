@@ -57,6 +57,7 @@
                                 <th>#</th>
                                 <th>@lang('dashboard.image')</th>
                                 <th>@lang('dashboard.title')</th>
+                                <th>@lang('dashboard.created_at')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
                             </thead>
@@ -67,6 +68,7 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td><img src="{{ $gallery->gallery_path }}"></td>
                                     <td>{{ $gallery->title }}</td>
+                                    <td>{{ $gallery->created_at->toFormattedDateString() }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('gallerys_update'))
                                             <a href="{{ route('dashboard.gallerys.edit', $gallery->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>

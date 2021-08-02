@@ -30,6 +30,7 @@ function () {
     Route::get('/show/{product}', 'WelcomController@show')->name('show');
     Route::get('/category/{id}', 'WelcomController@category_show')->name('category.show');
     Route::get('/shop', 'WelcomController@shop')->name('shop.show');
+    Route::get('autocomplete', 'WelcomController@autocomplete')->name('autocomplete');
 
     //profile rout
     Route::get('/cart', 'ProductController@index')->name('wallet.index');
@@ -39,6 +40,10 @@ function () {
     //login rout
     Route::get('login/{provider}', 'LoginController@redirectToProvider')->where('provider', 'facebook|google');
     Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback')->where('provider', 'facebook|google');
+
+    //coupon. rout
+    Route::post('coupon.store', 'CouponController@store')->name('coupon.store');
+    Route::delete('coupon.delete', 'CouponController@destroy')->name('coupon.delete');
 
     Auth::routes();
 

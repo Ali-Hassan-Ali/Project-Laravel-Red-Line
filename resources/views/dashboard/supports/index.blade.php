@@ -61,6 +61,7 @@
                                 <th>@lang('dashboard.phone')</th>
                                 <th>@lang('home.title')</th>
                                 <th>@lang('home.body')</th>
+                                <th>@lang('home.created_at')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
                             </thead>
@@ -75,6 +76,7 @@
                                     <td>{{ $support->phone }}</td>
                                     <td>{{ $support->title }}</td>
                                     <td>{{ $support->body }}</td>
+                                    <td>{{ $support->created_at->toFormattedDateString() }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('supports_update'))
                                             <a href="{{ route('dashboard.supports.edit', $support->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>

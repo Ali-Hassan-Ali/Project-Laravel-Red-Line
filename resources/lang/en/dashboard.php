@@ -9,6 +9,7 @@ return [
     'updated_successfully'  => 'Updated Successfully',
     'deleted_successfully'  => 'Deleted Successfully',
     'confirm_delete'        => 'Confirm Delete',
+    'created_at'            => 'Created at',
     'yes'                   => 'Yes',
     'no'                    => 'No',
     'logout'                => 'Logout',
@@ -46,6 +47,11 @@ return [
     'quantity'          => 'Quantity',
     'descp_ar'          => 'The name is in Arabic',
     'descp_en'          => 'The name is in English',
+
+    'cupons'            => 'Cupons',
+    'cupons_code'       => 'Cupons code',
+    'value'             => 'Value',
+    'end'               => 'End Cupons',
 
     'settings'          => 'Settings',
     'services'          => 'Services',

@@ -9,6 +9,7 @@ return [
     'updated_successfully'  => 'تمت التعيل بنجاح',
     'deleted_successfully'  => 'تم الحذف بنجاح',
     'confirm_delete'        => 'الاستمرار بلحذف',
+    'created_at'            => 'تاريخ الانشاء',
     'yes'                   => 'نعم',
     'no'                    => 'لا',
     'logout'                => 'تسجيل الخروج',
@@ -47,6 +48,11 @@ return [
     'quantity'          => 'الكمية',
     'descp_ar'          => 'الوصف بلغه العربية',
     'descp_en'          => 'الوصف بلغه الانجلزية',
+    
+    'cupons'            => 'الكوبون',
+    'cupons_code'       => 'كود الكوبون',
+    'value'             => 'قيمة الخصم',
+    'end'               => 'تاريخ انتهاء',
     
     'settings'          => 'الاعدادات',
     'services'          => 'الخدمات',

@@ -30,7 +30,17 @@
                                 @endforeach
                             </div>
                             <div class="btn btn-dark d-block my-2 border-10">
-                                 <small>@lang('home.totle_price') - </small> <small id="totle-price">{{ Cart::subtotal() }}</small>
+                                 <small>@lang('home.totle_price') - </small> <small id="totle-price">
+                                    @if (session()->has('coupon'))
+
+                                         {{ Cart::subtotal() - session()->get('coupon')}}.00
+                                        
+                                    @else
+
+                                         {{ Cart::subtotal() }}
+
+                                    @endif
+                                </small>
                             </div>
                             <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi col-12 mt-3 px-1 py-1 mr-0">@lang('home.go_card')</a>
                             <a href="{{ route('wallet.index') }}" class="btn btn-outline-light btn-sm col-12 borderi mt-3 px-2 py-1">go to card</a>
@@ -39,12 +49,20 @@
                     </div>
                 </div>
 
-                <div id="searching" class="search-container bg-transparent ml-3">
-                    <input type="text" name="search" placeholder="Search..." class="search-input text-light">
-                    <a href="#" class="search-btn btn btn btn-danger">
-                        <i class="fa fa-search"></i>
-                    </a>
+                <div id="myOverlay" class="overlay">
+                  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
+                  <div class="overlay-content col-6 col-md-4">
+                    <form action="{{ route('autocomplete') }}" method="get">
+                          <input id="searching" class="typeahead form-control" type="search">
+                    </form>
+                  </div>
                 </div>
+
+                <div class="btn btn-danger" onclick="openSearch()" style="cursor: pointer;">
+                    <i class="fa fa-search"></i>
+                </div>
+
+                {{-- <a href="" class="btn btn-danger"><i class="fa fa-search"></i></a> --}}
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -58,6 +58,7 @@
                                 <th>@lang('dashboard.name')</th>
                                 <th>@lang('dashboard.email')</th>
                                 <th>@lang('dashboard.image')</th>
+                                <th>@lang('dashboard.created_at')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
                             </thead>
@@ -68,8 +69,8 @@
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    {{-- <td><img src="{{ asset('/uploads/user_images/',$user->image) }}" style="width: 100px;" class="img-thumbnail" alt=""></td> --}}
                                     <td><img src="{{ $user->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
+                                    <td>{{ $user->created_at->toFormattedDateString() }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('users_update'))
                                             <a href="{{ route('dashboard.users.edit', $user->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>

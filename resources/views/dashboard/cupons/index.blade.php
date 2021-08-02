@@ -2,17 +2,17 @@
 
 @section('content')
 
-@section('title', __('dashboard.dashboard') .' - '. __('dashboard.categorey'))
+@section('title', __('dashboard.dashboard') .' - '. __('dashboard.cupons'))
 
     <div class="content-wrapper">
 
         <section class="content-header">
 
-            <h1>@lang('dashboard.categorey')</h1>
+            <h1>@lang('dashboard.cupons')</h1>
 
             <ol class="breadcrumb">
                 <li><a href="{{ route('dashboard.welcome') }}"><i class="fa fa-dashboard"></i> @lang('dashboard.dashboard')</a></li>
-                <li class="active">@lang('dashboard.categoreys')</li>
+                <li class="active">@lang('dashboard.cupons')</li>
             </ol>
         </section>
 
@@ -22,9 +22,9 @@
 
                 <div class="box-header with-border">
 
-                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.categoreys') <small>{{ $categoreys->total() }}</small></h3>
+                    <h3 class="box-title" style="margin-bottom: 15px">@lang('dashboard.cupons') <small>{{ $cupons->total() }}</small></h3>
 
-                    <form action="{{ route('dashboard.categoreys.index') }}" method="get">
+                    <form action="{{ route('dashboard.cupons.index') }}" method="get">
 
                         <div class="row">
 
@@ -34,8 +34,8 @@
 
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> @lang('dashboard.search')</button>
-                                @if (auth()->user()->hasPermission('categoreys_create'))
-                                    <a href="{{ route('dashboard.categoreys.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
+                                @if (auth()->user()->hasPermission('cupons_create'))
+                                    <a href="{{ route('dashboard.cupons.create') }}" class="btn btn-primary"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @else
                                     <a href="#" class="btn btn-primary disabled"><i class="fa fa-plus"></i> @lang('dashboard.add')</a>
                                 @endif
@@ -48,33 +48,37 @@
 
                 <div class="box-body">
 
-                    @if ($categoreys->count() > 0)
+                    @if ($cupons->count() > 0)
 
                         <table class="table table-hover">
 
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>@lang('dashboard.name')</th>
-                                <th>@lang('dashboard.created_at')</th>
+                                <th>@lang('dashboard.cupons_code')</th>
+                                <th>@lang('dashboard.value')</th>
+                                <th>@lang('dashboard.end')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
                             </thead>
                             
                             <tbody>
-                            @foreach ($categoreys as $index=>$categorey)
+
+                            @foreach ($cupons as $index=>$cupon)
+
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
-                                    <td>{{ $categorey->name }}</td>
-                                    <td>{{ $categorey->created_at->toFormattedDateString() }}</td>
+                                    <td>{{ $cupon->name }}</td>
+                                    <td>{{ $cupon->value }}</td>
+                                    <td>{{ $cupon->end }}</td>
                                     <td>
-                                        @if (auth()->user()->hasPermission('categoreys_update'))
-                                            <a href="{{ route('dashboard.categoreys.edit', $categorey->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                        @if (auth()->user()->hasPermission('cupons_update'))
+                                            <a href="{{ route('dashboard.cupons.edit', $cupon->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                         @else
                                             <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
                                         @endif
-                                        @if (auth()->user()->hasPermission('categoreys_delete'))
-                                            <form action="{{ route('dashboard.categoreys.destroy', $categorey->id) }}" method="post" style="display: inline-block">
+                                        @if (auth()->user()->hasPermission('cupons_delete'))
+                                            <form action="{{ route('dashboard.cupons.destroy', $cupon->id) }}" method="post" style="display: inline-block">
                                                 {{ csrf_field() }}
                                                 {{ method_field('delete') }}
                                                 <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
@@ -90,7 +94,7 @@
 
                         </table><!-- end of table -->
                         
-                        {{ $categoreys->appends(request()->query())->links() }}
+                        {{ $cupons->appends(request()->query())->links() }}
                         
                     @else
                         

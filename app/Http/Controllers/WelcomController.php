@@ -46,4 +46,17 @@ class WelcomController extends Controller
 
     }//end of function
 
+    public function autocomplete(Request $request)
+    {   
+
+        if (request()->ajax()) {
+
+            $data = Product::whenSearch(request()->search)->get();
+
+            return $data;
+
+        }
+
+    }//end pf autocomplete
+
 }//end of controller

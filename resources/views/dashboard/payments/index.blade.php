@@ -56,6 +56,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>@lang('dashboard.image')</th>
+                                <th>@lang('dashboard.created_at')</th>
                                 <th>@lang('dashboard.action')</th>
                             </tr>
                             </thead>
@@ -65,6 +66,7 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td><img src="{{ $payment->payment_path }}"></td>
+                                    <td>{{ $payment->created_at->toFormattedDateString() }}</td>
                                     <td>
                                         @if (auth()->user()->hasPermission('payments_update'))
                                             <a href="{{ route('dashboard.payments.edit', $payment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>

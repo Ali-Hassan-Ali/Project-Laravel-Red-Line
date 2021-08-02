@@ -58,9 +58,9 @@
                         </table>
 
                     </div>
-                    <div class="col-md-4" style="border: 1px solid #fff;">
+                    <div class="col-md-4 d-flex align-items-baseline" style="border: 1px solid #fff;">
                         
-                        <div class="row mx-1">
+                        <div class="row mx-1 d-flex align-items-baseline">
 
                             <div class="btn btn-outline-light mb-2 add-cart col-12" style="cursor: pointer; margin-top: 100px;" 
                                 data-url="{{ route('wallet.store',$product->id) }}"

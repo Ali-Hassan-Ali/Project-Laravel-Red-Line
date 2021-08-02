@@ -80,8 +80,108 @@
             .fa-map-marker {
                 font-size: 40px!important;
             }
-            /*#searching:hover {width: 1200px !important}*/
-            /*.search-container .search-input {width: 300px;}*/
+
+
+
+
+            .openBtn {
+  background: #f1f1f1;
+  border: none;
+  padding: 10px 15px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.openBtn:hover {
+  background: #bbb;
+}
+
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0, 0.9);
+}
+
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+.overlay input[type=text] {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #bbb;
+}
+
+    .easy-autocomplete-container{
+        width: 100%;
+        margin-top: 0px;
+        margin-right: 0px!important;
+    }
+    .easy-autocomplete{
+        width: 400px!important;
+    }
+    .easy-autocomplete-container ul{
+        padding-right: 0px;
+    }
+    .eac-icon-right .eac-item img,
+    .eac-icon-right .eac-item {
+        min-height: 100px;
+        font-size: 20px;
+        padding-top: 10px;
+    }
+    .easy-autocomplete input {
+         margin-top: -268px; 
+    }
+    .overlay-content{
+        display: flex;
+        justify-content: center;
+    }
+
     </style>
 
 
@@ -130,6 +230,7 @@
             <!-- min compolted  search -->
     <script src="{{ asset('home_files/plugins/auto-compolted-search/jquery.easy-autocomplete.min.js') }}"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
     @stack('welcome')
 
@@ -150,6 +251,7 @@
                 swal({
                     title: "@lang('dashboard.added_successfully')",
                     type: "success",
+                    icon: "success",
                     icon: '{{ asset("home_files/images/success.png") }}',
                     buttons: false,
                     timer: 15000
@@ -168,19 +270,69 @@
 
             });//end of click
 
-            var options = {
-                data: ["blue", "green", "pink", "red", "yellow"]
-            };
-
-            $('.search-input[type="text"]').easyAutocomplete(options);
-
 
             setInterval(function() {
 
                 $("#cart-content").load(window.location.href + " #cart-content");
         
             }, 2000);
+
         });//end of document
+        function openSearch() {
+          document.getElementById("myOverlay").style.display = "block";
+        }
+
+        function closeSearch() {
+          document.getElementById("myOverlay").style.display = "none";
+        }
+    </script>
+
+    <script type="text/javascript">
+        var loca    = "{{ LaravelLocalization::getCurrentLocaleDirection() }}";
+        var options = {
+            
+            url: function (search) {
+
+                return "/autocomplete?search=" + search  + "&format=json";
+            },
+
+            getValue: function(search) 
+            {   
+                if (loca == 'rtl') 
+                {
+                    return search.name.ar;
+
+                } else {
+
+                    return search.name.en;
+
+                }
+            },
+
+            highlightPhrase: false,
+
+            template: {
+
+                type: 'iconRight',
+
+                fields: {
+
+                    iconSrc: "image_path"
+
+                }
+            },
+
+            list: {
+                onChooseEvent: function () {
+                    var product = $('#aaa').getSelectedItemData();
+                    var url = window.location.origin + '/show/' + product.id;
+                    window.location.replace(url);
+                }
+            },
+            
+        };//end of options
+
+        $('#searching').easyAutocomplete(options)
     </script>
 
 </body>
