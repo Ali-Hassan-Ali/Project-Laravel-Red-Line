@@ -20,3 +20,21 @@ Home
 5- search product </br>
 6- show Category product </br>
 7- delivery products </br>
+
+<h1>Start Project</h1>
+
+<h4>step one</h4>
+```
+download project on github
+```
+
+<h4>step tow</h4>
+```
+compser install
+```
+
+
+<h4>step for</h4>
+```
+php artisan migrate:fresh --seed
+```
