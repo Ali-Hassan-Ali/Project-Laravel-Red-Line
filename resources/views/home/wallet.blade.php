@@ -134,7 +134,7 @@
                                     </button>
                                 </div>
                                 <input type="text" class="form-control col-12 col-md-3 bg-transparent text-light"
-                                       name="coupon_code" placeholder="Enter Coupn">
+                                       name="coupon_code" placeholder="@lang('home.enter_coupon')">
 
                             @endif
                         </div>
@@ -182,7 +182,7 @@
                         if (response.success == true) {
 
                             swal({
-                                title: "@lang('dashboard.deleted_successfully')",
+                                title: "@lang('home.sucss_coupon')",
                                 type: "success",
                                 icon: '{{ asset("home_files/images/success.png") }}',
                                 buttons: false,
@@ -194,7 +194,7 @@
                         } else {
 
                             swal({
-                                title: "@lang('dashboard.deleted_successfully')",
+                                title: "@lang('home.error_coupon')",
                                 type: "error",
                                 icon: 'error',
                                 buttons: false,

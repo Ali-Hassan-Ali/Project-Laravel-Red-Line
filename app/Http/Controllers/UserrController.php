@@ -24,9 +24,9 @@ class UserrController extends Controller
         $user = User::find($id);
 
         $request->validate([
-            'name'        => 'required',
+            'name'        => ['required','max:255'],
             'email'       => ['required', Rule::unique('users')->ignore($user->id)],
-            'image'       => 'image',
+            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
         ]);
 
         $request_data = $request->except(['image']);
@@ -60,12 +60,12 @@ class UserrController extends Controller
     public function connect(Request $request)
     {
         $request->validate([
-            'first_name'  => 'required',
-            'last_name'   => 'required',
-            'phone'       => 'required',
-            'email'       => 'required',
-            'title'       => 'required',
-            'body'        => 'required',
+            'first_name'  => ['required','max:255'],
+            'last_name'   => ['required','max:255'],
+            'phone'       => ['required','max:255'],
+            'email'       => ['required','max:255'],
+            'title'       => ['required','max:255'],
+            'body'        => ['required','max:255'],
         ]);
 
         Support::create($request->all());

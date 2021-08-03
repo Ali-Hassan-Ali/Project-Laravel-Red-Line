@@ -59,6 +59,9 @@ return [
     'products'    => 'Products',
     'total'       => 'Total',
     'remove'      => 'Remove',
+    'enter_coupon'=> 'Enter the discount code',
+    'error_coupon'=> 'The code is incorrect',
+    'sucss_coupon'=> 'The code is correct',
 
     //Our Services
     'our'               => 'Our',
@@ -82,4 +85,5 @@ return [
     'contct'       => 'Contct',
     'cus'          => 'Us',
     'payments'     => 'Payment methods',
+    'our_locations'=> 'Our Locations',
 ];

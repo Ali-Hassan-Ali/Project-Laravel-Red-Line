@@ -39,7 +39,8 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image'          => 'image',
+            'image' => 'image',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
         ]);
 
         try {
@@ -81,7 +82,8 @@ class PaymentController extends Controller
     public function update(Request $request, Payment $payment)
     {
         $request->validate([
-            'image'       => 'image',
+            'image' => 'image',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
         ]);
 
         try {

@@ -59,6 +59,9 @@ return [
     'products'    => 'المنتاجات',
     'total'       => 'المجموع',
     'remove'      => 'حذف',
+    'enter_coupon'=> 'ادخل كود الخصم',
+    'error_coupon'=> 'الكود غير صحيح',
+    'sucss_coupon'=> 'الكود صحيح',
     
     //Our Services
     'our'               => 'عن',
@@ -82,5 +85,6 @@ return [
     'contct'       => 'اتصل',
     'cus'          => 'بنا',
     'payments'     => 'وسائل الدفع',
+    'our_locations'=> 'مواقعنا',
   
 ];

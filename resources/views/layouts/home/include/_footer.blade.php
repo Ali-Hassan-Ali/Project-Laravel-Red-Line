@@ -6,10 +6,18 @@
                     <div class="log-soci">
                         <div class="logo-ft col-0">
                             <div class="row">
-                                <i class="fa fa-map-marker text-danger"></i><h2>maps</h2>
+                                <i class="fa fa-map-marker text-danger"></i><h2>@lang('home.our_locations')</h2>
                             </div>
                             <p class="map">
-                                <iframe src="{{ setting('map') }}" width="350" height="250" style="border:0;" loading="lazy"></iframe>
+                                @if (app()->getLocale() == 'ar')
+
+                                    <h4>{{ setting('our_locations_ar') }}</h4>
+                                    
+                                @else
+
+                                    <h4>{{ setting('our_locations_en') }}</h4>
+
+                                @endif
                             </p>
                         </div>
                     </div>

@@ -43,13 +43,13 @@ class ProductController extends Controller
     {
 
         $request->validate([
-            'name_ar'     => ['required'],
-            'name_en'     => ['required'],
-            'descp_ar'    => ['required'],
-            'descp_en'    => ['required'],
-            'image'       => ['image'],
-            'price'       => ['required'],
-            'quantity'    => ['required'],
+            'name_ar'     => ['required','max:255'],
+            'name_en'     => ['required','max:255'],
+            'descp_ar'    => ['required','max:255'],
+            'descp_en'    => ['required','max:255'],
+            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
+            'price'       => ['required','max:255'],
+            'quantity'    => ['required','max:255'],
         ]);
 
         try {
@@ -95,13 +95,13 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'name_ar'     => ['required'],
-            'name_en'     => ['required'],
-            'descp_ar'    => ['required'],
-            'descp_en'    => ['required'],
-            'image'       => ['image'],
-            'price'       => ['required'],
-            'quantity'    => ['required'],
+            'name_ar'     => ['required','max:255'],
+            'name_en'     => ['required','max:255'],
+            'descp_ar'    => ['required','max:255'],
+            'descp_en'    => ['required','max:255'],
+            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
+            'price'       => ['required'.'max:255'],
+            'quantity'    => ['required','max:255'],
         ]);
 
         try {

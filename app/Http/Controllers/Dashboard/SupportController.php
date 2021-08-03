@@ -40,12 +40,12 @@ class SupportController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'first_name'  => 'required',
-            'last_name'   => 'required',
-            'phone'       => 'required',
-            'email'       => 'required',
-            'title'       => 'required',
-            'body'        => 'required',
+            'first_name'  => ['required','max:255'],
+            'last_name'   => ['required','max:255'],
+            'phone'       => ['required','max:255'],
+            'email'       => ['required','max:255'],
+            'title'       => ['required','max:255'],
+            'body'        => ['required','max:255'],
         ]);
 
         try {
@@ -74,12 +74,12 @@ class SupportController extends Controller
     public function update(Request $request, Support $support)
     {
         $request->validate([
-            'first_name'  => 'required',
-            'last_name'   => 'required',
-            'phone'       => 'required',
-            'email'       => 'required',
-            'title'       => 'required',
-            'body'        => 'required',
+            'first_name'  => ['required','max:255'],
+            'last_name'   => ['required','max:255'],
+            'phone'       => ['required','max:255'],
+            'email'       => ['required','max:255'],
+            'title'       => ['required','max:255'],
+            'body'        => ['required','max:255'],
         ]);
 
         try {

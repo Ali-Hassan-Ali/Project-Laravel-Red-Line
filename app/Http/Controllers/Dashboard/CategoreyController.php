@@ -39,8 +39,8 @@ class CategoreyController extends Controller
     {
 
         $request->validate([
-            'name_ar' => ['required'],
-            'name_en' => ['required']
+            'name_ar' => ['required','max:255'],
+            'name_en' => ['required','max:255']
         ]);
 
         try {
@@ -74,8 +74,8 @@ class CategoreyController extends Controller
     {
         
         $request->validate([
-            'name_ar'   => ['required'],
-            'name_en'   => ['required'],
+            'name_ar'   => ['required','max:255'],
+            'name_en'   => ['required','max:255'],
         ]);
 
         try {

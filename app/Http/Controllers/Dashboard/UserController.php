@@ -40,9 +40,9 @@ class UserController extends Controller
     {
 
         $request->validate([
-            'name'        => 'required',
+            'name'        => ['required','max:255'],
             'email'       => 'required|unique:users',
-            'image'       => 'image',
+            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
             'password'    => 'required|confirmed',
             'permissions' => 'required|min:1',
         ]);
@@ -89,9 +89,9 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name'        => 'required',
+            'name'        => ['required','max:255'],
             'email'       => ['required', Rule::unique('users')->ignore($user->id)],
-            'image'       => 'image',
+            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
             'permissions' => 'required|min:1',
         ]);
 

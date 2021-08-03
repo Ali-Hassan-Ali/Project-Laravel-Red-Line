@@ -78,7 +78,7 @@
 
                         <div class="form-group">
                             <label>@lang('dashboard.price')</label>
-                            <input type="number" name="price" class="form-control" value="{{ old('price') }}">
+                            <input type="number" step="0.01" step="any" name="price" class="form-control" value="{{ old('price') }}">
                         </div>
 
                         <div class="form-group">

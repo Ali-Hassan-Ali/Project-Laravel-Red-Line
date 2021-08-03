@@ -146,6 +146,21 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+
+        'name_ar'           => 'The name is in Arabic',
+        'name_en'           => 'The name is in English',
+
+        'descp_ar'          => 'The name is in Arabic',
+        'descp_en'          => 'The name is in English',
+        'quantity'          => 'Quantity',
+
+        'cupons_code'       => 'Cupons code',
+        'value'             => 'Value',
+        'end'               => 'End Cupons',
+
+        'title_ar'         => 'Title in english',
+        'title_en'         => 'Title in arabic',
+    ],
 
 ];

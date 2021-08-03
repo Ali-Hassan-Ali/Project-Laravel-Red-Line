@@ -28,6 +28,8 @@
 
                 <div class="box-body">
 
+                    @include('partials._errors')
+
                     <form action="{{ route('dashboard.cupons.store') }}" method="post">
 
                         {{ csrf_field() }}
@@ -35,32 +37,17 @@
 
                         <div class="form-group">
                             <label>@lang('dashboard.name')</label>
-                            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" value="{{ old('name') }}">
-                            @if ($errors->has('name'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('name') }}</strong>
-                                </span>
-                            @endif
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}">
                         </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.value')</label>
-                            <input type="number" name="value" class="form-control{{ $errors->has('value') ? ' is-invalid' : '' }}" value="{{ old('value') }}">
-                            @if ($errors->has('value'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('value') }}</strong>
-                                </span>
-                            @endif
+                            <input type="number" name="value" class="form-control" value="{{ old('value') }}">
                         </div>
 
                         <div class="form-group">
                             <label>@lang('dashboard.end')</label>
-                            <input type="date" name="end" class="form-control{{ $errors->has('end') ? ' is-invalid' : '' }}" value="{{ old('end') }}">
-                            @if ($errors->has('end'))
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('end') }}</strong>
-                                </span>
-                            @endif
+                            <input type="date" name="end" class="form-control" value="{{ old('end') }}">
                         </div>
 
                         <div class="form-group">

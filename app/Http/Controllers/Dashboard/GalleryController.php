@@ -41,8 +41,8 @@ class GalleryController extends Controller
     {
         $request->validate([
             'image'          => 'image',
-            'title_ar'       => 'required',
-            'title_en'       => 'required',
+            'title_ar'       => 'required|max:255',
+            'title_en'       => 'required|max:255',
         ]);
 
         try {
@@ -87,8 +87,8 @@ class GalleryController extends Controller
     {
         $request->validate([
             'image'       => 'image',
-            'title_ar'    => 'required',
-            'title_en'    => 'required',
+            'title_ar'    => 'required|max:255',
+            'title_en'    => 'required|max:255',
         ]);
 
         try {

@@ -43,10 +43,10 @@ return [
     'products'          => 'Products',
     'description'       => 'Description',
     'price'             => 'Price',
-    'stars'             => 'Stars',
-    'quantity'          => 'Quantity',
     'descp_ar'          => 'The name is in Arabic',
     'descp_en'          => 'The name is in English',
+    'quantity'          => 'Quantity',
+    'stars'             => 'Stars',
 
     'cupons'            => 'Cupons',
     'cupons_code'       => 'Cupons code',
@@ -78,6 +78,8 @@ return [
     'map_tow'          => 'link url goole map tow',
     'phone_one'        => 'Phone One',
     'payments'         => 'Payment methods image',
+    'our_locations_ar' => 'Our locations in arabic',
+    'our_locations_en' => 'Our locations in English',
 
     'social_links'     => 'Social links',
     'facebook'         => 'facebook',

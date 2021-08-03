@@ -68,7 +68,7 @@
                                 @foreach ($gallerys as $index=>$gallery)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td><img src="{{ $gallery->gallery_path }}"></td>
+                                        <td><img src="{{ $gallery->gallery_path }}" width="200"></td>
                                         <td>{{ $gallery->title }}</td>
                                         <td>{{ $gallery->created_at->toFormattedDateString() }}</td>
                                         <td>

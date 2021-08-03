@@ -38,8 +38,8 @@ class CuponController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'  => 'required',
-            'value' => 'required',
+            'name'  => 'required|max:255',
+            'value' => 'required|max:255',
             'end'   => 'required',
         ]);//end of  validate
 
@@ -69,8 +69,8 @@ class CuponController extends Controller
     public function update(Request $request, Cupon $cupon)
     {
         $request->validate([
-            'name'  => 'required',
-            'value' => 'required',
+            'name'  => 'required|max:255',
+            'value' => 'required|max:255',
             'end'   => 'required',
         ]);//end of  validate
 
