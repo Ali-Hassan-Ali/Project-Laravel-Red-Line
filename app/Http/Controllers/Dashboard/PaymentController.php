@@ -53,7 +53,7 @@ class PaymentController extends Controller
                     ->resize(300, 300, function ($constraint) {
                         $constraint->aspectRatio();
                     })
-                    ->save(public_path('uploads/payment_image/' . $request->image->hashName()));
+                    ->save('uploads/payment_image/' . $request->image->hashName());
 
                 $request_data['image'] = $request->image->hashName();
 
@@ -102,7 +102,7 @@ class PaymentController extends Controller
                     ->resize(null, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })
-                    ->save(public_path('uploads/payment_image/' . $request->image->hashName()));
+                    ->save('uploads/payment_image/' . $request->image->hashName());
 
                 $request_data['image'] = $request->image->hashName();
 

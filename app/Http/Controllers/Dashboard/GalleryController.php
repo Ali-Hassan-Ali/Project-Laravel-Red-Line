@@ -56,7 +56,7 @@ class GalleryController extends Controller
                     ->resize(null, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })
-                    ->save(public_path('uploads/gallery_image/' . $request->image->hashName()));
+                    ->save('uploads/gallery_image/' . $request->image->hashName());
 
                 $request_data['image'] = $request->image->hashName();
 
@@ -108,7 +108,7 @@ class GalleryController extends Controller
                     ->resize(null, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })
-                    ->save(public_path('uploads/gallery_image/' . $request->image->hashName()));
+                    ->save('uploads/gallery_image/' . $request->image->hashName());
 
                 $request_data['image'] = $request->image->hashName();
 

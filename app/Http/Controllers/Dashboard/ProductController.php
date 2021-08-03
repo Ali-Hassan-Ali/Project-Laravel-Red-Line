@@ -65,7 +65,7 @@ class ProductController extends Controller
                     ->resize(300, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })//resize image
-                    ->save(public_path('uploads/product_image/' . $request->image->hashName()));//move foder image
+                    ->save('uploads/product_image/' . $request->image->hashName());//move foder image
 
                 $request_data['image'] = $request->image->hashName();//rename image
 
@@ -123,7 +123,7 @@ class ProductController extends Controller
                     ->resize(300, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })//resize image
-                    ->save(public_path('uploads/product_image/' . $request->image->hashName()));//move folder image
+                    ->save('uploads/product_image/' . $request->image->hashName());//move folder image
 
                 $request_data['image'] = $request->image->hashName();//rename image
 
