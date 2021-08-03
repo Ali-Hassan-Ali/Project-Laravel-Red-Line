@@ -30,6 +30,7 @@ function () {
     Route::get('/category/{id}', 'WelcomController@category_show')->name('category.show');
     Route::get('/shop', 'WelcomController@shop')->name('shop.show');
     Route::get('autocomplete', 'WelcomController@autocomplete')->name('autocomplete');
+    Route::get('all_category', 'WelcomController@all_category')->name('all_category');
 
     //profile rout
     Route::get('/show/{product}', 'ProductController@show')->name('show');

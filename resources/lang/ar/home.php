@@ -11,6 +11,8 @@ return [
     'quantity'    => 'الكمية',
     'totle_price' => 'المجموع',
     'category'    => 'الاقسام ',
+    'all_category'=> 'كل الاقسام',
+    'all'         => '  كل',
     'language'    => 'اللغة',
     'contact_us'  => 'تواصل معنا',
 

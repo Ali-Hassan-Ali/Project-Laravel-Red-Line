@@ -128,7 +128,9 @@
 
 
         <div class="container d-flex justify-content-center pt-5">
-            <a href="./AllCategory.html" class="btn btn-outline-light btn-sm">All Category</a>
+            <a href="{{ route('all_category') }}" class="btn btn-outline-light btn-sm flash" data-wow-duration="4s" data-wow-offset="0">
+                @lang('home.all_category')
+            </a>
         </div>
     </section>
 

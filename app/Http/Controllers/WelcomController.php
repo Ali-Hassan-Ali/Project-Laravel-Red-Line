@@ -38,6 +38,11 @@ class WelcomController extends Controller
 
     }//end of function
 
+    public function all_category()
+    {
+        return view('home.all_category');
+    }//end of function
+
     public function autocomplete(Request $request)
     {   
 

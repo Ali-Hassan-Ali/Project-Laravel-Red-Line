@@ -11,6 +11,8 @@ return [
     'quantity'    => 'Quantity',
     'totle_price' => 'Totle Price',
     'category'    => 'Category',
+    'all_category'=> 'All Category',
+    'all'         => 'All',
     'language'    => 'Language',
     'contact_us'  => 'Contact Us',
     
