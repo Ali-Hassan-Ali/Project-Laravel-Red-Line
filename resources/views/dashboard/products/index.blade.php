@@ -49,64 +49,68 @@
                 <div class="box-body">
 
                     @if ($products->count() > 0)
-
-                        <table class="table table-hover responsive">
-
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>@lang('dashboard.name')</th>
-                                <th>@lang('dashboard.categorey')</th>
-                                <th>@lang('dashboard.description')</th>
-                                <th>@lang('dashboard.image')</th>
-                                <th>@lang('dashboard.price')</th>
-                                <th>@lang('dashboard.stars')</th>
-                                <th>@lang('dashboard.quantity')</th>
-                                <th>@lang('dashboard.created_at')</th>
-                                <th>@lang('dashboard.action')</th>
-                            </tr>
-                            </thead>
+                    
+                        <div class="table-responsive">
                             
-                            <tbody>
-                            @foreach ($products as $index=>$product)
+                            <table class="table table-hover">
+
+                                <thead>
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $product->name }}</td>
-                                    <td>{{ $product->category->name }}</td>
-                                    <td>{!! $product->description !!}</td>
-                                    <td><img src="{{ $product->image_path }}" alt="" width="100"></td>
-                                    <td>{{ $product->price }}</td>
-                                    <td>
-                                        @for ($i = 0; $i < $product->stars; $i++)
-                                            <i class="fa fa-star" style="color: #ffe066;"></i>
-                                        @endfor
-                                    </td>
-                                    <td>{{ $product->quantity }}</td>
-                                    <td>{{ $product->created_at->toFormattedDateString() }}</td>
-                                    <td>
-                                        @if (auth()->user()->hasPermission('products_update'))
-                                            <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @else
-                                            <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @endif
-                                        @if (auth()->user()->hasPermission('products_delete'))
-                                            <form action="{{ route('dashboard.products.destroy', $product->id) }}" method="post" style="display: inline-block">
-                                                {{ csrf_field() }}
-                                                {{ method_field('delete') }}
-                                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                            </form><!-- end of form -->
-                                        @else
-                                            <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                        @endif
-                                    </td>
+                                    <th>#</th>
+                                    <th>@lang('dashboard.name')</th>
+                                    <th>@lang('dashboard.categorey')</th>
+                                    <th>@lang('dashboard.description')</th>
+                                    <th>@lang('dashboard.image')</th>
+                                    <th>@lang('dashboard.price')</th>
+                                    <th>@lang('dashboard.stars')</th>
+                                    <th>@lang('dashboard.quantity')</th>
+                                    <th>@lang('dashboard.created_at')</th>
+                                    <th>@lang('dashboard.action')</th>
                                 </tr>
-                            
-                            @endforeach
-                            </tbody>
+                                </thead>
+                                
+                                <tbody>
+                                @foreach ($products as $index=>$product)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $product->name }}</td>
+                                        <td>{{ $product->category->name }}</td>
+                                        <td>{!! $product->description !!}</td>
+                                        <td><img src="{{ $product->image_path }}" alt="" width="100"></td>
+                                        <td>{{ $product->price }}</td>
+                                        <td>
+                                            @for ($i = 0; $i < $product->stars; $i++)
+                                                <i class="fa fa-star" style="color: #ffe066;"></i>
+                                            @endfor
+                                        </td>
+                                        <td>{{ $product->quantity }}</td>
+                                        <td>{{ $product->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            @if (auth()->user()->hasPermission('products_update'))
+                                                <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @else
+                                                <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @endif
+                                            @if (auth()->user()->hasPermission('products_delete'))
+                                                <form action="{{ route('dashboard.products.destroy', $product->id) }}" method="post" style="display: inline-block">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
+                                                    <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                                </form><!-- end of form -->
+                                            @else
+                                                <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                
+                                @endforeach
+                                </tbody>
 
-                        </table><!-- end of table -->
-                        
-                        {{ $products->appends(request()->query())->links() }}
+                            </table><!-- end of table -->
+                            
+                            {{ $products->appends(request()->query())->links() }}
+
+                        </div><!-- end of table  responsive-->
                         
                     @else
                         

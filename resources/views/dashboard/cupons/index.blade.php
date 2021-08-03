@@ -50,6 +50,8 @@
 
                     @if ($cupons->count() > 0)
 
+                    <div class="table-responsive">
+
                         <table class="table table-hover">
 
                             <thead>
@@ -96,6 +98,8 @@
                         
                         {{ $cupons->appends(request()->query())->links() }}
                         
+                    </div><!-- end of table  responsive-->
+
                     @else
                         
                         <h2>@lang('dashboard.no_data_found')</h2>

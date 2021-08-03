@@ -50,47 +50,51 @@
 
                     @if ($payments->count() > 0)
 
-                        <table class="table table-hover">
+                        <div class="table-responsive">
 
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>@lang('dashboard.image')</th>
-                                <th>@lang('dashboard.created_at')</th>
-                                <th>@lang('dashboard.action')</th>
-                            </tr>
-                            </thead>
-                            
-                            <tbody>
-                            @foreach ($payments as $index=>$payment)
+                            <table class="table table-hover">
+
+                                <thead>
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td><img src="{{ $payment->payment_path }}"></td>
-                                    <td>{{ $payment->created_at->toFormattedDateString() }}</td>
-                                    <td>
-                                        @if (auth()->user()->hasPermission('payments_update'))
-                                            <a href="{{ route('dashboard.payments.edit', $payment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @else
-                                            <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @endif
-                                        @if (auth()->user()->hasPermission('payments_delete'))
-                                            <form action="{{ route('dashboard.payments.destroy', $payment->id) }}" method="post" style="display: inline-block">
-                                                {{ csrf_field() }}
-                                                {{ method_field('delete') }}
-                                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                            </form><!-- end of form -->
-                                        @else
-                                            <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                        @endif
-                                    </td>
+                                    <th>#</th>
+                                    <th>@lang('dashboard.image')</th>
+                                    <th>@lang('dashboard.created_at')</th>
+                                    <th>@lang('dashboard.action')</th>
                                 </tr>
-                            
-                            @endforeach
-                            </tbody>
+                                </thead>
+                                
+                                <tbody>
+                                @foreach ($payments as $index=>$payment)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td><img src="{{ $payment->payment_path }}"></td>
+                                        <td>{{ $payment->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            @if (auth()->user()->hasPermission('payments_update'))
+                                                <a href="{{ route('dashboard.payments.edit', $payment->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @else
+                                                <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @endif
+                                            @if (auth()->user()->hasPermission('payments_delete'))
+                                                <form action="{{ route('dashboard.payments.destroy', $payment->id) }}" method="post" style="display: inline-block">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
+                                                    <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                                </form><!-- end of form -->
+                                            @else
+                                                <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                
+                                @endforeach
+                                </tbody>
 
-                        </table><!-- end of table -->
-                        
-                        {{ $payments->appends(request()->query())->links() }}
+                            </table><!-- end of table -->
+                            
+                            {{ $payments->appends(request()->query())->links() }}
+                            
+                        </div><!-- end of table  responsive-->
                         
                     @else
                         

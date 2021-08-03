@@ -13,6 +13,14 @@ class ProductController extends Controller
         return view('home.wallet');
     }//end of index
 
+    public function show(Product $product)
+    {
+        $reand_product = Product::inRandomOrder()->get();
+
+        return view('home.show',compact('product','reand_product'));
+        
+    }//end of  index
+
     public function add_card(Request $request,$product)
     {
         $product = Product::FindOrFail($product);

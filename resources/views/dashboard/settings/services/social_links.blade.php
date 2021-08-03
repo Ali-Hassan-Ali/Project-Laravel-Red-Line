@@ -35,7 +35,7 @@
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['facebook','instagram','twitter','youtube'];
+                            $names = ['facebook','instagram','twitter','whatsapp'];
                         @endphp
 
                         @foreach ($names as $name)

@@ -50,49 +50,53 @@
 
                     @if ($gallerys->count() > 0)
 
-                        <table class="table table-hover">
+                        <div class="table-responsive">
 
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>@lang('dashboard.image')</th>
-                                <th>@lang('dashboard.title')</th>
-                                <th>@lang('dashboard.created_at')</th>
-                                <th>@lang('dashboard.action')</th>
-                            </tr>
-                            </thead>
-                            
-                            <tbody>
-                            @foreach ($gallerys as $index=>$gallery)
+                            <table class="table table-hover">
+
+                                <thead>
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td><img src="{{ $gallery->gallery_path }}"></td>
-                                    <td>{{ $gallery->title }}</td>
-                                    <td>{{ $gallery->created_at->toFormattedDateString() }}</td>
-                                    <td>
-                                        @if (auth()->user()->hasPermission('gallerys_update'))
-                                            <a href="{{ route('dashboard.gallerys.edit', $gallery->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @else
-                                            <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @endif
-                                        @if (auth()->user()->hasPermission('gallerys_delete'))
-                                            <form action="{{ route('dashboard.gallerys.destroy', $gallery->id) }}" method="post" style="display: inline-block">
-                                                {{ csrf_field() }}
-                                                {{ method_field('delete') }}
-                                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                            </form><!-- end of form -->
-                                        @else
-                                            <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                        @endif
-                                    </td>
+                                    <th>#</th>
+                                    <th>@lang('dashboard.image')</th>
+                                    <th>@lang('dashboard.title')</th>
+                                    <th>@lang('dashboard.created_at')</th>
+                                    <th>@lang('dashboard.action')</th>
                                 </tr>
-                            
-                            @endforeach
-                            </tbody>
+                                </thead>
+                                
+                                <tbody>
+                                @foreach ($gallerys as $index=>$gallery)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td><img src="{{ $gallery->gallery_path }}"></td>
+                                        <td>{{ $gallery->title }}</td>
+                                        <td>{{ $gallery->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            @if (auth()->user()->hasPermission('gallerys_update'))
+                                                <a href="{{ route('dashboard.gallerys.edit', $gallery->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @else
+                                                <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @endif
+                                            @if (auth()->user()->hasPermission('gallerys_delete'))
+                                                <form action="{{ route('dashboard.gallerys.destroy', $gallery->id) }}" method="post" style="display: inline-block">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
+                                                    <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                                </form><!-- end of form -->
+                                            @else
+                                                <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                
+                                @endforeach
+                                </tbody>
 
-                        </table><!-- end of table -->
-                        
-                        {{ $gallerys->appends(request()->query())->links() }}
+                            </table><!-- end of table -->
+                            
+                            {{ $gallerys->appends(request()->query())->links() }}
+                            
+                        </div><!-- end of table  responsive-->
                         
                     @else
                         

@@ -50,57 +50,61 @@
 
                     @if ($supports->count() > 0)
 
-                        <table class="table table-hover">
+                        <div class="table-responsive">
 
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>@lang('home.first_name')</th>
-                                <th>@lang('home.last_name')</th>
-                                <th>@lang('dashboard.email')</th>
-                                <th>@lang('dashboard.phone')</th>
-                                <th>@lang('home.title')</th>
-                                <th>@lang('home.body')</th>
-                                <th>@lang('home.created_at')</th>
-                                <th>@lang('dashboard.action')</th>
-                            </tr>
-                            </thead>
-                            
-                            <tbody>
-                            @foreach ($supports as $index=>$support)
+                            <table class="table table-hover">
+
+                                <thead>
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $support->first_name }}</td>
-                                    <td>{{ $support->last_name }}</td>
-                                    <td>{{ $support->email }}</td>
-                                    <td>{{ $support->phone }}</td>
-                                    <td>{{ $support->title }}</td>
-                                    <td>{{ $support->body }}</td>
-                                    <td>{{ $support->created_at->toFormattedDateString() }}</td>
-                                    <td>
-                                        @if (auth()->user()->hasPermission('supports_update'))
-                                            <a href="{{ route('dashboard.supports.edit', $support->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @else
-                                            <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @endif
-                                        @if (auth()->user()->hasPermission('supports_delete'))
-                                            <form action="{{ route('dashboard.supports.destroy', $support->id) }}" method="post" style="display: inline-block">
-                                                {{ csrf_field() }}
-                                                {{ method_field('delete') }}
-                                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                            </form><!-- end of form -->
-                                        @else
-                                            <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                        @endif
-                                    </td>
+                                    <th>#</th>
+                                    <th>@lang('home.first_name')</th>
+                                    <th>@lang('home.last_name')</th>
+                                    <th>@lang('dashboard.email')</th>
+                                    <th>@lang('dashboard.phone')</th>
+                                    <th>@lang('home.title')</th>
+                                    <th>@lang('home.body')</th>
+                                    <th>@lang('home.created_at')</th>
+                                    <th>@lang('dashboard.action')</th>
                                 </tr>
-                            
-                            @endforeach
-                            </tbody>
+                                </thead>
+                                
+                                <tbody>
+                                @foreach ($supports as $index=>$support)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $support->first_name }}</td>
+                                        <td>{{ $support->last_name }}</td>
+                                        <td>{{ $support->email }}</td>
+                                        <td>{{ $support->phone }}</td>
+                                        <td>{{ $support->title }}</td>
+                                        <td>{{ $support->body }}</td>
+                                        <td>{{ $support->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            @if (auth()->user()->hasPermission('supports_update'))
+                                                <a href="{{ route('dashboard.supports.edit', $support->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @else
+                                                <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @endif
+                                            @if (auth()->user()->hasPermission('supports_delete'))
+                                                <form action="{{ route('dashboard.supports.destroy', $support->id) }}" method="post" style="display: inline-block">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
+                                                    <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                                </form><!-- end of form -->
+                                            @else
+                                                <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                
+                                @endforeach
+                                </tbody>
 
-                        </table><!-- end of table -->
-                        
-                        {{ $supports->appends(request()->query())->links() }}
+                            </table><!-- end of table -->
+                            
+                            {{ $supports->appends(request()->query())->links() }}
+                            
+                        </div><!-- end of table  responsive-->
                         
                     @else
                         

@@ -49,48 +49,52 @@
                 <div class="box-body">
 
                     @if ($categoreys->count() > 0)
-
-                        <table class="table table-hover">
-
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>@lang('dashboard.name')</th>
-                                <th>@lang('dashboard.created_at')</th>
-                                <th>@lang('dashboard.action')</th>
-                            </tr>
-                            </thead>
+                    
+                        <div class="table-responsive">
                             
-                            <tbody>
-                            @foreach ($categoreys as $index=>$categorey)
+                            <table class="table table-hover">
+
+                                <thead>
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    <td>{{ $categorey->name }}</td>
-                                    <td>{{ $categorey->created_at->toFormattedDateString() }}</td>
-                                    <td>
-                                        @if (auth()->user()->hasPermission('categoreys_update'))
-                                            <a href="{{ route('dashboard.categoreys.edit', $categorey->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @else
-                                            <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
-                                        @endif
-                                        @if (auth()->user()->hasPermission('categoreys_delete'))
-                                            <form action="{{ route('dashboard.categoreys.destroy', $categorey->id) }}" method="post" style="display: inline-block">
-                                                {{ csrf_field() }}
-                                                {{ method_field('delete') }}
-                                                <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                            </form><!-- end of form -->
-                                        @else
-                                            <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
-                                        @endif
-                                    </td>
+                                    <th>#</th>
+                                    <th>@lang('dashboard.name')</th>
+                                    <th>@lang('dashboard.created_at')</th>
+                                    <th>@lang('dashboard.action')</th>
                                 </tr>
-                            
-                            @endforeach
-                            </tbody>
+                                </thead>
+                                
+                                <tbody>
+                                @foreach ($categoreys as $index=>$categorey)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $categorey->name }}</td>
+                                        <td>{{ $categorey->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            @if (auth()->user()->hasPermission('categoreys_update'))
+                                                <a href="{{ route('dashboard.categoreys.edit', $categorey->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @else
+                                                <a href="#" class="btn btn-info btn-sm disabled"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>
+                                            @endif
+                                            @if (auth()->user()->hasPermission('categoreys_delete'))
+                                                <form action="{{ route('dashboard.categoreys.destroy', $categorey->id) }}" method="post" style="display: inline-block">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
+                                                    <button type="submit" class="btn btn-danger delete btn-sm"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                                </form><!-- end of form -->
+                                            @else
+                                                <button class="btn btn-danger btn-sm disabled"><i class="fa fa-trash"></i> @lang('dashboard.delete')</button>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                
+                                @endforeach
+                                </tbody>
 
-                        </table><!-- end of table -->
-                        
-                        {{ $categoreys->appends(request()->query())->links() }}
+                            </table><!-- end of table -->
+                            
+                            {{ $categoreys->appends(request()->query())->links() }}
+
+                        </div><!-- end of table  responsive-->
                         
                     @else
                         

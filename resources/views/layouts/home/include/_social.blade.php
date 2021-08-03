@@ -1,13 +1,13 @@
 
-<section class="map bg-dark">
+<section class="map bg-dark col-12">
 
-    <div class="row">
+    <div class="row my-0 py-0">
         
-        <div class="col-11 col-sm-6">
+        <div class="col-12 col-md-6">
             <iframe src="{{ setting('map_one') }}" width="100%" height="500" style="border:0;" loading="lazy"></iframe>            
         </div>
 
-        <div class="col-11 col-sm-6">
+        <div class="col-12 col-md-6">
             <iframe src="{{ setting('map_tow') }}" width="100%" height="500" style="border:0;" loading="lazy"></iframe>    
         </div>
 
@@ -21,8 +21,8 @@
             <i class="fa fa-facebook fa-1x d-flex align-items-center justify-content-center">
             </i>
         </a>
-        <a class="p-2 text-danger bordering d-flex align-items-center justify-content-center hvr-push" href="{{ setting('youtube') }}">
-            <i class="fa fa-youtube fa-1x d-flex align-items-center justify-content-center">
+        <a class="p-2 text-danger bordering d-flex align-items-center justify-content-center hvr-push" href="{{ setting('whatsapp') }}">
+            <i class="fa fa-whatsapp fa-1x d-flex align-items-center justify-content-center">
             </i>
         </a>
         <a class="p-2 bordering d-flex align-items-center justify-content-center hvr-push" href="{{ setting('twitter') }}">

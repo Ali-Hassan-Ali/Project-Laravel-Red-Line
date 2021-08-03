@@ -27,12 +27,12 @@ function () {
     Route::post('store.connect', 'UserrController@connect')->name('store.connect');
 
     //profile rout
-    Route::get('/show/{product}', 'WelcomController@show')->name('show');
     Route::get('/category/{id}', 'WelcomController@category_show')->name('category.show');
     Route::get('/shop', 'WelcomController@shop')->name('shop.show');
     Route::get('autocomplete', 'WelcomController@autocomplete')->name('autocomplete');
 
     //profile rout
+    Route::get('/show/{product}', 'ProductController@show')->name('show');
     Route::get('/cart', 'ProductController@index')->name('wallet.index');
     Route::post('/wallet/{product}', 'ProductController@add_card')->name('wallet.store');
     Route::delete('/wallet/{id}', 'ProductController@destroy')->name('wallet.delete');

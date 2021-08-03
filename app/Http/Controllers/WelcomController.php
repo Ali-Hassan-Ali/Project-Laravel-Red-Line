@@ -20,14 +20,6 @@ class WelcomController extends Controller
         
     }//end of  index
 
-    public function show(Product $product)
-    {
-        $reand_product = Product::inRandomOrder()->get();
-
-        return view('home.show',compact('product','reand_product'));
-        
-    }//end of  index
-
     public function category_show($id)
     {
         $products = Product::where('category_id',$id)->get();

@@ -17,28 +17,40 @@
                 <div class="social-flix col-md-4 px-0 ml-3 ml-md-0 mx-md-auto wow bounceInUp" data-wow-duration="2s" data-wow-offset="0">
                     <ul class="list-contact mt-5 pb-5 px-3 mr-sm-5" style="list-style: none">
                         <li>
-                            <p class="row">
-                                <i class="fa fa-phone fa-1x text-danger d-flex align-items-center justify-content-center mr-2" style="border-radius: 100px; width: 30px; height: 30px; background-color: #fff;">
-                            </i> - {{ setting('phone') }}
-                            </p>
-                        </li>
-                            <li>
+                            <a href="tel:{{ setting('phone') }}" class="text-light">
                                 <p class="row">
                                     <i class="fa fa-phone fa-1x text-danger d-flex align-items-center justify-content-center mr-2" style="border-radius: 100px; width: 30px; height: 30px; background-color: #fff;">
-                                </i> - {{ setting('phone_one') }}
+                                </i> - {{ setting('phone') }}
                                 </p>
+                            </a>
+                        </li>
+                            <li>
+                                <a href="tel:{{ setting('phone_one') }}" class="text-light">
+                                    
+                                <p class="row">
+                                    <i class="fa fa-phone fa-1x text-danger d-flex align-items-center justify-content-center mr-2" style="border-radius: 100px; width: 30px; height: 30px; background-color: #fff;">
+                                    </i> - {{ setting('phone_one') }}
+                                </p>
+
+                                </a>
                             </li>
                         <li>
-                            <p class="row">
-                                <i class="fa fa-envelope text-danger fa-1x d-flex align-items-center justify-content-center mr-2" style="border-radius: 100px; width: 30px; height: 30px; background-color: #fff;">
-                                </i> - {{ setting('email') }}
-                            </p>
+                            <a href="mailto:{{ setting('email') }}" class="text-light">
+                                <p class="row">
+                                    <i class="fa fa-envelope text-danger fa-1x d-flex align-items-center justify-content-center mr-2" style="border-radius: 100px; width: 30px; height: 30px; background-color: #fff;">
+                                    </i> - {{ setting('email') }}
+                                </p>
+                            </a>
                         </li>
                         <li>
+                            <a href="tel:{{ setting('whatsapp') }}" class="text-light">
+                            
                             <p class="row">
                                 <i class="fa fa-whatsapp text-danger fa-1x d-flex align-items-center justify-content-center mr-2" style="border-radius: 50px; width: 30px; height: 30px; background-color: #fff;">
                                 </i> - {{ setting('whatsapp') }}
                             </p>
+
+                            </a>
                         </li>
                     </ul>
                 </div>

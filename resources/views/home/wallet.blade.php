@@ -39,7 +39,7 @@
 	                    </div>
 	                    <div class="product-details">
 	                        <div class="product-title">{{ $product->model->name }}</div>
-	                        <p class="product-description">{{ $product->model->description }}</p>
+	                        <p class="product-description">{!! $product->model->description !!}</p>
 	                    </div>
 	                    <div class="product-price">{{ $product->model->price }}</div>
 	                    <div class="product-quantity">

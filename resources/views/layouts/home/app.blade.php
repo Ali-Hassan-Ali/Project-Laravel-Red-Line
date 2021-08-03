@@ -119,7 +119,7 @@
 
 .overlay .closebtn {
   position: absolute;
-  top: 20px;
+  top: 0px;
   right: 45px;
   font-size: 60px;
   cursor: pointer;
@@ -159,7 +159,7 @@
 
     .easy-autocomplete-container{
         width: 100%;
-        margin-top: 0px;
+        margin-top: -230px;
         margin-right: 0px!important;
     }
     .easy-autocomplete{
@@ -324,7 +324,7 @@
 
             list: {
                 onChooseEvent: function () {
-                    var product = $('#aaa').getSelectedItemData();
+                    var product = $('#searching').getSelectedItemData();
                     var url = window.location.origin + '/show/' + product.id;
                     window.location.replace(url);
                 }
