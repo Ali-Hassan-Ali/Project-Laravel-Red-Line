@@ -23,7 +23,7 @@
                                         <img src="{{ $product->model->image_path }}" class="px-3 border-image" alt="" width="100">
                                         <small class="text-flix">{{ $product->model->name }}
                                             <br>@lang('home.quantity') - {{ $product->qty }}
-                                            <br>@lang('home.price') - {{ $product->price * $product->qty }}
+                                            <br>@lang('home.price') - {{ number_format($product->price * $product->qty,2) }}
                                         </small>
                                     </div>
 
@@ -33,7 +33,7 @@
                                  <small>@lang('home.totle_price') - </small> <small id="totle-price">
                                     @if (session()->has('coupon'))
 
-                                         {{ Cart::subtotal() - session()->get('coupon')}}.00
+                                         {{ number_format(Cart::subtotal() - session()->get('coupon'),2) }}
                                         
                                     @else
 

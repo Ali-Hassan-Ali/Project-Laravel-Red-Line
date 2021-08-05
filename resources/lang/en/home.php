@@ -15,6 +15,8 @@ return [
     'all'         => 'All',
     'language'    => 'Language',
     'contact_us'  => 'Contact Us',
+    'send'        => 'Send',
+    'no_auth'     => 'You must be logged in before completing the purchase',
     
     //auth
     'login'       => 'Login',
@@ -55,6 +57,8 @@ return [
     'product'     => 'Product',
     'show_product'=> 'Show Product',
     'add_card'    => 'Add Card',
+    'best'        => 'best',
+    'products'    => 'Products',
 
     //section category
     'cart'        => 'Cart',
@@ -64,6 +68,8 @@ return [
     'enter_coupon'=> 'Enter the discount code',
     'error_coupon'=> 'The code is incorrect',
     'sucss_coupon'=> 'The code is correct',
+    'old_total'   => 'Total before discount',
+    'new_total'   => 'Total after discount',
 
     //Our Services
     'our'               => 'Our',
@@ -84,8 +90,16 @@ return [
     'title'        => 'Subject',
     'body'         => 'Body',
     
+    //Connect
     'contct'       => 'Contct',
     'cus'          => 'Us',
     'payments'     => 'Payment methods',
     'our_locations'=> 'Our Locations',
+
+    //payment
+    'payment'      => 'Payment',
+    'page'         => 'Page',
+    'maping'       => 'Description of the place of arrival',
+    'chouse_file'  => 'Add an image of the invoice',
+    'click_here'   => 'Click Here',
 ];

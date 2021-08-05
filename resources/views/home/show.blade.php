@@ -58,9 +58,9 @@
                         </table>
 
                     </div>
-                    <div class="col-md-4 d-flex align-items-baseline" style="border: 1px solid #fff;">
+                    <div class="col-md-4 mb-5 pb-5 mb-md-0 pb-md-0 d-flex align-items-baseline" style="border: 1px solid #fff;">
                         
-                        <div class="row mx-1 d-flex align-items-baseline">
+                        <div class="row mx-1 mb-5 pb-5 mb-md-0 pb-md-0 d-flex align-items-baseline">
 
                             <div class="btn btn-outline-light mb-2 add-cart col-12" style="cursor: pointer; margin-top: 100px;" 
                                 data-url="{{ route('wallet.store',$product->id) }}"
@@ -96,7 +96,7 @@
 
     <section id="OwlCarouse">
 
-        <h2 class="text-center text-white mb-5">Category <span class="text-danger">Shoping</span></h2>
+        <h2 class="text-center text-white mb-5">@lang('home.best') <span class="text-danger">@lang('home.products')</span></h2>
         
             
             <div class="owl-carousel owl-category mb-5">

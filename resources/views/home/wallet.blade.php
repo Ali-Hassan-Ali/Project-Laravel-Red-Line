@@ -7,7 +7,7 @@
 	<!--start  of contant section-->
 
 	<div style="padding: 100px 100px">
-        <h1 class="text-center text-white">
+        <h1 class="text-center text-white my-5 py-5">
             <a href="/" class="text-danger"><i class="fa fa-home"></i></a> / @lang('home.cart') <span class="text-danger">@lang('home.shoping')</span>
         </h1>
     </div>
@@ -43,7 +43,8 @@
 	                    </div>
 	                    <div class="product-price">{{ $product->model->price }}</div>
 	                    <div class="product-quantity">
-	                        <input type="number" value="{{ $product->qty }}" min="1">
+	                        <input type="number" class="quantity" value="{{ $product->qty }}" min="1"
+                                    data-url="{{ route('wallet.update',$product->rowId) }}" data-method="put">
 	                    </div>
 	                    <div class="product-removal">
 	                        <button class="btn btn-danger btn-sm"
@@ -53,60 +54,59 @@
                     				<i class="fa fa-trash"></i>
                 			</button>
 	                    </div>
-	                    <div class="product-line-price">{{ $product->price * $product->qty }}</div>
+	                    <div class="product-line-price">{{ number_format($product->price * $product->qty, 2) }}</div>
 	                </div>
 
                 @endforeach
 
 
                 <div class="totals text-white">
-                    <div class="totals-item">
+                    <div class="totals-item d-hiiding">
                         <label>Subtotal</label>
-                        <div class="totals-value" id="cart-subtotal">71.97</div>
+                        <div class="totals-value" id="cart-subtotal">00.00</div>
                     </div>
-                    <div class="totals-item">
-                        <label>Tax (5%)</label>
-                        <div class="totals-value" id="cart-tax">3.60</div>
+                    <div class="totals-item d-hiiding">
+                        <label>Tax (0%)</label>
+                        <div class="totals-value" id="cart-tax">0.60</div>
                     </div>
-                    <div class="totals-item">
+                    <div class="totals-item d-hiiding">
                         <label>Shipping</label>
-                        <div class="totals-value" id="cart-shipping">15.00</div>
+                        <div class="totals-value" id="cart-shipping d-hiiding">00.00</div>
                     </div>
                     <div class="totals-item totals-item-total">
                         {{-- <label>Grand Total</label> --}}
                         
                         @if (session()->has('coupon'))
                             
-                            <label>old Total</label>
+                            <label>@lang('home.old_total')</label>
 
                             <div class="totals-value" id="cart-total">
 
-                                 {{ Cart::subtotal() }}
+                                 {{ number_format(Cart::subtotal(),2) }}
 
                             </div>
 
-                            <label>new Total</label>
+                            <label>@lang('home.new_total')</label>
 
                             <div class="totals-value" id="cart-total">
                                 {{ Cart::subtotal() - session()->get('coupon') }}.00
                                  <form action="{{ route('coupon.delete') }}" method="delete" style="display:block">
                                     {{ csrf_field() }}
                                     {{ method_field('delete') }}
-                                    <button class="text-danger delete-coupon"
+                                    <button class="text-danger delete-coupon mt-5"
                                         data-url="{{ route('coupon.delete') }}"
                                         data-method="delete"
                                     ><i class="fa fa-trash"></i></button>
                                  </form>
                             </div>
 
-
                         @else
 
-                            <label>Grand Total</label>
+                            <label>@lang('home.total')</label>
 
                             <div class="totals-value" id="cart-total">
 
-                                 {{ Cart::subtotal() }}
+                                 {{ number_format(Cart::subtotal(),2) }}
 
                             </div>
 
@@ -146,7 +146,17 @@
                         <input type="text" hidden>
                         <input type="text" hidden>
                         <input type="text" hidden>
-                        <button class="btn btn-outline-light col-12">Add <i class="fa fa-plus"></i></button>
+                        <a  href="{{ route('orders.index') }}" class="btn btn-outline-light col-12">
+                            @auth
+
+                                @lang('home.send') <i class="fa fa-plus"></i>
+                                
+                            @else
+
+                                @lang('home.no_auth') <i class="fa fa-plus"></i>
+
+                            @endauth
+                        </a>
                     </form>
                     <a href="{{ route('shop.show') }}" class="btn btn-danger col-12 my-2">@lang('home.shop') <i class="fa fa-cart-plus"></i></a>
                 </div>
@@ -163,6 +173,34 @@
     
     <script>
         $(document).ready(function() {
+
+            $('body').on('keyup change', '.quantity', function() {
+
+                var url      = $(this).data('url');
+                var method   = $(this).data('method');
+                var quantity = $(this).val();
+
+                $.ajax({
+                    url: url,
+                    method: method,
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data:{
+                      quantity:quantity,
+                    },
+                    success: function (data) {
+
+                        console.log(data);
+
+                    },//end of success
+                    error: function (data) {
+
+                        console.log(data);
+
+                    },//end of success
+
+                });//this ajax
+
+            });//end of product quantity change
 
             $(".coupon-code").click(function(e){
                 e.preventDefault();
@@ -262,8 +300,8 @@
             });//delete-coupon
 
             /* Set rates + misc */
-            var taxRate = 0.05;
-            var shippingRate = 15.00;
+            var taxRate = 0.00;
+            var shippingRate = 0.00;
             var fadeTime = 300;
 
 
@@ -272,49 +310,45 @@
                 updateQuantity(this);
             });
 
-            $('.product-removal button').click(function() {
-
+            $('.product-removal button').click( function() {
+                
                 var url     = $(this).data('url');
 	            var method  = $(this).data('method');
 	            var id      = $(this).data('id');
 
-	            swal({
+                swal({
                     title: "@lang('dashboard.confirm_delete')",
-	                type: "error",
-	                icon: "warning",
+                    type: "error",
+                    icon: "warning",
                     buttons: {cancel: "@lang('dashboard.no')",defeat:"@lang('dashboard.yes')"},
                     dangerMode: true
-	            })
+                })
 
-	            .then((willDelete) => {
-	            if (willDelete) {
+                .then((willDelete) => {
+                if (willDelete) {
+                    removeItem(this);
+                    $.ajax({
+                        url: url,
+                        method: method,
+                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                        success: function(data) {
 
-	                $.ajax({
-	                    url: url,
-	                    method: method,
-	                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-	                    success: function(data) {
-	                        $('#delete-cart-row'+id).remove();
-	                        swal({
-	                            title: "@lang('dashboard.deleted_successfully')",
-	                            type: "success",
-	                            icon: '{{ asset("home_files/images/success.png") }}',
-	                            buttons: false,
-	                            timer: 15000
-	                        }),
-	                        removeItem(this);
+                            swal({
+                                title: "@lang('dashboard.deleted_successfully')",
+                                type: "success",
+                                icon: '{{ asset("home_files/images/success.png") }}',
+                                buttons: false,
+                                timer: 15000
+                            });//end of success
 
-                            $('#proudut-'+id).remove();
-	                    },
-	                    error: function(data) {
+                        },//end of 
 
+                    });//this ajax 
 
-	                    },
-	                });//this ajax 
-	                }; //end of if
-	            });//then
+                    }; //end of if
+                });//then
 
-            });
+            });//end of product-removal button
 
 
             /* Recalculate cart */
@@ -376,7 +410,7 @@
                 });
             }
 
-        });
+        });//end of document).ready
     </script>
 
 @endpush

@@ -50,6 +50,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('home_files/plugins/auto-compolted-search/easy-autocomplete.min.css') }}">
 
     <style type="text/css">
+            .d-hiiding{
+                visibility: hidden;
+            }
             .swal-modal {
                 border-radius: 43px;
                 background: #1b1b1b!important;
@@ -224,19 +227,32 @@
     <!-- min scripts -->
     <script src="{{ asset('home_files/js/main.min.js') }}"></script>
 
-        <!-- min sweetalert -->
+    <!-- min sweetalert -->
     <script src="{{ asset('home_files/plugins/sweetalert/sweetalert2.all.min.js') }}"></script>
 
-            <!-- min compolted  search -->
+    <!-- min compolted  search -->
     <script src="{{ asset('home_files/plugins/auto-compolted-search/jquery.easy-autocomplete.min.js') }}"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <!-- min filestyle  search -->
+    <script src="{{ asset('home_files/plugins/filestyle/bootstrap-filestyle.min.js') }}"></script>
 
     @stack('welcome')
 
     @stack('cart')
 
     <script type="text/javascript">
+
+        $(":file").filestyle({
+            dragdrop: true,
+            htmlIcon: ' <span class="fa fa-image"></span> ',
+            text: "@lang('home.click_here')",
+            btnClass: "btn-outline-danger",
+            placeHolder: 'My file text',
+            size: "lg",
+            badge: true,
+            buttonBefore: true
+        });
+
         $(document).ready(function() {
             $(".add-cart").click(function(e){
                 e.preventDefault();

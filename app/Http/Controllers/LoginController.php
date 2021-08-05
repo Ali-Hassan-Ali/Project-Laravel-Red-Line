@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -36,6 +37,7 @@ class LoginController extends Controller
 
         $user = User::where('provider', $provider)
             ->where('provider_id', $social_user->getId())
+            // ->where('provider','!=',$provider)
             ->first();
 
         if (!$user) {
@@ -45,6 +47,7 @@ class LoginController extends Controller
                 'email'       => $social_user->getEmail(),
                 'image'       => $social_user->getAvatar(),
                 'provider'    => $provider,
+                'password'    => bcrypt('123'),
                 'provider_id' => $social_user->getId(),
             ]);
 
@@ -56,7 +59,7 @@ class LoginController extends Controller
         $login = auth()->guard('users')->attempt(
         [
             'email'    => $social_user->getEmail(),
-            'password' => '123456',
+            'password' => '123',
         ]);//end of attempt
 
 

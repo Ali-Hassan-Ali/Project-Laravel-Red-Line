@@ -66,7 +66,9 @@
         @endforeach
                 
         <div class="container d-flex justify-content-center pt-5">
-            <a href="{{ route('all_category') }}" class="btn btn-outline-light btn-sm flash" data-wow-duration="4s" data-wow-offset="0">@lang('home.all_category')</a>
+            <a href="{{ route('all_category') }}" class="btn btn-outline-light btn-sm flash" data-wow-duration="4s" data-wow-offset="0">
+                @lang('home.all_category')
+            </a>
         </div>
 
     </section>
@@ -179,7 +181,7 @@
                         <button class="btn btn-danger mb-2 d-block col-12 add-suport"
                                 data-url="{{ route('store.connect') }}"
                                 data-method="post"
-                        >@lang('dashboard.add')</button>
+                        >@lang('home.send')</button>
                     </div>
                 </form>
             </div>

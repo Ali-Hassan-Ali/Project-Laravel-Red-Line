@@ -35,6 +35,17 @@
                                 </span>
                             @enderror
                         </div>
+                        <!--phone -->
+                        <div class="form-group">
+                            <label><i class="fa fa-lock"></i> @lang('dashboard.phone')</label>
+                            <input type="phone" name="phone" value="{{ old('phone') }}" 
+                                    class="form-control bg-transparent text-light border-input @error('phone') is-invalid @enderror">
+                            @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         <!--Email -->
                         <div class="form-group">
                             <label><i class="fa fa-lock"></i> @lang('home.email')</label>

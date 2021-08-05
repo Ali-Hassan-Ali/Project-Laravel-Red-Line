@@ -32,6 +32,15 @@ class ProductController extends Controller
 
     }//end of function
 
+    public function update(Request $request, $id)
+    {
+
+        $cart = Cart::update($id, $request->quantity);
+
+        return response()->json($cart);
+
+    }//end of function
+
     public function destroy($id)
     {
         $cart = Cart::content()->where('rowId', $id)->first();

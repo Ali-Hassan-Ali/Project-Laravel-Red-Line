@@ -36,7 +36,11 @@ function () {
     Route::get('/show/{product}', 'ProductController@show')->name('show');
     Route::get('/cart', 'ProductController@index')->name('wallet.index');
     Route::post('/wallet/{product}', 'ProductController@add_card')->name('wallet.store');
+    Route::put('/wallet/{id}', 'ProductController@update')->name('wallet.update');
     Route::delete('/wallet/{id}', 'ProductController@destroy')->name('wallet.delete');
+
+    //Payment rout
+    Route::get('/Payment', 'OrderController@index')->name('orders.index')->middleware('auth');
 
     //login rout
     Route::get('login/{provider}', 'LoginController@redirectToProvider')->where('provider', 'facebook|google');

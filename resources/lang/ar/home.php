@@ -15,6 +15,8 @@ return [
     'all'         => '  كل',
     'language'    => 'اللغة',
     'contact_us'  => 'تواصل معنا',
+    'send'        => 'ارسال',
+    'no_auth'     => 'يجب تسجيل الدخول قبل اكامل عمليه الشراء',
 
     //auth
     'login'       => 'تسجيل',
@@ -55,6 +57,8 @@ return [
     'product'     => 'المنتج',
     'show_product'=> 'عرض تفاصيل المنتج',
     'add_card'    => 'اضافة الى السلة',
+    'best'        => 'افضل',
+    'products'    => 'المنتجات',
 
     //section category
     'cart'        => 'عربة ',
@@ -64,6 +68,8 @@ return [
     'enter_coupon'=> 'ادخل كود الخصم',
     'error_coupon'=> 'الكود غير صحيح',
     'sucss_coupon'=> 'الكود صحيح',
+    'old_total'   => 'المجموع قبل الخصم',
+    'new_total'   => 'المجموع بعد الخصم',
     
     //Our Services
     'our'               => 'عن',
@@ -84,9 +90,17 @@ return [
     'title'        => 'العنوان',
     'body'         => 'الموضع',
     
+    //Connect
     'contct'       => 'اتصل',
     'cus'          => 'بنا',
     'payments'     => 'وسائل الدفع',
     'our_locations'=> 'مواقعنا',
+
+    //payment
+    'payment'      => 'الشراء',
+    'page'         => 'صفحة',
+    'maping'       => 'وصف مكان التوصل',
+    'chouse_file'  => 'اضف صورة الفاتوره',
+    'click_here'   => 'اضغط هنا',
   
 ];
