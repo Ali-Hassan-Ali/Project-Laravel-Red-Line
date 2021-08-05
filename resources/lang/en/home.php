@@ -6,6 +6,7 @@ return [
     'redline'     => 'RedLine',
     'home'        => 'Home',
     'go_card'     => 'Go to card',
+    'buy_now'     => 'Buy now',
     'shop'        => 'Shop',
     'price'       => 'Price',
     'quantity'    => 'Quantity',
@@ -102,4 +103,6 @@ return [
     'maping'       => 'Description of the place of arrival',
     'chouse_file'  => 'Add an image of the invoice',
     'click_here'   => 'Click Here',
+    'multe_image'  => 'You can add more than one picture',
+
 ];

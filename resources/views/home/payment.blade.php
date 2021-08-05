@@ -53,10 +53,25 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
-                                        <h3>@lang('home.chouse_file')</h3>
+                                        <h3>@lang('home.chouse_file')</h3><br>
+                                        <h5>@lang('home.multe_image')</h5>
+                                        <h5>@lang('home.totle_price') : 
+                                            @if (session()->has('coupon'))
+
+                                                {{ number_format(Cart::subtotal() - session()->get('coupon'),2) }}
+
+                                            @else
+
+                                                {{ number_format(Cart::subtotal(),2) }}
+
+                                            @endif
+                                        </h5>
+                                        
+                                            <button class="btn btn-info btn-sm copy-here" style="cursor: pointer;">@lang('home.click_here') @lang('dashboard.bank_account') : {{ setting('bank_account') }}</button>
+
                                         <hr>
                                         <div class="form-group">
-                                            <input type="file" class="filestyle" data-dragdrop="true" data-text="Find file" multiple="multiple" data-older="fdf">
+                                            <input type="file" class="filestyle" data-dragdrop="true" data-text="Find file" multiple="multiple">
                                         </div>
                                     </div>
                                 </div>

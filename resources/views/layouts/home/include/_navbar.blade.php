@@ -3,9 +3,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-0 fixed-top">
 
             <div class="container">
-                <a class="navbar-brand p-0 hvr-grow wow pulse" data-wow-duration="4s" data-wow-offset="0" href="/">
+                <a class="navbar-brand p-0 hvr-grow" href="/">
                     <img src="{{ asset('home_files/images/logo.png') }}" alt="" width="200px">
-                    <span class="text-danger fs-300 font-weight-bold" href=""></span>
+                    <span class="text-danger fs-300 font-weight-bold" href="/"></span>
                 </a>
 
                 <div class="dropdown {{ app()->getLocale() == 'ar' ? 'ml-5' : 'mr-5' }} mr-md-0 ml-0 ml-md-5">
@@ -43,7 +43,7 @@
                                 </small>
                             </div>
                             <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi col-12 mt-3 px-1 py-1 mr-0">@lang('home.go_card')</a>
-                            <a href="{{ route('wallet.index') }}" class="btn btn-outline-light btn-sm col-12 borderi mt-3 px-2 py-1">go to card</a>
+                            <a href="{{ route('orders.index') }}" class="btn btn-outline-light btn-sm col-12 borderi mt-3 px-2 py-1">@lang('home.buy_now')</a>
                         </div>
 
                     </div>
@@ -70,7 +70,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse col-md-8" id="navbarSupportedContent">
-                    <ul class="navbar-nav m-auto wow flipInX" data-wow-duration="4s" data-wow-offset="0">
+                    <ul class="navbar-nav m-auto">
                         <li class="nav-item">
                             <a class="nav-link active" href="/">@lang('home.home') <span class="sr-only">(current)</span></a>
                         </li>

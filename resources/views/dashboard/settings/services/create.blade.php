@@ -35,7 +35,7 @@
                         {{ method_field('post') }}
 
                         @php
-                            $names = ['delivery_ar','delivery_en','customer_order_ar','customer_order_en','occasions_ar','occasions_en'];
+                            $names = ['bank_account','delivery_ar','delivery_en','customer_order_ar','customer_order_en','occasions_ar','occasions_en'];
                         @endphp
 
                         @foreach ($names as $name)

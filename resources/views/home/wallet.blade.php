@@ -89,7 +89,7 @@
                             <label>@lang('home.new_total')</label>
 
                             <div class="totals-value" id="cart-total">
-                                {{ Cart::subtotal() - session()->get('coupon') }}.00
+                                {{ number_format(Cart::subtotal() - session()->get('coupon')) }}
                                  <form action="{{ route('coupon.delete') }}" method="delete" style="display:block">
                                     {{ csrf_field() }}
                                     {{ method_field('delete') }}

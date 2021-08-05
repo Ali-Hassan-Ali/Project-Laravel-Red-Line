@@ -8,6 +8,7 @@ return [
     'added_successfully'    => 'تمت الاضافه بنجاح',
     'updated_successfully'  => 'تمت التعيل بنجاح',
     'deleted_successfully'  => 'تم الحذف بنجاح',
+    'copy_successfully'     => 'تم النسخ بنجاح',
     'confirm_delete'        => 'الاستمرار بلحذف',
     'created_at'            => 'تاريخ الانشاء',
     'yes'                   => 'نعم',
@@ -80,6 +81,7 @@ return [
     'payments'         => 'صور وسائل الدفع',
     'our_locations_ar' => 'مواقعنا بللغة العربية',
     'our_locations_en' => 'مواقعنا بللغة الانجازية',
+    'bank_account'     => 'حساب بنك الخرطوم',
     
     'social_links'     => 'روابط التواصل الاجتماعي',
     'facebook'         => 'فيس بوك',

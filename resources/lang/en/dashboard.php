@@ -8,6 +8,7 @@ return [
     'added_successfully'    => 'Added Successfully',
     'updated_successfully'  => 'Updated Successfully',
     'deleted_successfully'  => 'Deleted Successfully',
+    'copy_successfully'     => 'Copy Successfully',
     'confirm_delete'        => 'Confirm Delete',
     'created_at'            => 'Created at',
     'yes'                   => 'Yes',
@@ -80,6 +81,7 @@ return [
     'payments'         => 'Payment methods image',
     'our_locations_ar' => 'Our locations in arabic',
     'our_locations_en' => 'Our locations in English',
+    'bank_account'     => 'Bank of Khartoum account',
 
     'social_links'     => 'Social links',
     'facebook'         => 'facebook',
