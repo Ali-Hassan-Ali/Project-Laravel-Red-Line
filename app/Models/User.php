@@ -59,5 +59,10 @@ class User extends Authenticatable
         
     }//end ofscopeWhenSearch
 
+    public function order()
+    {
+        return $this->hasMany(Order::class,'user_id');
+        
+    }//end of belongsTo category
 
 }//end of model

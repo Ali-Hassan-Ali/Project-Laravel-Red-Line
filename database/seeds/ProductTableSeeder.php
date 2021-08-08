@@ -19,6 +19,7 @@ class ProductTableSeeder extends Seeder
                 'name'        => ['ar'=> $category, 'en' => $category],
                 'description' => ['ar'=> $category, 'en' => $category],
                 'price'       => 80,
+                'quantity'    => 80,
                 'category_id' => 1,
             ]);
 
@@ -32,6 +33,7 @@ class ProductTableSeeder extends Seeder
                 'name'        => ['ar'=> $category, 'en' => $category],
                 'description' => ['ar'=> $category, 'en' => $category],
                 'price'       => 120,
+                'quantity'    => 80,
                 'category_id' => 2,
             ]);
 
@@ -45,6 +47,7 @@ class ProductTableSeeder extends Seeder
                 'name'        => ['ar'=> $category, 'en' => $category],
                 'description' => ['ar'=> $category, 'en' => $category],
                 'price'       => 150,
+                'quantity'    => 80,
                 'category_id' => 3,
             ]);
 

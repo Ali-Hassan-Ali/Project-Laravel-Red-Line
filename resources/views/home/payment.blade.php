@@ -78,10 +78,10 @@
                                 <hr>
                                 <div class="form-group row">
                                     <div class="col-md-6">
-                                        <button type="reset" class="btn btn-default btn-lg btn-block">Cancel</button>
+                                        <button type="reset" class="btn btn-default btn-lg btn-block">@lang('dashboard.add')</button>
                                     </div>
                                     <div class="col-md-6">
-                                        <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+                                        <button type="submit" class="btn btn-success btn-lg btn-block">@lang('dashboard.add')</button>
                                     </div>
                                 </div>
                             </form>
