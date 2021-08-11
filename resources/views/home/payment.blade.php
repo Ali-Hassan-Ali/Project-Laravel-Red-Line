@@ -58,11 +58,11 @@
                                         <h5>@lang('home.totle_price') : 
                                             @if (session()->has('coupon'))
 
-                                                {{ number_format(Cart::subtotal() - session()->get('coupon'),2) }}
+                                                {{ Cart::subtotal() - session()->get('coupon') }}
 
                                             @else
 
-                                                {{ number_format(Cart::subtotal(),2) }}
+                                                {{ Cart::subtotal() }}
 
                                             @endif
                                         </h5>
@@ -81,7 +81,7 @@
                                         <button type="reset" class="btn btn-default btn-lg btn-block">@lang('dashboard.add')</button>
                                     </div>
                                     <div class="col-md-6">
-                                        <button type="submit" class="btn btn-success btn-lg btn-block">@lang('dashboard.add')</button>
+                                        <a href="{{ route('order.create') }}" class="btn btn-success btn-lg btn-block">@lang('dashboard.add')</a>
                                     </div>
                                 </div>
                             </form>

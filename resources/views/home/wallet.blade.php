@@ -82,7 +82,7 @@
 
                             <div class="totals-value" id="cart-total">
 
-                                 {{ number_format(Cart::subtotal(),2) }}
+                                 {{ Cart::subtotal() }}
 
                             </div>
 
@@ -106,7 +106,7 @@
 
                             <div class="totals-value" id="cart-total">
 
-                                 {{ number_format(Cart::subtotal(),2) }}
+                                 {{ Cart::subtotal() }}
 
                             </div>
 
@@ -339,9 +339,9 @@
                                 icon: '{{ asset("home_files/images/success.png") }}',
                                 buttons: false,
                                 timer: 15000
-                            });//end of success
+                            });//end of swal
 
-                        },//end of 
+                        },//end of success
 
                     });//this ajax 
 

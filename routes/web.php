@@ -41,9 +41,10 @@ function () {
 
     //Payment rout
     Route::get('/Payment', 'OrderController@index')->name('orders.index')->middleware('auth');
+    Route::get('create_order', 'OrderController@create_order')->name('order.create')->middleware('auth');
 
     //login rout
-    Route::get('login/{provider}', 'LoginController@redirectToProvider')->where('provider', 'facebook|google');
+    Route::get('login/{provider}', 'LoginController@redirectToProvider')->name('auth.provider')->where('provider', 'facebook|google');
     Route::get('login/{provider}/callback', 'LoginController@handleProviderCallback')->where('provider', 'facebook|google');
 
     //coupon. rout

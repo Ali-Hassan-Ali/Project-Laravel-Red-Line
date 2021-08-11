@@ -69,13 +69,22 @@
                         <hr>
                         <!--                    Login by Gmail and Facebook-->
                         <div class="form-group ">
+                            
+                            @if (env('FACEBOOK_ID'))
+                                
+                                <a href="{{ route('auth.provider', ['provider' => 'facebook']) }}" class="btn btn-block btn-primary" style="background: #3b5998 ">
+                                    <span class="fa fa-facebook"></span> @lang('home.Login_goole')
+                                </a>
 
-                            <a href="/{{ app()->getLocale() }}/login/google" class="btn btn-block btn-primary" style="background: #3b5998 ">
-                                <span class="fa fa-facebook"></span> @lang('home.Login_goole')
-                            </a>
-                            <a href="/{{ app()->getLocale() }}/login/facebook" class="btn btn-block btn-primary" style="background: #ea4335 ">
-                                <span class="fa fa-google"></span> @lang('home.Login_face')
-                            </a>
+                            @endif
+
+                            @if (env('GOOGLE_ID'))
+                                
+                                <a href="{{ route('auth.provider', ['provider' => 'google']) }}" class="btn btn-block btn-primary" style="background: #ea4335 ">
+                                    <span class="fa fa-google"></span> @lang('home.Login_face')
+                                </a>
+
+                            @endif
 
                         </div>
 
