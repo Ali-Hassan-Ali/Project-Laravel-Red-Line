@@ -2,6 +2,12 @@
 
 @section('content')
 
+@section('title', __('home.purchase'))
+	
+	@extends('layouts.home.app')
+
+@section('content')
+
 @section('title', __('home.cart').__('home.shoping'))
 
 	<!--start  of contant section-->
@@ -16,7 +22,7 @@
 
     <!--start of profile section-->
 
-    @if (Cart::count() > 0)
+    @if (Cart::count() < 0)
 
     <section id="cart" class="text-white">
         <h1 class="text-center py-5 mb-5">@lang('home.products')</h1>
@@ -33,7 +39,7 @@
                     <label class="product-line-price">@lang('home.total')</label>
                 </div>
 
-                @foreach (Cart::content() as $product)
+                @foreach ($orders as $product)
                 	
 	                <div class="product" id="delete-cart-row{{ $product->model->id }}">
 	                    <div class="product-image">
@@ -434,3 +440,6 @@
     </script>
 
 @endpush
+
+
+@endsection

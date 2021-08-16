@@ -14,13 +14,17 @@ return [
     'yes'                   => 'Yes',
     'no'                    => 'No',
     'logout'                => 'Logout',
+    'edit_admin'            => 'Edit Admin',
 
     'add'                   => 'ِAdd',
     'edit'                  => 'Edit',
+    'show'                  => 'Show',
     'search'                => 'Search',
 
     'admins'                => 'Users',
     'users'                 => 'Admins',
+    'clients'               => 'Clients',
+    'provider'              => 'Provider',
     'name'                  => 'Name',
     'email'                 => 'Email',
     'image'                 => 'Image',
@@ -53,6 +57,8 @@ return [
     'cupons_code'       => 'Cupons code',
     'value'             => 'Value',
     'end'               => 'End Cupons',
+
+    'orders'            => 'Orders',
 
     'settings'          => 'Settings',
     'services'          => 'Services',

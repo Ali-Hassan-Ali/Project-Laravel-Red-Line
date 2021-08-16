@@ -21,9 +21,9 @@ class Product extends Model
             ->orWhere('name->en', 'like', "%$search%")
             ->orWhere('description->ar', 'like', "%$search%")
             ->orWhere('description->en', 'like', "%$search%");
-            // ->orWhere('phone', 'like', "%$search%");
         });
-    }//end ofscopeWhenSearch
+        
+    }//end of scopeWhenSearch
 
     public function category()
     {
@@ -38,10 +38,10 @@ class Product extends Model
 
     }//end of get image path
 
-    public function orders()
+    public function purchase()
     {
-        return $this->belongsToMany(Order::class, 'product_order');
+        return $this->hasMany(Purchase::class, 'product_id');
 
-    }//end of orders
+    }//end of hasMany purchase
 
 }//end of model

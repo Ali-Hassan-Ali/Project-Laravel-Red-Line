@@ -9,47 +9,48 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
-class UserController extends Controller
+class ClientController extends Controller
 {
+    
     public function __construct()
     {
         //create read update delete
-        $this->middleware(['permission:users_read'])->only('index');
-        $this->middleware(['permission:users_create'])->only('create','store');
-        $this->middleware(['permission:users_update'])->only('edit','update');
-        $this->middleware(['permission:users_delete'])->only('destroy');
+        $this->middleware(['permission:clients_read'])->only('index');
+        $this->middleware(['permission:clients_create'])->only('create','store');
+        $this->middleware(['permission:clients_update'])->only('edit','update');
+        $this->middleware(['permission:clients_delete'])->only('destroy');
 
-    } //end of constructor
-
-    public function index(Request $request)
+    } //end of constructor    
+    
+    public function index()
     {
+        $clients = User::whereRoleIs('clients')->whenSearch(request()->search)->latest()->paginate(10);
 
-        $users = User::whereRoleIs('admin')->whenSearch(request()->search)->latest()->paginate(10);
+        return view('dashboard.clients.index', compact('clients'));
 
-        return view('dashboard.users.index', compact('users'));
+    }//end of index
 
-    } //end of index
-
+    
+    
     public function create()
     {
-        return view('dashboard.users.create');
+        return view('dashboard.clients.create');
+    }//end of create
 
-    } //end of create
-
+    
+    
     public function store(Request $request)
     {
-
         $request->validate([
             'name'        => ['required','max:255'],
             'email'       => 'required|unique:users',
             'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
             'password'    => 'required|confirmed',
-            'permissions' => 'required|min:1',
         ]);
 
         try {
 
-            $request_data             = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
+            $request_data             = $request->except(['password', 'password_confirmation', 'image']);
             $request_data['password'] = bcrypt($request->password);
 
             if ($request->image) {
@@ -65,12 +66,10 @@ class UserController extends Controller
             } //end of if
 
             $user = User::create($request_data);
-            
-            $user->attachRole('admin');
-            $user->syncPermissions($request->permissions);
+            $user->attachRole('clients');
 
             session()->flash('success', __('dashboard.added_successfully'));
-            return redirect()->route('dashboard.users.index');
+            return redirect()->route('dashboard.clients.index');
 
         } catch (\Exception $e) {
 
@@ -78,16 +77,27 @@ class UserController extends Controller
 
         }//end try
 
-    } //end of store
+    }//end pf store
+
+    
+
+    public function show(User $user)
+    {
+        return view('dashboard.clients.edit', compact('user'));
+    }//end pof show
+
+    
 
     public function edit(User $user)
     {
-        return view('dashboard.users.edit', compact('user'));
+        return view('dashboard.clients.edit', compact('user'));
+    }//end of edit
 
-    } //end of user
+
 
     public function update(Request $request, User $user)
     {
+    
         $request->validate([
             'name'        => ['required','max:255'],
             'email'       => ['required', Rule::unique('users')->ignore($user->id)],
@@ -95,10 +105,9 @@ class UserController extends Controller
             'permissions' => 'required|min:1',
         ]);
 
-
         try {
 
-            $request_data = $request->except(['permissions', 'image']);
+            $request_data = $request->except(['image']);
 
             if ($request->image) {
 
@@ -120,9 +129,8 @@ class UserController extends Controller
 
             $user->update($request_data);
 
-            $user->syncPermissions($request->permissions);
             session()->flash('success', __('dashboard.updated_successfully'));
-            return redirect()->route('dashboard.users.index');
+            return redirect()->route('dashboard.clients.index');
 
         } catch (\Exception $e) {
 
@@ -130,11 +138,12 @@ class UserController extends Controller
 
         }//end try
 
-    } //end of update
+    }//end po update
+
+
 
     public function destroy(User $user)
     {
-
         try {
 
             if ($user->image != 'default.png') {
@@ -145,7 +154,7 @@ class UserController extends Controller
 
             $user->delete();
             session()->flash('success', __('dashboard.deleted_successfully'));
-            return redirect()->route('dashboard.users.index');
+            return redirect()->route('dashboard.clients.index');
 
         } catch (\Exception $e) {
 
@@ -153,6 +162,7 @@ class UserController extends Controller
 
         }//end try
 
-    } //end of destroy
+    }//end of destroy
 
-} //end of controller
+
+}//end pf controller

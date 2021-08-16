@@ -49,145 +49,11 @@
     <!-- vendor min  css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('home_files/plugins/auto-compolted-search/easy-autocomplete.min.css') }}">
 
+    <!-- style  css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('home_files/css/style.css') }}">
+
     <style type="text/css">
-            .d-hiiding{
-                visibility: hidden;
-            }
-            .swal-modal {
-                border-radius: 43px;
-                background: #1b1b1b!important;
-            }
-            .swal-title {
-                color: #fff!important;
-                margin-bottom: 70px !important;
-            }
-            .swal-text {
-                color: #fff !important;
-            }
-            .swal-button{
-                width: 170px;
-            }
-            .swal-footer{
-                display: flex;
-                justify-content: space-around!important;
-            }
-            #searching{
-                position: absolute;
-            }
-            .search-input{
-                width: 0px; 
-            }
-            .search-container {
-                width: 300px;
-            }
-            .fa-map-marker {
-                font-size: 40px!important;
-            }
-
-
-
-
-            .openBtn {
-      background: #f1f1f1;
-      border: none;
-      padding: 10px 15px;
-      font-size: 20px;
-      cursor: pointer;
-    }
-
-    .openBtn:hover {
-      background: #bbb;
-    }
-
-    .overlay {
-      height: 100%;
-      width: 100%;
-      display: none;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: rgb(0,0,0);
-      background-color: rgba(0,0,0, 0.9);
-    }
-
-    .overlay-content {
-      position: relative;
-      top: 46%;
-      width: 80%;
-      text-align: center;
-      margin-top: 30px;
-      margin: auto;
-    }
-
-    .overlay .closebtn {
-      position: absolute;
-      top: 0px;
-      right: 45px;
-      font-size: 60px;
-      cursor: pointer;
-      color: white;
-    }
-
-    .overlay .closebtn:hover {
-      color: #ccc;
-    }
-
-    .overlay input[type=text] {
-      padding: 15px;
-      font-size: 17px;
-      border: none;
-      float: left;
-      width: 80%;
-      background: white;
-    }
-
-    .overlay input[type=text]:hover {
-      background: #f1f1f1;
-    }
-
-    .overlay button {
-      float: left;
-      width: 20%;
-      padding: 15px;
-      background: #ddd;
-      font-size: 17px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .overlay button:hover {
-      background: #bbb;
-    }
-
-    .easy-autocomplete-container{
-        width: 100%;
-        margin-top: -230px;
-        margin-right: 0px!important;
-    }
-    .easy-autocomplete{
-        width: 400px!important;
-    }
-    .easy-autocomplete-container ul{
-        padding-right: 0px;
-    }
-    .eac-icon-right .eac-item img,
-    .eac-icon-right .eac-item {
-        min-height: 100px;
-        font-size: 20px;
-        padding-top: 10px;
-    }
-    .easy-autocomplete input {
-         margin-top: -268px; 
-    }
-    .overlay-content{
-        display: flex;
-        justify-content: center;
-    }
-
-    .btn-lg, .btn-group-lg>.btn {
-        cursor: pointer;
-    }
+            
     </style>
 
 
@@ -242,13 +108,16 @@
     <!-- min clipboard  search -->
     <script src="{{ asset('home_files/plugins/clipboard/clipboard.min.js') }}"></script>
 
+    {{--jquery number--}}
+    <script src="{{ asset('dashboard_files/js/jquery.number.min.js') }}"></script>
+
     @stack('welcome')
 
     @stack('cart')
 
     <script type="text/javascript">
 
-        $(":file").filestyle({
+        $(".fileing").filestyle({
             dragdrop: true,
             htmlIcon: ' <span class="fa fa-image"></span> ',
             text: "@lang('home.click_here')",
@@ -316,6 +185,7 @@
             setInterval(function() {
 
                 $("#cart-content").load(window.location.href + " #cart-content");
+                // $("#cart-total").load(window.location.href + " #cart-total");
         
             }, 2000);
 
@@ -330,6 +200,14 @@
     </script>
 
     <script type="text/javascript">
+        // Image to Lightbox Overlay 
+        $('.images').on('click', function() {
+          $('#overlay')
+            .css({backgroundImage: `url(${this.src})`})
+            .addClass('open')
+            .one('click', function() { $(this).removeClass('open'); });
+        });
+
         var loca    = "{{ app()->getLocale() }}";
         var options = {
             

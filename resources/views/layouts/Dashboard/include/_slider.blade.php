@@ -19,6 +19,10 @@
                 <li><a href="{{ route('dashboard.users.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.users')</span></a></li>
             @endif
 
+            @if (auth()->user()->hasPermission('clients_read'))
+                <li><a href="{{ route('dashboard.clients.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.clients')</span></a></li>
+            @endif
+
             @if (auth()->user()->hasPermission('categoreys_read'))
                 <li><a href="{{ route('dashboard.categoreys.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.categorey')</span></a></li>
             @endif
@@ -29,6 +33,10 @@
 
             @if (auth()->user()->hasPermission('cupons_read'))
                 <li><a href="{{ route('dashboard.cupons.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.cupons')</span></a></li>
+            @endif
+
+            @if (auth()->user()->hasPermission('orders_read'))
+                <li><a href="{{ route('dashboard.orders.index') }}"><i class="fa fa-th"></i><span>@lang('dashboard.orders')</span></a></li>
             @endif
 
             @if (auth()->user()->hasPermission('gallerys_read'))

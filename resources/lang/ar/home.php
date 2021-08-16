@@ -105,5 +105,8 @@ return [
     'chouse_file'  => 'اضف صورة الفاتوره',
     'click_here'   => 'اضغط هنا',
     'multe_image'  => 'يمكنك اضافه اكثر من صوره ',
+
+    //payment
+    'purchase'     => 'المشتريات',
   
 ];

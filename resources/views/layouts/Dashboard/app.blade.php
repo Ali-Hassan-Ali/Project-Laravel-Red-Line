@@ -200,7 +200,7 @@
                             {{--<!-- Menu Footer-->--}}
                             <li class="user-footer">
 
-
+                                <a href="{{ route('dashboard.admin.edit',auth()->user()->id) }}" class="btn btn-default btn-flat">@lang('dashboard.edit_admin')</a>
                                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">@lang('dashboard.logout')</a>
 

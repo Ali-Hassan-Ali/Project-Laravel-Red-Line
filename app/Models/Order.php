@@ -8,16 +8,33 @@ class Order extends Model
 {
     protected $guarded = [];
 
-    public function users()
+    protected $appends = ['image_path'];
+
+    public function getImagePathAttribute()
     {
-        return $this->belongsTo(User::class);
+        return asset('uploads/order_images/' . $this->image);
 
-    }//end of user
+    }//end of get image path
 
-    public function products()
+    function purchase()
     {
-        return $this->belongsToMany(Product::class, 'product_order');
+        return $this->hasMany(Purchase::class,'order_id');
+    }//end of hasMany Purchase
 
-    }//end of products
+    function user()
+    {
+        return $this->hasMany(User::class,'user_id');
+    }//end of hasMany user
+
+    public function scopeWhenSearch($query , $search) 
+    {
+        return $query->when($search, function ($q) use ($search) {
+
+            return $q->where('name' , 'like', "%$search%")
+            ->orWhere('map', 'like', "%$search%")
+            ->orWhere('phone', 'like', "%$search%")
+            ->orWhere('totle_price', 'like', "%$search%");
+        });
+    }//end of scopeWhenSearch
 
 }//end of model

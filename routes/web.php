@@ -40,8 +40,13 @@ function () {
     Route::delete('/wallet/{id}', 'ProductController@destroy')->name('wallet.delete');
 
     //Payment rout
+    Route::post('/create_order', 'OrderController@create_order')->name('create.order')->middleware('auth');
     Route::get('/Payment', 'OrderController@index')->name('orders.index')->middleware('auth');
-    Route::get('create_order', 'OrderController@create_order')->name('order.create')->middleware('auth');
+
+   //Purchase rout
+    Route::get('/my_purchase', 'PurchaseController@my_purchase')->name('purchase.index')->middleware('auth');
+    Route::get('/purchase/{id}', 'PurchaseController@purchase_show')->name('purchase.show')->middleware('auth');
+    // Route::get('/purchase_edit/{id}', 'PurchaseController@purchase_edit')->name('purchase.edit')->middleware('auth');
 
     //login rout
     Route::get('login/{provider}', 'LoginController@redirectToProvider')->name('auth.provider')->where('provider', 'facebook|google');

@@ -15,7 +15,10 @@ return [
         
         'super_admin' => [
             'dashboard'  => 'r',
+            'admin'      => 'u',
             'users'      => 'c,r,u,d',
+            'clients'    => 'c,r,u,d',
+            'orders'     => 'c,r,u,d',
             'categoreys' => 'c,r,u,d',
             'products'   => 'c,r,u,d',
             'cupons'     => 'c,r,u,d',
@@ -28,6 +31,8 @@ return [
         'admin' => [
             'dashboard' => 'r',
         ],
+
+        'clients' => []
     ],
 
     'permissions_map' => [

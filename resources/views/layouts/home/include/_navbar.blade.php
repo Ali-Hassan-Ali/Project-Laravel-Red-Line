@@ -8,7 +8,7 @@
                     <span class="text-danger fs-300 font-weight-bold" href="/"></span>
                 </a>
 
-                <div class="dropdown {{ app()->getLocale() == 'ar' ? 'ml-5' : 'mr-5' }} mr-md-0 ml-0 ml-md-5">
+                <div class="dropdown mr-md-0 ml-0 ml-md-5">
                     <div id="cart-content">
                         
                         <span class="fa-stack fa-2x has-badge" id="data-count" data-count="{{ Cart::count() }}" style="font-size: 22px;">
@@ -42,8 +42,20 @@
                                     @endif
                                 </small>
                             </div>
-                            <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi col-12 mt-3 px-1 py-1 mr-0">@lang('home.go_card')</a>
-                            <a href="{{ route('orders.index') }}" class="btn btn-outline-light btn-sm col-12 borderi mt-3 px-2 py-1">@lang('home.buy_now')</a>
+                            @if (Cart::count() == 0)
+                                
+                                <div class="btn btn-danger d-block my-2 border-10 bg-danger">
+                                    
+                                    <h6>@lang('dashboard.no_data_found')</h6>                                
+
+                                </div>
+
+                            @else
+
+                                <a href="{{ route('wallet.index') }}" class="btn btn-danger btn-sm borderi col-12 mt-3 px-1 py-1 mr-0">@lang('home.go_card')</a>
+                                <a href="{{ route('orders.index') }}" class="btn btn-outline-light btn-sm col-12 borderi mt-3 px-2 py-1">@lang('home.buy_now')</a>
+
+                            @endif
                         </div>
 
                     </div>
@@ -127,6 +139,10 @@
 
                                 <a class="dropdown-item" href="{{ route('profile',auth()->user()->id) }}">
                                     @lang('home.profile')
+                                </a>
+
+                                <a class="dropdown-item" href="{{ route('purchase.index') }}">
+                                    @lang('home.purchase')
                                 </a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); 

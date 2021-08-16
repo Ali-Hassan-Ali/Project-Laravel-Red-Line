@@ -10,6 +10,12 @@ function () {
         //user routes
         Route::resource('users', 'UserController')->except(['show']);
 
+        //clients routes
+        Route::resource('clients', 'ClientController');
+
+        //admin routes
+        Route::resource('admin', 'AdminController')->except(['show','create','delete','index']);
+
         //categoreys routes
         Route::resource('categoreys', 'CategoreyController')->except(['show']);
 
@@ -18,6 +24,10 @@ function () {
 
         //cupons routes
         Route::resource('cupons', 'CuponController')->except(['show']);
+
+        //cupons routes
+        Route::resource('orders', 'OrderController')->except(['create']);
+        Route::put('orders.status{id}', 'OrderController@status')->name('orders.status');
 
         //products routes
         Route::resource('gallerys', 'GalleryController')->except(['show']);

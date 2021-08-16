@@ -57,12 +57,12 @@ class User extends Authenticatable
             // ->orWhere('phone', 'like', "%$search%");
         });
         
-    }//end ofscopeWhenSearch
+    }//end ofscopeWhenSearch`  
 
     public function order()
     {
-        return $this->hasMany(Order::class,'user_id');
+        return $this->belongsTo(Order::class,'user_id');
         
-    }//end of belongsTo category
+    }//end of belongsTo order
 
 }//end of model
