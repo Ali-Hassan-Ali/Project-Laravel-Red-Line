@@ -185,9 +185,9 @@
             setInterval(function() {
 
                 $("#cart-content").load(window.location.href + " #cart-content");
-                // $("#cart-total").load(window.location.href + " #cart-total");
+                $("#cart-total").load(window.location.href + " #cart-total");
         
-            }, 2000);
+            }, 1000);
 
         });//end of document
         function openSearch() {

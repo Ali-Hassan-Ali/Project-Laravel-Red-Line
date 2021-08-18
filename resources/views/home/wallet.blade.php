@@ -90,7 +90,7 @@
 
                             <label>@lang('home.new_total')</label>
 
-                            <div class="totals-value" id="cart-total">
+                            <div class="totals-value">
                                 {{ number_format(Cart::subtotal() - session()->get('coupon')) }}
                                  <form action="{{ route('coupon.delete') }}" method="delete" style="display:block">
                                     {{ csrf_field() }}
@@ -106,7 +106,7 @@
 
                             <label>@lang('home.total')</label>
 
-                            <div class="totals-value" id="cart-total">
+                            <div id="cart-total">
 
                                  {{ Cart::subtotal() }}
 
@@ -209,12 +209,7 @@
                     },
                     success: function (data) {
 
-                        console.log(data);
-
-                    },//end of success
-                    error: function (data) {
-
-                        console.log(data);
+                        // console.log(data);
 
                     },//end of success
 
@@ -307,11 +302,6 @@
                             }
                             
                         },
-                        error: function(data) {
-
-                            console.log(data);
-
-                        },
                     });//this ajax 
                 }; //end of if
                 });//then
@@ -390,7 +380,7 @@
                     $('#cart-subtotal').html(subtotal.toFixed(2));
                     $('#cart-tax').html(tax.toFixed(2));
                     $('#cart-shipping').html(shipping.toFixed(2));
-                    $('#cart-total').html(total.toFixed(2));
+                    // $('#cart-total').html(total.toFixed(2));
                     if (total == 0) {
                         $('.checkout').fadeOut(fadeTime);
                     } else {

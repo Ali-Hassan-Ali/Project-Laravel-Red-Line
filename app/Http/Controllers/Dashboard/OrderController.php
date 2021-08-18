@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Order;
 use App\Models\Purchase;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -19,6 +21,7 @@ class OrderController extends Controller
         $this->middleware(['permission:orders_delete'])->only('destroy');
 
     } //end of constructor
+
  
     public function index()
     {
@@ -31,21 +34,49 @@ class OrderController extends Controller
  
     public function status(Request $request, $id)
     {
-        $orders = Order::FindOrFail($id);
+        try {
 
-        $orders->update([
-            'status' => $request->status,
-        ]);
+            $orders = Order::FindOrFail($id);
 
-        return redirect()->back();
+            $orders->update([
+                'status' => $request->status,
+            ]);
+
+            $purchases = Purchase::where('order_id',$orders->id)->get();
+
+            foreach ($purchases as $purchase) {
+
+                $products = Product::where('id',$purchase->product_id)->get();
+
+                foreach ($products as $product) {
+
+                    if ($request->status == 1) {
+                        
+                        $product->update([
+                            'quantity' => $product->quantity - $purchase->quantity
+                        ]);
+
+                    } else {
+
+                        $product->update([
+                            'quantity' => $product->quantity + $purchase->quantity
+                        ]);
+                    }
+
+                }//end of foreach
+
+            }//en dof foreach
+
+            session()->flash('success', __('dashboard.updated_successfully'));
+            return redirect()->route('dashboard.orders.index');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of create
-
- 
-    public function store(Request $request)
-    {
-        //
-    }//end of store
 
  
     public function show(Order $order)
@@ -55,22 +86,48 @@ class OrderController extends Controller
         return view('dashboard.orders.show',compact('orders'));
     }//end of show
 
-
-    public function edit(Order $order)
-    {
-        //
-    }//end of edit
-
-
-    public function update(Request $request, Order $order)
-    {
-        //
-    }//end of update
-
     
     public function destroy(Order $order)
     {
+        try {
+
+            // if ($order->status == 0) {
         
+            //     $purchases = Purchase::where('order_id',$order->id)->get();
+
+            //     foreach ($purchases as $purchase) {
+
+            //         $products = Product::where('id',$purchase->product_id)->get();
+
+            //         foreach ($products as $product) {
+
+            //             $product->update([
+            //                 'quantity' => $product->quantity - $purchase->quantity
+            //             ]);
+
+            //         }//end of foreach
+
+            //     }//en dof foreach
+
+            // }//end of if   
+
+            foreach (json_decode($order->image) as $image) {
+
+                Storage::disk('public_uploads')->delete('/order_images/' . $image);
+                
+            }//end of  deleted image
+
+            $order->delete();
+            session()->flash('success', __('dashboard.deleted_successfully'));
+
+            return redirect()->route('dashboard.orders.index');
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
+
     }//end of destroy
 
 

@@ -28,31 +28,39 @@ class UserrController extends Controller
             'email'       => ['required', Rule::unique('users')->ignore($user->id)],
             'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
         ]);
+        
+        try {
 
-        $request_data = $request->except(['image']);
+            $request_data = $request->except(['image']);
 
-        if ($request->image) {
+            if ($request->image) {
 
-            if ($user->image != 'default.png') {
+                if ($user->image != 'default.png') {
 
-                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+                    Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
 
-            } //end of inner if
+                } //end of inner if
 
-            Image::make($request->image)
-                ->resize(300, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                })
-                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+                Image::make($request->image)
+                    ->resize(300, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })
+                    ->save(public_path('uploads/user_images/' . $request->image->hashName()));
 
-            $request_data['image'] = $request->image->hashName();
+                $request_data['image'] = $request->image->hashName();
 
-        } //end of if
+            } //end of if
 
-        $user->update($request_data);
-        session()->flash('success', __('dashboard.added_successfully'));
-        return redirect()->back();
+            $user->update($request_data);
+            
+            session()->flash('success', __('dashboard.added_successfully'));
+            return redirect()->back();
 
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of update_prfile
 
@@ -68,9 +76,17 @@ class UserrController extends Controller
             'body'        => ['required','max:255'],
         ]);
 
-        Support::create($request->all());
+        try {
 
-        return response(['success' => true]);
+            Support::create($request->all());
+
+            return response(['success' => true]);
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
         
     }//end of connect
     

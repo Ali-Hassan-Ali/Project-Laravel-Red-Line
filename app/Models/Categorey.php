@@ -21,6 +21,11 @@ class Categorey extends Model
             ->orWhere('name->en', 'like', "%$search%");
             // ->orWhere('phone', 'like', "%$search%");
         });
+        // ->when($request->category_id,function($q) use ($request) {
+
+        //     return $q->where('category_id',$request->category_id);
+
+        // });
     }//end ofscopeWhenSearch
 
     public function proudut()

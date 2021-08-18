@@ -61,6 +61,7 @@
                                     <th>@lang('dashboard.email')</th>
                                     <th>@lang('dashboard.image')</th>
                                     <th>@lang('dashboard.provider')</th>
+                                    <th>@lang('dashboard.orders')</th>
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
@@ -74,6 +75,7 @@
                                         <td>{{ $client->email }}</td>
                                         <td><img src="{{ $client->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
                                         <td>{{ $client->provider }}</td>
+                                        <td><a href="{{ route('dashboard.clients.show',$client->id) }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a></td>
                                         <td>{{ $client->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('clients_update'))

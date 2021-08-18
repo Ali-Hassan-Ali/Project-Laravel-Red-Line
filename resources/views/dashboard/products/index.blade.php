@@ -62,8 +62,9 @@
                                     <th>@lang('dashboard.description')</th>
                                     <th>@lang('dashboard.image')</th>
                                     <th>@lang('dashboard.price')</th>
-                                    <th>@lang('dashboard.stars')</th>
                                     <th>@lang('dashboard.quantity')</th>
+                                    <th>@lang('dashboard.stars')</th>
+                                    <th>@lang('dashboard.status')</th>
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
@@ -78,12 +79,13 @@
                                         <td>{!! $product->description !!}</td>
                                         <td><img src="{{ $product->image_path }}" alt="" width="100"></td>
                                         <td>{{ $product->price }}</td>
+                                        <td>{{ $product->quantity }}</td>
                                         <td>
                                             @for ($i = 0; $i < $product->stars; $i++)
                                                 <i class="fa fa-star" style="color: #ffe066;"></i>
                                             @endfor
                                         </td>
-                                        <td>{{ $product->quantity }}</td>
+                                        <td>{{ $product->quantity == 0 ? 'غير متوفر' : 'متوفر' }}</td>
                                         <td>{{ $product->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('products_update'))

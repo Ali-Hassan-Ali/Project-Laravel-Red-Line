@@ -12,6 +12,7 @@ function () {
 
         //clients routes
         Route::resource('clients', 'ClientController');
+        Route::get('clients_order/{id}','ClientController@orders')->name('purchase.show');
 
         //admin routes
         Route::resource('admin', 'AdminController')->except(['show','create','delete','index']);
@@ -26,8 +27,8 @@ function () {
         Route::resource('cupons', 'CuponController')->except(['show']);
 
         //cupons routes
-        Route::resource('orders', 'OrderController')->except(['create']);
-        Route::put('orders.status{id}', 'OrderController@status')->name('orders.status');
+        Route::resource('orders', 'OrderController')->except(['create','store','edit','update']);
+        Route::put('orders_status/{id}', 'OrderController@status')->name('orders.status');
 
         //products routes
         Route::resource('gallerys', 'GalleryController')->except(['show']);

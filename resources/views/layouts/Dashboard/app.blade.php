@@ -31,6 +31,10 @@
     @endif
 
     <style>
+        .navbar-nav>.notifications-menu>.dropdown-menu>li .menu>li>a, .navbar-nav>.messages-menu>.dropdown-menu>li .menu>li>a, .navbar-nav>.tasks-menu>.dropdown-menu>li .menu>li>a
+        {
+            color: red !important
+        }
         .mr-2{
             margin-right: 5px;
         }
@@ -124,7 +128,7 @@
                 <ul class="nav navbar-nav">
 
                     <!-- Messages: style can be found in dropdown.less-->
-{{--                     <li class="dropdown messages-menu">
+                    <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-envelope-o"></i>
                             <span class="label label-success">4</span>
@@ -154,21 +158,21 @@
                                 <a href="#">See All Messages</a>
                             </li>
                         </ul>
-                    </li> --}}
+                    </li>
 
-                    {{--<!-- Notifications: style can be found in dropdown.less -->--}}
+                    <!-- Notifications: style can be found in dropdown.less -->
 
 
-                    {{--<!-- Tasks: style can be found in dropdown.less -->--}}
+                    <!-- Tasks: style can be found in dropdown.less -->
                     <li class="dropdown tasks-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-flag-o"></i></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
+                                <ul class="menu text-lang">
                                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                        <li>
-                                            <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                        <li class="text-dark">
+                                            <a rel="alternate" class="text-dark" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                                                 {{ $properties['native'] }}
                                             </a>
                                         </li>
@@ -199,8 +203,11 @@
 
                             {{--<!-- Menu Footer-->--}}
                             <li class="user-footer">
+                                @if (auth()->user()->id == 1)
+                                    
+                                    <a href="{{ route('dashboard.admin.edit',auth()->user()->id) }}" class="btn btn-default btn-flat">@lang('dashboard.edit_admin')</a>
 
-                                <a href="{{ route('dashboard.admin.edit',auth()->user()->id) }}" class="btn btn-default btn-flat">@lang('dashboard.edit_admin')</a>
+                                @endif
                                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">@lang('dashboard.logout')</a>
 

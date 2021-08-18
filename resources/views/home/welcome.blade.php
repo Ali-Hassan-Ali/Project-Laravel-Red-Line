@@ -8,7 +8,7 @@
 
     <section id="slider">
         <div class="bg_slider mt-5">
-            <img src="{{ asset('home_files/images/bg-slider.jpg') }}" class="slider" alt="" width="100%" style="border-radius: 0px;">
+            <img src="{{ asset('home_files/images/bg-slider.jpg') }}" class="slider" alt="welcome" width="100%" style="border-radius: 0px;">
         </div>
     </section>
 
@@ -153,29 +153,29 @@
                 <form>
                     <div class="form-row">
                         <div class="col-12 my-3 col-md-6">
-                            <input type="text" name="first_name" id="first-name" class="form-control bg-transparent text-light" placeholder="@lang('home.first_name')">
-                            <span class="text-danger" id="error-first-name"></span>
+                            <input type="text" name="first_name" id="first_name" class="form-control bg-transparent text-light" placeholder="@lang('home.first_name')">
+                            <span class="text-danger" id="first_name-error"></span>
                         </div>
                         <div class="col-12 my-3 col-md-6">
-                            <input type="text" name="last_name" id="last-name" class="form-control bg-transparent text-light" placeholder="@lang('home.last_name')">
-                            <span class="text-danger" id="error-last-name"></span>
+                            <input type="text" name="last_name" id="last_name" class="form-control bg-transparent text-light" placeholder="@lang('home.last_name')">
+                            <span class="text-danger" id="last_name-error"></span>
                         </div>
                         <div class="col-12 my-3 col-md-6">
-                            <input type="number" name="phone" id="number-phone" class="form-control bg-transparent text-light" placeholder="@lang('dashboard.phone')">
-                            <span class="text-danger" id="error-phone-our"></span>
+                            <input type="number" name="phone" id="phone" class="form-control bg-transparent text-light" placeholder="@lang('dashboard.phone')">
+                            <span class="text-danger" id="phone-error"></span>
                         </div>
                         <div class="col-12 my-3 col-md-6">
-                            <input type="email" name="email" id="our-email" class="form-control bg-transparent text-light" placeholder="@lang('dashboard.email')">
-                            <span class="text-danger" id="error-email-our"></span>
+                            <input type="email" name="email" id="email" class="form-control bg-transparent text-light" placeholder="@lang('dashboard.email')">
+                            <span class="text-danger" id="email-error"></span>
                         </div>
                         <div class="col-12 my-3">
-                            <input type="text" name="title" id="our-title" class="form-control bg-transparent text-light" placeholder="@lang('home.title')">
-                            <span class="text-danger" id="error-title-our"></span>
+                            <input type="text" name="title" id="title" class="form-control bg-transparent text-light" placeholder="@lang('home.title')">
+                            <span class="text-danger" id="title-error"></span>
                         </div>
                         <div class="col-12 my-3 col-md-12">
                             <div class="form-group">
-                                <textarea id="our-body" name="body" class="form-control bg-transparent text-light" rows="3" placeholder="@lang('home.body')"></textarea>
-                                <span class="text-danger" id="error-body-our"></span>
+                                <textarea id="body" name="body" class="form-control bg-transparent text-light" rows="3" placeholder="@lang('home.body')"></textarea>
+                                <span class="text-danger" id="body-error"></span>
                             </div>
                         </div>
                         <button class="btn btn-danger mb-2 d-block col-12 add-suport"
@@ -199,23 +199,30 @@
 
             $(".add-suport").click(function(e){
                 e.preventDefault();
-                
+
                 var url     = $(this).data('url');
                 var method  = $(this).data('method');
 
-                var fName   = $('#first-name').val();
-                var lName   = $('#last-name').val();
-                var phone   = $('#number-phone').val();
-                var email   = $('#our-email').val();
-                var title   = $('#our-title').val();
-                var body    = $('#our-body').val();
+                var fName   = $('#first_name').val();
+                var lName   = $('#last_name').val();
+                var phone   = $('#phone').val();
+                var email   = $('#email').val();
+                var title   = $('#title').val();
+                var body    = $('#body').val();
+                var nam     = ['first_name','last_name','phone','email','title','body'];
 
-                $('#error-first-name').text('');
-                $('#error-last-name').text('');
-                $('#error-phone-our').text('');
-                $('#error-email-our').text('');
-                $('#error-title-our').text('');
-                $('#error-body-our').text('');
+                foreach (nam as element){
+
+                    alert(element);
+                }
+                
+
+                $('#first_name').removeClass('is-invalid');
+                $('#last_name').removeClass('is-invalid');
+                $('#phone').removeClass('is-invalid');
+                $('#email').removeClass('is-invalid');
+                $('#title').removeClass('is-invalid');
+                $('#body').removeClass('is-invalid');
 
                 $.ajax({
                     url: url,
@@ -233,13 +240,13 @@
 
                         if (data.success == true) {
 
-                                $('#error-first-name').val('');
-                                $('#error-last-name').val('');
-                                $('#error-phone-our').val('');
-                                $('#error-email-our').val('');
-                                $('#error-title-our').val('');
-                                $('#error-body-our').val('');
-                            
+                            $('#first_name').val('');
+                            $('#last_name').val('');
+                            $('#phone').val('');
+                            $('#email').val('');
+                            $('#title').val('');
+                            $('#body').val('');
+
                             swal({
                                 title: "@lang('dashboard.added_successfully')",
                                 type: "success",
@@ -250,14 +257,25 @@
 
                         } //end of if
 
-                    }, error: function(data) {
-                        $('#error-first-name').text(data.responseJSON.errors.first_name);
-                        $('#error-last-name').text(data.responseJSON.errors.last_name);
-                        $('#error-phone-our').text(data.responseJSON.errors.phone);
-                        $('#error-email-our').text(data.responseJSON.errors.email);
-                        $('#error-title-our').text(data.responseJSON.errors.title);
-                        $('#error-body-our').text(data.responseJSON.errors.body);
-                    },
+                    }, 
+                    error: function(data) {
+
+                        $.each(data.responseJSON.errors, function(name,message) {
+
+                            // $('#' + nameErrors + '-error').text('');
+
+                            if(name == $('#' + name + '').attr('id')){
+
+                                $('#' + name + '').addClass('is-invalid');
+
+                            }
+
+                            $('#' + name + '-error').text(message);
+
+                        });//end of each
+
+                    },//en diof error
+
                 });//end of ajax
 
             });//end of click

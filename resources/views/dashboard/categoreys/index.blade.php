@@ -59,6 +59,7 @@
                                     <th>#</th>
                                     <th>@lang('dashboard.name')</th>
                                     <th>@lang('dashboard.created_at')</th>
+                                    <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>
                                 </thead>
@@ -68,6 +69,8 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $categorey->name }}</td>
+                                        <td>{{ $categorey->proudut->count() }}</td>
+                                        <td><a href="{{ route('dashboard.categoreys.index',['category_id'=>$categorey->id]) }}">count</a></td>
                                         <td>{{ $categorey->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('categoreys_update'))

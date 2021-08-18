@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Purchase;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
@@ -44,7 +46,7 @@ class ClientController extends Controller
         $request->validate([
             'name'        => ['required','max:255'],
             'email'       => 'required|unique:users',
-            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
+            'image'       => 'image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
             'password'    => 'required|confirmed',
         ]);
 
@@ -66,6 +68,7 @@ class ClientController extends Controller
             } //end of if
 
             $user = User::create($request_data);
+            
             $user->attachRole('clients');
 
             session()->flash('success', __('dashboard.added_successfully'));
@@ -81,28 +84,34 @@ class ClientController extends Controller
 
     
 
-    public function show(User $user)
-    {
-        return view('dashboard.clients.edit', compact('user'));
+    public function show(User $user,$id)
+    {   
+        $orders = Order::where('user_id',$id)->get();
+
+        return view('dashboard.clients.show', compact('orders'));
     }//end pof show
 
     
 
-    public function edit(User $user)
-    {
+    public function edit(User $user,$id)
+    {   
+        $user = User::find($id);
+
         return view('dashboard.clients.edit', compact('user'));
     }//end of edit
 
 
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user,$id)
     {
-    
+        
+        $user = User::find($id);
+
         $request->validate([
             'name'        => ['required','max:255'],
             'email'       => ['required', Rule::unique('users')->ignore($user->id)],
-            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
-            'permissions' => 'required|min:1',
+            'image'       => 'image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
+            'password'    => 'required|confirmed'
         ]);
 
         try {
@@ -142,9 +151,11 @@ class ClientController extends Controller
 
 
 
-    public function destroy(User $user)
+    public function destroy(User $user,$id)
     {
         try {
+            
+            $user = User::find($id);
 
             if ($user->image != 'default.png') {
 
@@ -153,6 +164,7 @@ class ClientController extends Controller
             } //end of if
 
             $user->delete();
+
             session()->flash('success', __('dashboard.deleted_successfully'));
             return redirect()->route('dashboard.clients.index');
 
@@ -163,6 +175,15 @@ class ClientController extends Controller
         }//end try
 
     }//end of destroy
+
+
+    public function orders($id)
+    {
+        $purchases = Purchase::where('order_id',$id)->get();
+
+        return view('dashboard.clients.purchase_show',compact('purchases'));
+
+    }//end of orders
 
 
 }//end pf controller
