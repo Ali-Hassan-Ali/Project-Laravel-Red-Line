@@ -33,9 +33,9 @@ class WelcomController extends Controller
         $supports_count  = Support::count();
 
         $sales_data = Order::select(
-            DB::raw('YEAR(created_at) as YEAR'),
-            DB::raw('MONTH(created_at) as MONTH'),
-            DB::raw('SUM(totle_price) as SUM')
+            DB::raw('YEAR(created_at) as year'),
+            DB::raw('MONTH(created_at) as month'),
+            DB::raw('SUM(total_price) as sum')
         )->groupBy('month')->get();
 
         return view('dashboard.welcome',compact('admins_count','clients_count','categorys_count','products_count',

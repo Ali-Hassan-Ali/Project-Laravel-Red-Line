@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('name');
             $table->string('map');
             $table->string('phone');
-            $table->string('totle_price');
+            $table->double('total_price', 8, 2)->nullable();
             $table->boolean('status')->default(false);
             $table->string('image')->default('default.png');
 

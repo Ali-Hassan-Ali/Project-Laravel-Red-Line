@@ -29,8 +29,8 @@ class OrderController extends Controller
 
         try {
 
-            $request_data = $request->except(['totle_price','image']);
-            $request_data['totle_price'] = \Cart::subtotal();
+            $request_data = $request->except(['total_price','image']);
+            $request_data['total_price'] = \Cart::subtotal();
             $request_data['user_id']     = auth()->user()->id;
 
             if ($request->image) {

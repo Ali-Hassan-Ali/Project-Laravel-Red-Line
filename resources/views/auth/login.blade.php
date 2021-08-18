@@ -41,7 +41,7 @@
                             <label><i class="fa fa-lock"></i> @lang('home.password')</label>
                             <input type="password" name="password" 
                                     class="form-control bg-transparent text-light border-input @error('password') is-invalid @enderror">
-                            @error('name')
+                            @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

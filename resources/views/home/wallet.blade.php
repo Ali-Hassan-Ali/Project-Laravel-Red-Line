@@ -45,7 +45,7 @@
 	                    </div>
 	                    <div class="product-price">{{ $product->model->price }}</div>
 	                    <div class="product-quantity">
-	                        <input type="number" class="quantity" value="{{ $product->qty }}" min="1"
+	                        <input type="number" class="quantity" data-id="{{ $product->model->id }}" value="{{ $product->qty }}" min="1" max="{{ $product->model->quantity }}" 
                                     data-url="{{ route('wallet.update',$product->rowId) }}" data-method="put">
 	                    </div>
 	                    <div class="product-removal">
@@ -198,6 +198,7 @@
 
                 var url      = $(this).data('url');
                 var method   = $(this).data('method');
+                var id       = $(this).data('id');
                 var quantity = $(this).val();
 
                 $.ajax({
@@ -206,10 +207,9 @@
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data:{
                       quantity:quantity,
+                      id:id,
                     },
                     success: function (data) {
-
-                        // console.log(data);
 
                     },//end of success
 
@@ -325,7 +325,8 @@
                 var url     = $(this).data('url');
 	            var method  = $(this).data('method');
 	            var id      = $(this).data('id');
-
+                var cart    = {{ Cart::count() }};
+                alert(cart);
                 swal({
                     title: "@lang('dashboard.confirm_delete')",
                     type: "error",
@@ -342,6 +343,11 @@
                         method: method,
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         success: function(data) {
+                            if (cart == 0) {
+
+                                location.reload();
+
+                            }
 
                             swal({
                                 title: "@lang('dashboard.deleted_successfully')",

@@ -34,11 +34,20 @@ class ProductController extends Controller
     }//end of function
 
     public function update(Request $request, $id)
-    {
+    {   
 
-        $cart = Cart::update($id, $request->quantity);
+        $product = Product::where('id', $request->id)->first();
 
-        return response()->json($cart);
+        if (Product::where('quantity',$request->quantity)->exists()) {
+
+            return response()->json(['success' => true]);
+            
+        } else {
+
+            $cart = Cart::update($id, $request->quantity);
+
+            return response()->json($cart);
+        }//end fo if
 
     }//end of function
 

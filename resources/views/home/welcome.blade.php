@@ -209,20 +209,14 @@
                 var email   = $('#email').val();
                 var title   = $('#title').val();
                 var body    = $('#body').val();
-                var nam     = ['first_name','last_name','phone','email','title','body'];
+                var items   = ['first_name','last_name','phone','email','title','body'];
 
-                foreach (nam as element){
+                items.forEach(function(item){
+                  
+                    $('#' + item + '').removeClass('is-invalid');
+                    $('#' + item + '-error').text('');
 
-                    alert(element);
-                }
-                
-
-                $('#first_name').removeClass('is-invalid');
-                $('#last_name').removeClass('is-invalid');
-                $('#phone').removeClass('is-invalid');
-                $('#email').removeClass('is-invalid');
-                $('#title').removeClass('is-invalid');
-                $('#body').removeClass('is-invalid');
+                });
 
                 $.ajax({
                     url: url,
@@ -240,12 +234,11 @@
 
                         if (data.success == true) {
 
-                            $('#first_name').val('');
-                            $('#last_name').val('');
-                            $('#phone').val('');
-                            $('#email').val('');
-                            $('#title').val('');
-                            $('#body').val('');
+                            items.forEach(function(item){
+
+                                $('#' + item + '').val('');
+
+                            });
 
                             swal({
                                 title: "@lang('dashboard.added_successfully')",
@@ -262,8 +255,6 @@
 
                         $.each(data.responseJSON.errors, function(name,message) {
 
-                            // $('#' + nameErrors + '-error').text('');
-
                             if(name == $('#' + name + '').attr('id')){
 
                                 $('#' + name + '').addClass('is-invalid');
@@ -274,7 +265,7 @@
 
                         });//end of each
 
-                    },//en diof error
+                    },//end of error
 
                 });//end of ajax
 
