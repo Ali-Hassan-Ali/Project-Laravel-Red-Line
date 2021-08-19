@@ -161,6 +161,8 @@ return [
 
         'title_ar'         => 'Title in english',
         'title_en'         => 'Title in arabic',
+
+        'map'              => 'Description of the place of arrival',
     ],
 
 ];

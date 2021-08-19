@@ -28,7 +28,7 @@
                             <p>@lang('dashboard.categorey')</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fa fa-list-alt"></i>
                         </div>
                         <a href="{{ route('dashboard.categoreys.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -43,7 +43,7 @@
                             <p>@lang('dashboard.products')</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-stats-bars"></i>
+                            <i class="fab fa-product-hunt"></i>
                         </div>
                         <a href="{{ route('dashboard.products.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -73,7 +73,7 @@
                             <p>@lang('dashboard.users')</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-user"></i>
+                            <i class="fas fa-users-cog"></i>
                         </div>
                         <a href="{{ route('dashboard.users.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -92,7 +92,7 @@
                             <p>@lang('dashboard.cupons')</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="fa fa-gift"></i>
                         </div>
                         <a href="{{ route('dashboard.cupons.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -107,7 +107,7 @@
                             <p>@lang('dashboard.orders_active')</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-cart-plus"></i>
+                            <i class="fa fa-sort-amount-up-alt"></i>
                         </div>
                         <a href="{{ route('dashboard.orders.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -119,10 +119,10 @@
                         <div class="inner">
                             <h3>{{ $orders_unactive }}</h3>
 
-                            <p>@lang('dashboard.orders_unactive')</p>
+                            <p>@lang('dashboard.orders_inactive')</p>
                         </div>
                         <div class="icon">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-sort-amount-down-alt"></i>
                         </div>
                         <a href="{{ route('dashboard.clients.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -148,7 +148,7 @@
             <div class="box box-solid">
 
                 <div class="box-header">
-                    <h3 class="box-title">Sales Graph</h3>
+                    <h3 class="box-title">@lang('dashboard.sales_graph')</h3>
                 </div>
                 <div class="box-body border-radius-none">
                     <div class="chart" id="line-chart" style="height: 250px;"></div>
@@ -180,7 +180,7 @@
             ],
             xkey: 'ym',
             ykeys: ['sum'],
-            labels: ['@lang('site.total')'],
+            labels: ['@lang('home.total')'],
             lineWidth: 2,
             hideHover: 'auto',
             gridStrokeWidth: 0.4,

@@ -105,4 +105,7 @@ return [
     'click_here'   => 'Click Here',
     'multe_image'  => 'You can add more than one picture',
 
+    //payment
+    'purchase'     => 'Purchase',
+
 ];

@@ -69,9 +69,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>@lang('home.maping')</label>
-                                        <textarea name="map" class="form-control bg-transparent text-light @error('map') is-invalid @enderror" rows="4" placeholder="@lang('home.maping')">
-                                            {{ old('map') }}
-                                        </textarea>
+                                        <textarea name="map" class="form-control bg-transparent text-light @error('map') is-invalid @enderror" rows="6" placeholder="@lang('home.maping')"></textarea>
                                         @error('map')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

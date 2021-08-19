@@ -3,6 +3,7 @@
 return [
 
     'dashboard'             => 'Dashboard',
+    'sales_graph'           => 'Sales Graph',
     'action'                => 'Action',
     'no_data_found'         => 'No Data Found',
     'added_successfully'    => 'Added Successfully',
@@ -44,6 +45,8 @@ return [
     'categoreys'       => 'Category',
     'name_ar'          => 'The name is in Arabic',
     'name_en'          => 'The name is in English',
+    'related_products' => 'Related Products',
+    'count'            => 'Count',
 
     'products'          => 'Products',
     'description'       => 'Description',
@@ -52,6 +55,8 @@ return [
     'descp_en'          => 'The name is in English',
     'quantity'          => 'Quantity',
     'stars'             => 'Stars',
+    'available'         => 'Available',
+    'not_available'     => 'Not available',
 
     'cupons'            => 'Cupons',
     'cupons_code'       => 'Cupons code',
@@ -59,6 +64,11 @@ return [
     'end'               => 'End Cupons',
 
     'orders'            => 'Orders',
+    'status'            => 'Status',
+    'active'            => 'Request completed',
+    'unactive'          => 'Preparing the request',
+    'orders_active'     => 'Orders active',
+    'orders_inactive'   => 'Orders Inactive',
 
     'settings'          => 'Settings',
     'services'          => 'Services',

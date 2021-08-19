@@ -85,8 +85,18 @@
                                                 <i class="fa fa-star" style="color: #ffe066;"></i>
                                             @endfor
                                         </td>
-                                        <td>{{ $product->quantity == 0 ? 'غير متوفر' : 'متوفر' }}</td>
-                                        <td>{{ $product->created_at->toFormattedDateString() }}</td>
+                                        <td>
+                                            @if ($product->quantity == 0)
+
+                                                <p class="text-danger">@lang('dashboard.not_available')</p>
+
+                                            @else
+
+                                                <p class="text-success">@lang('dashboard.available')</p>
+
+                                            @endif
+                                        </td>
+                                        <td>{{ $product->created_at }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('products_update'))
                                                 <a href="{{ route('dashboard.products.edit', $product->id) }}" class="btn btn-info btn-sm"><i class="fa fa-edit"></i> @lang('dashboard.edit')</a>

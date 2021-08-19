@@ -84,7 +84,7 @@
                                                     {{ csrf_field() }}
                                                     {{ method_field('put') }}
                                                     <input type="text" hidden name="status" value="1">
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-toggle-off"></i></button>
                                                 </form><!-- end of form -->
                                                 
                                             @else
@@ -93,7 +93,7 @@
                                                     {{ csrf_field() }}
                                                     {{ method_field('put') }}
                                                     <input type="text" hidden name="status" value="0">
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                                                    <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-toggle-on"></i> </button>
                                                 </form><!-- end of form -->
 
                                             @endif

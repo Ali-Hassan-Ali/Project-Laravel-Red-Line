@@ -58,7 +58,8 @@
                                 <tr>
                                     <th>#</th>
                                     <th>@lang('dashboard.name')</th>
-                                    <th>@lang('dashboard.created_at')</th>
+                                    <th>@lang('dashboard.count')</th>
+                                    <th>@lang('dashboard.related_products')</th>
                                     <th>@lang('dashboard.created_at')</th>
                                     <th>@lang('dashboard.action')</th>
                                 </tr>

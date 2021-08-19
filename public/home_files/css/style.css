@@ -160,3 +160,10 @@
 .btn-lg, .btn-group-lg>.btn {
     cursor: pointer;
 }
+
+#custom-nav {
+    -webkit-box-shadow: -11px 20px 20px #63615c;
+    -moz-box-shadow:    -11px 20px 20px #63615c;
+    box-shadow:         -11px 20px 20px #63615c;
+    z-index:999;
+}

@@ -264,11 +264,9 @@
 
             $(".delete-coupon").click(function(e){
                 e.preventDefault();
-                // alert('delete coupon');
 
                 var url     = $(this).data('url');
                 var method  = $(this).data('method');
-
 
                 swal({
                     title: "@lang('dashboard.confirm_delete')",
@@ -279,31 +277,30 @@
                 })
 
                 .then((willDelete) => {
-                if (willDelete) {
+                    if (willDelete) {
 
-                    $.ajax({
-                        url: url,
-                        method: method,
-                        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                        success: function(data) {
-                            console.log(data);                            
-                            if (data.success == true) {
+                        $.ajax({
+                            url: url,
+                            method: method,
+                            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                            success: function(data) {
+                                
+                                if (data.success == true) {
 
-                                swal({
-                                    title: "@lang('dashboard.deleted_successfully')",
-                                    type: "success",
-                                    icon: '{{ asset("home_files/images/success.png") }}',
-                                    buttons: false,
-                                    timer: 15000
-                                }),
+                                    swal({
+                                        title: "@lang('dashboard.deleted_successfully')",
+                                        type: "success",
+                                        icon: '{{ asset("home_files/images/success.png") }}',
+                                        buttons: false,
+                                        timer: 15000
+                                    }),
 
-                                location.reload();
+                                    location.reload();
 
-                            }
-                            
-                        },
-                    });//this ajax 
-                }; //end of if
+                                }
+                            },
+                        });//this ajax 
+                    }; //end of if
                 });//then
 
                 

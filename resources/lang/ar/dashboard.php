@@ -3,6 +3,7 @@
 return [
 
     'dashboard'             => 'الرئسيه',
+    'sales_graph'           => 'الرسم البياني للمبيعات',
     'action'                => 'الاحداث',
     'no_data_found'         => 'للاسف لايوجد اي بينات',
     'added_successfully'    => 'تمت الاضافه بنجاح',
@@ -45,6 +46,8 @@ return [
     'categoreys'       => 'الاقسام',
     'name_ar'          => 'الاسم بلغه العربية',
     'name_en'          => 'الاسم بلغه الانجلزية',
+    'related_products' => 'المنتجات المرتبطة',
+    'count'            => 'العدد',
 
     'products'          => 'المنتجات',
     'description'       => 'الوصف',
@@ -53,6 +56,8 @@ return [
     'descp_en'          => 'الوصف بلغه الانجلزية',
     'stars'             => 'التقيم',
     'price'             => 'السعر',
+    'available'         => 'متوفر',
+    'not_available'     => 'غير متوفر',
     
     'cupons'            => 'الكوبون',
     'cupons_code'       => 'كود الكوبون',
@@ -61,8 +66,10 @@ return [
 
     'orders'            => 'الطلبيات',
     'status'            => 'الحالة',
-    'active'            => 'تم التحضير',
-    'unactive'          => 'جاري التحضير',
+    'active'            => 'تم اكمال الطلب',
+    'unactive'          => 'جاري التحضير الطلب',
+    'orders_active'     => 'الطلبات المكتملة',
+    'orders_inactive'   => 'الطلبات الغير المكتملة',
     
     'settings'          => 'الاعدادات',
     'services'          => 'الخدمات',

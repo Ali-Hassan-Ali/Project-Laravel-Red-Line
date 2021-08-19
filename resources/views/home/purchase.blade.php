@@ -62,13 +62,18 @@
                                     <img src="{{ asset('uploads/order_images/' . $image) }}" width="100" class="images">
                                 @endforeach
                             </td>
-	                        <td>{{ $order->totle_price }}</td>
+	                        <td>{{ $order->total_price }}</td>
 	                        <td>{{ $order->map }}</td>
                             <td>
                                 @if ($order->status == 1)
-                                    <div class="btn btn-primary btn-sm">@lang('dashboard.active')</div>
+                                    <div class="btn btn-success btn-sm">
+                                        @lang('dashboard.active')
+                                    </div>
                                 @else
-                                    <div class="btn btn-info btn-sm">@lang('dashboard.unactive')</div>
+                                    <div class="btn btn-info btn-sm">
+                                        @lang('dashboard.unactive') 
+                                        <i class="fa fa-refresh fa-spin fa-1x fa-fw"></i>
+                                    </div>
                                 @endif
                             </td>
                             <td>
