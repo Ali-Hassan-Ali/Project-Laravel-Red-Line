@@ -72,7 +72,7 @@
                                         <td>{{ $order->map }}</td>
                                         <td>
                                             @foreach (json_decode($order->image) as $image)
-                                                <img src="{{ asset('uploads/order_images/' . $image) }}" width="100" class="images">
+                                                <img data-enlargeable width="100" style="cursor: zoom-in" src="{{ asset('uploads/order_images/' . $image) }}" width="100" class="images">
                                             @endforeach
                                         </td>
                                         <td>{{ $order->created_at }}</td>

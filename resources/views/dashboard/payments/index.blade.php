@@ -67,7 +67,7 @@
                                 @foreach ($payments as $index=>$payment)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td><img src="{{ $payment->payment_path }}"></td>
+                                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $payment->payment_path }}"></td>
                                         <td>{{ $payment->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('payments_update'))

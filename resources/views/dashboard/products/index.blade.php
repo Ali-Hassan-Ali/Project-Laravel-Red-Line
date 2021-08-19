@@ -77,7 +77,7 @@
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->category->name }}</td>
                                         <td>{!! $product->description !!}</td>
-                                        <td><img src="{{ $product->image_path }}" alt="" width="100"></td>
+                                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $product->image_path }}" alt="" width="100"></td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->quantity }}</td>
                                         <td>

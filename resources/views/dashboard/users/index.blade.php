@@ -71,7 +71,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td><img src="{{ $user->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
+                                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $user->image_path }}" style="width: 100px;" class="img-thumbnail" alt=""></td>
                                         <td>{{ $user->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('users_update'))

@@ -99,6 +99,9 @@
     {{-- iCheck --}}
     <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/icheck/all.css') }}">
 
+    {{-- pace --}}
+    <link rel="stylesheet" href="{{ asset('dashboard_files/plugins/pace/pace.min.css') }}">
+
     {{--html in  ie--}}
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -256,13 +259,15 @@
 <script src="{{ asset('dashboard_files/js/printThis.js') }}"></script>
 
 {{--morris --}}
-
 <script src="{{ asset('dashboard_files/plugins/morris/morris.min.js') }}"></script>
 <script src="{{ asset('dashboard_files/plugins/morris/raphael.min.js') }}"></script>
 
 {{--custom js--}}
 <script src="{{ asset('dashboard_files/js/custom/image_preview.js') }}"></script>
 <script src="{{ asset('dashboard_files/js/custom/order.js') }}"></script>
+
+{{-- pace --}}
+<script src="{{ asset('dashboard_files/plugins/pace/pace.min.js') }}"></script>
 
 <script>
     $(document).ready(function () {
@@ -301,20 +306,34 @@
 
         });//end of delete
 
-        // // image preview
-        // $(".image").change(function () {
-        //
-        //     if (this.files && this.files[0]) {
-        //         var reader = new FileReader();
-        //
-        //         reader.onload = function (e) {
-        //             $('.image-preview').attr('src', e.target.result);
-        //         }
-        //
-        //         reader.readAsDataURL(this.files[0]);
-        //     }
-        //
-        // });
+       $('img[data-enlargeable]').addClass('img-enlargeable').click(function() {
+          var src = $(this).attr('src');
+          var modal;
+
+          function removeModal() {
+            modal.remove();
+            $('body').off('keyup.modal-close');
+          }
+          modal = $('<div>').css({
+            background: 'RGBA(0,0,0,.5) url(' + src + ') no-repeat center',
+            backgroundSize: 'contain',
+            width: '100%',
+            height: '100%',
+            position: 'fixed',
+            zIndex: '10000',
+            top: '0',
+            left: '0',
+            cursor: 'zoom-out'
+          }).click(function() {
+            removeModal();
+          }).appendTo('body');
+          //handling ESC
+          $('body').on('keyup.modal-close', function(e) {
+            if (e.key === 'Escape') {
+              removeModal();
+            }
+          });
+        });
 
         CKEDITOR.config.language =  "{{ app()->getLocale() }}";
 

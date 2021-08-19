@@ -52,7 +52,7 @@
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $order->product->name }}</td>
-                                        <td><img src="{{ $order->product->image_path }}" width="100"></td>
+                                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $order->product->image_path }}" width="100"></td>
                                         <td>{{ $order->product->description }}</td>
                                         <td>{{ $order->price }}</td>
                                         <td>{{ $order->quantity }}</td>

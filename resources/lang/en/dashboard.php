@@ -46,7 +46,7 @@ return [
     'name_ar'          => 'The name is in Arabic',
     'name_en'          => 'The name is in English',
     'related_products' => 'Related Products',
-    'count'            => 'Count',
+    'count'            => 'number of products',
 
     'products'          => 'Products',
     'description'       => 'Description',

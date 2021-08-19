@@ -42,7 +42,7 @@ class UserController extends Controller
         $request->validate([
             'name'        => ['required','max:255'],
             'email'       => 'required|unique:users',
-            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
+            'image'       => 'image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
             'password'    => 'required|confirmed',
             'permissions' => 'required|min:1',
         ]);
@@ -91,7 +91,7 @@ class UserController extends Controller
         $request->validate([
             'name'        => ['required','max:255'],
             'email'       => ['required', Rule::unique('users')->ignore($user->id)],
-            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
+            'image'       => 'image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
             'permissions' => 'required|min:1',
         ]);
 
