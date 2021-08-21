@@ -23,7 +23,7 @@
                                         <img src="{{ $product->model->image_path }}" class="px-3 border-image" alt="" width="100">
                                         <small class="text-flix">{{ $product->model->name }}
                                             <br>@lang('home.quantity') - {{ $product->qty }}
-                                            <br>@lang('home.price') - {{ number_format($product->price * $product->qty,2) }}
+                                            <br>@lang('home.price') - {{ number_format($product->model->exchange_rate * $product->qty,2) }}
                                         </small>
                                     </div>
 
@@ -63,9 +63,9 @@
 
                 <div id="myOverlay" class="overlay">
                   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
-                  <div class="overlay-content col-6 col-md-4">
+                  <div class="overlay-content container justify-content-center mt-2">
                     <form action="{{ route('autocomplete') }}" method="get">
-                          <input id="searching" class="typeahead form-control" type="search">
+                          <input id="searching" class="typeahead form-control col-10 justify-content-center" type="search">
                     </form>
                   </div>
                 </div>
@@ -73,8 +73,6 @@
                 <div class="btn btn-danger" onclick="openSearch()" style="cursor: pointer;">
                     <i class="fa fa-search"></i>
                 </div>
-
-                {{-- <a href="" class="btn btn-danger"><i class="fa fa-search"></i></a> --}}
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

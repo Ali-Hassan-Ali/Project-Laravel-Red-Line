@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Categorey;
 use App\Models\Gallery;
 use App\Models\Product;
+use Intervention\Image\Facades\Image;   
 
 class WelcomController extends Controller
 {

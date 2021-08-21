@@ -43,7 +43,7 @@
 	                        <div class="product-title">{{ $product->model->name }}</div>
 	                        <p class="product-description">{!! $product->model->description !!}</p>
 	                    </div>
-	                    <div class="product-price">{{ $product->model->price }}</div>
+	                    <div class="product-price">{{ number_format($product->model->exchange_rate) }}</div>
 	                    <div class="product-quantity">
 	                        <input type="number" class="quantity" data-id="{{ $product->model->id }}" value="{{ $product->qty }}" min="1" max="{{ $product->model->quantity }}" 
                                     data-url="{{ route('wallet.update',$product->rowId) }}" data-method="put">
@@ -56,7 +56,7 @@
                     				<i class="fa fa-trash"></i>
                 			</button>
 	                    </div>
-	                    <div class="product-line-price">{{ number_format($product->price * $product->qty, 2) }}</div>
+	                    <div class="product-line-price">{{ number_format($product->model->exchange_rate * $product->qty, 2) }}</div>
 	                </div>
 
                 @endforeach

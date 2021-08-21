@@ -109,7 +109,7 @@
                         <div class="icon">
                             <i class="fa fa-sort-amount-up-alt"></i>
                         </div>
-                        <a href="{{ route('dashboard.orders.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('dashboard.orders.index',['status'=> 1]) }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -124,7 +124,7 @@
                         <div class="icon">
                             <i class="fa fa-sort-amount-down-alt"></i>
                         </div>
-                        <a href="{{ route('dashboard.clients.index') }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('dashboard.orders.index',['status'=> 0]) }}" class="small-box-footer">@lang('dashboard.read') <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 

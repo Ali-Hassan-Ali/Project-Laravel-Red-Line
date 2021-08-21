@@ -23,9 +23,9 @@ class ProductController extends Controller
 
     }//end of constructor
  
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::whenSearch(request()->search)->latest()->paginate(10);
+        $products = Product::whenSearch(request()->search , $request)->latest()->paginate(10);
 
         return view('dashboard.products.index', compact('products'));
     }//end of index
@@ -48,7 +48,7 @@ class ProductController extends Controller
             'descp_ar'    => ['required','max:255'],
             'descp_en'    => ['required','max:255'],
             'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
-            'price'       => ['required','max:255'],
+            'price'       => ['required'],
             'quantity'    => ['required','max:255'],
         ]);
 
@@ -99,10 +99,11 @@ class ProductController extends Controller
             'name_en'     => ['required','max:255'],
             'descp_ar'    => ['required','max:255'],
             'descp_en'    => ['required','max:255'],
-            'image'       => 'required|image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
-            'price'       => ['required'.'max:255'],
+            'image'       => 'image|mimes:jpg,png,jpeg,gif,TIF,ICO,PSD,WebP|max:2048',
+            'price'       => ['required'],
             'quantity'    => ['required','max:255'],
         ]);
+        return 'fdf';
 
         try {
 

@@ -59,7 +59,7 @@
                                     <th>#</th>
                                     <th>@lang('dashboard.name')</th>
                                     <th>@lang('dashboard.categorey')</th>
-                                    <th>@lang('dashboard.description')</th>
+                                    {{-- <th>@lang('dashboard.description')</th> --}}
                                     <th>@lang('dashboard.image')</th>
                                     <th>@lang('dashboard.price')</th>
                                     <th>@lang('dashboard.quantity')</th>
@@ -76,7 +76,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $product->name }}</td>
                                         <td>{{ $product->category->name }}</td>
-                                        <td>{!! $product->description !!}</td>
+                                        {{-- <td>{!! $product->description !!}</td> --}}
                                         <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $product->image_path }}" alt="" width="100"></td>
                                         <td>{{ $product->price }}</td>
                                         <td>{{ $product->quantity }}</td>
@@ -88,11 +88,11 @@
                                         <td>
                                             @if ($product->quantity == 0)
 
-                                                <p class="text-danger">@lang('dashboard.not_available')</p>
+                                                <p class="text-red">@lang('dashboard.not_available')</p>
 
                                             @else
 
-                                                <p class="text-success">@lang('dashboard.available')</p>
+                                                <p class="text-green">@lang('dashboard.available')</p>
 
                                             @endif
                                         </td>

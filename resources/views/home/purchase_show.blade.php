@@ -55,7 +55,7 @@
     	                        <td>{{ $index + 1 }}</td>
     	                        <td>{{ $purchase->product->name }}</td>
                                 <div id="overlay"></div>
-    	                        <td><img src="{{ $purchase->product->image_path }}" width="100" class="images"></td>
+    	                        <td><img data-enlargeable width="100" style="cursor: zoom-in" src="{{ $purchase->product->image_path }}" width="100" class="images"></td>
                                 <td>{{ $purchase->product->description }}</td>
     	                        <td>{{ $purchase->product->price }}</td>
     	                        <td>{{ $purchase->quantity }}</td>

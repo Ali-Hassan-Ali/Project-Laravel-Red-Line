@@ -37,6 +37,11 @@
         {
             color: red !important
         }
+        .aa{
+            color: #fff!important;
+            background: #1e282c!important;
+            border-left-color: #3c8dbc!important;
+        }
         .mr-2{
             margin-right: 5px;
         }
@@ -333,7 +338,7 @@
               removeModal();
             }
           });
-        });
+        });//end of data full screen image
 
         CKEDITOR.config.language =  "{{ app()->getLocale() }}";
 

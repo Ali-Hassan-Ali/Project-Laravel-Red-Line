@@ -195,7 +195,7 @@
 @push('welcome')
     
     <script>
-        $(document).ready(function() {
+        $(document).ready(function() {  
 
             $(".add-suport").click(function(e){
                 e.preventDefault();
@@ -211,7 +211,7 @@
                 var body    = $('#body').val();
                 var items   = ['first_name','last_name','phone','email','title','body'];
 
-                items.forEach(function(item){
+                items.forEach(function(item){   
                   
                     $('#' + item + '').removeClass('is-invalid');
                     $('#' + item + '-error').text('');
@@ -255,11 +255,7 @@
 
                         $.each(data.responseJSON.errors, function(name,message) {
 
-                            if(name == $('#' + name + '').attr('id')){
-
-                                $('#' + name + '').addClass('is-invalid');
-
-                            }
+                            $('#' + name + '').addClass('is-invalid');
 
                             $('#' + name + '-error').text(message);
 

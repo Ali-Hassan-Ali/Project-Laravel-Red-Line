@@ -71,7 +71,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $categorey->name }}</td>
                                         <td>{{ $categorey->proudut->count() }}</td>
-                                        <td><a href="{{ route('dashboard.categoreys.index',['category_id'=>$categorey->id]) }}">count</a></td>
+                                        <td><a href="{{ route('dashboard.products.index',['category_id'=>$categorey->id]) }}" class="btn btn-info">@lang('dashboard.read')</a></td>
                                         <td>{{ $categorey->created_at->toFormattedDateString() }}</td>
                                         <td>
                                             @if (auth()->user()->hasPermission('categoreys_update'))

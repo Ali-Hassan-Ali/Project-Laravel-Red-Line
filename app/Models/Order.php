@@ -26,15 +26,21 @@ class Order extends Model
         return $this->hasMany(User::class,'user_id');
     }//end of hasMany user
 
-    public function scopeWhenSearch($query , $search) 
+    public function scopeWhenSearch($query , $search , $request) 
     {
         return $query->when($search, function ($q) use ($search) {
 
             return $q->where('name' , 'like', "%$search%")
             ->orWhere('map', 'like', "%$search%")
             ->orWhere('phone', 'like', "%$search%")
-            ->orWhere('totle_price', 'like', "%$search%");
+            ->orWhere('total_price', 'like', "%$search%");
+
+        })->when($request->status,function($q) use ($request) {
+
+            return $q->where('status',$request->status);
+
         });
+
     }//end of scopeWhenSearch
 
 }//end of model

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use AmrShawky\LaravelCurrency\Facade\Currency;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,19 @@ function () {
        Artisan::call('view:cache');
 
        return "Cleared!";
+
+    });
+
+    Route::get('/aa', function() {
+
+      $aa = Currency::convert()
+        ->from('USD')
+        ->to('SDG')
+        ->amount(100)
+        ->throw()
+        ->get();
+      return number_format($aa,2);
+      /// return view('welcome');
 
     });
 
