@@ -36,7 +36,7 @@
                 <a href="{{ route('category.show',$category->id ) }}" class="mr-5 mr-5 text-danger align-self-center">@lang('home.see_all')</a>
             </div>
 
-            <div class="owl-carousel owl-category mb-5 wow lightSpeedIn" data-wow-duration="4s" data-wow-offset="0">
+            <div class="owl-carousel owl-category mb-5 wow flash" data-wow-duration="4s" data-wow-offset="0">
                 
             @foreach ($category->proudut as $product)
                 <div class="item">
@@ -243,7 +243,7 @@
                             swal({
                                 title: "@lang('dashboard.added_successfully')",
                                 type: "success",
-                                icon: '{{ asset("home_files/images/success.png") }}',
+                                icon: "{{ asset('home_files/images/success.png') }}",
                                 buttons: false,
                                 timer: 1500
                             }); //end of  swal

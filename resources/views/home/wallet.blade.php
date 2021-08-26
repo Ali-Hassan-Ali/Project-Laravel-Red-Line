@@ -35,7 +35,7 @@
 
                 @foreach (Cart::content() as $product)
                 	
-	                <div class="product" id="delete-cart-row{{ $product->model->id }}">
+	                <div class="product" id="delete-cart-row-{{ $product->model->id }}">
 	                    <div class="product-image">
 	                        <img src="{{ $product->model->image_path }}">
 	                    </div>
@@ -43,38 +43,26 @@
 	                        <div class="product-title">{{ $product->model->name }}</div>
 	                        <p class="product-description">{!! $product->model->description !!}</p>
 	                    </div>
-	                    <div class="product-price">{{ number_format($product->model->exchange_rate) }}</div>
+	                    <div class="product-price" id="pr-{{ $product->model->id }}">{{ number_format($product->model->exchange_rate,2) }}</div>
 	                    <div class="product-quantity">
-	                        <input type="number" class="quantity" data-id="{{ $product->model->id }}" value="{{ $product->qty }}" min="1" max="{{ $product->model->quantity }}" 
+	                        <input type="number" data-price="{{ $product->model->exchange_rate }}" class="quantity" data-id="{{ $product->model->id }}" value="{{ $product->qty }}" min="1" max="{{ $product->model->quantity }}" 
                                     data-url="{{ route('wallet.update',$product->rowId) }}" data-method="put">
 	                    </div>
 	                    <div class="product-removal">
-	                        <button class="btn btn-danger btn-sm"
+	                        <button class="btn btn-danger btn-sm removal-produc"
 									data-url="{{ route('wallet.delete',$product->rowId) }}"
                 					data-method="delete"	                        	
                     				data-id="{{ $product->id }}">
                     				<i class="fa fa-trash"></i>
                 			</button>
 	                    </div>
-	                    <div class="product-line-price">{{ number_format($product->model->exchange_rate * $product->qty, 2) }}</div>
+	                    <div class="new-price product-line-price-{{ $product->model->id }}">{{ app()->getLocale() == 'ar' ? 'ج س' :  'SDG' }} : {{ number_format($product->model->exchange_rate * $product->qty, 2) }}</div>
 	                </div>
 
                 @endforeach
 
 
                 <div class="totals text-white">
-                    <div class="totals-item d-hiiding">
-                        <label>Subtotal</label>
-                        <div class="totals-value" id="cart-subtotal">00.00</div>
-                    </div>
-                    <div class="totals-item d-hiiding">
-                        <label>Tax (0%)</label>
-                        <div class="totals-value" id="cart-tax">0.60</div>
-                    </div>
-                    <div class="totals-item d-hiiding">
-                        <label>Shipping</label>
-                        <div class="totals-value" id="cart-shipping d-hiiding">00.00</div>
-                    </div>
                     <div class="totals-item totals-item-total">
                         {{-- <label>Grand Total</label> --}}
                         
@@ -106,11 +94,7 @@
 
                             <label>@lang('home.total')</label>
 
-                            <div id="cart-total">
-
-                                 {{ Cart::subtotal() }}
-
-                            </div>
+                            <div id="cart-total">{{ app()->getLocale() == 'ar' ? 'ج س' :  'SDG' }} : {{ Cart::subtotal() }}</div>
 
                         @endif
 
@@ -194,12 +178,31 @@
     <script>
         $(document).ready(function() {
 
+            //calculate the total
+            function calculateTotal() {
+
+                var price = 0;
+
+                $('.new-price').each(function(index) {
+                    
+                    price += parseFloat($(this).html().replace(/,/g, ''));
+
+                });//end of product price
+
+                $('#cart-total').html($.number(price, 2));
+
+            }//end of calculate total
+
             $('body').on('keyup change', '.quantity', function() {
 
                 var url      = $(this).data('url');
                 var method   = $(this).data('method');
                 var id       = $(this).data('id');
+                var price    = $(this).data('price');
                 var quantity = $(this).val();
+
+                $('.product-line-price-'+id).html($.number(parseInt(quantity) * parseInt(price),2));
+                calculateTotal();
 
                 $.ajax({
                     url: url,
@@ -306,24 +309,13 @@
                 
             });//delete-coupon
 
-            /* Set rates + misc */
-            var taxRate = 0.00;
-            var shippingRate = 0.00;
-            var fadeTime = 300;
-
-
-            /* Assign actions */
-            $('.product-quantity input').change(function() {
-                updateQuantity(this);
-            });
-
-            $('.product-removal button').click( function() {
+            $('.removal-produc').click( function() {
                 
                 var url     = $(this).data('url');
 	            var method  = $(this).data('method');
 	            var id      = $(this).data('id');
                 var cart    = {{ Cart::count() }};
-                alert(cart);
+
                 swal({
                     title: "@lang('dashboard.confirm_delete')",
                     type: "error",
@@ -334,17 +326,25 @@
 
                 .then((willDelete) => {
                 if (willDelete) {
-                    removeItem(this);
                     $.ajax({
                         url: url,
                         method: method,
                         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                         success: function(data) {
+
+                            if (data.success == true) {
+
+                                $('#delete-cart-row-'+id).remove();
+
+                            }
+
+                            calculateTotal();
+
                             if (cart == 0) {
 
                                 location.reload();
 
-                            }
+                            }   
 
                             swal({
                                 title: "@lang('dashboard.deleted_successfully')",
@@ -362,66 +362,6 @@
                 });//then
 
             });//end of product-removal button
-
-
-            /* Recalculate cart */
-            function recalculateCart() {
-                var subtotal = 0;
-
-                /* Sum up row totals */
-                $('.product').each(function() {
-                    subtotal += parseFloat($(this).children('.product-line-price').text());
-                });
-
-                /* Calculate totals */
-                var tax = subtotal * taxRate;
-                var shipping = (subtotal > 0 ? shippingRate : 0);
-                var total = subtotal + tax + shipping;
-
-                /* Update totals display */
-                $('.totals-value').fadeOut(fadeTime, function() {
-                    $('#cart-subtotal').html(subtotal.toFixed(2));
-                    $('#cart-tax').html(tax.toFixed(2));
-                    $('#cart-shipping').html(shipping.toFixed(2));
-                    // $('#cart-total').html(total.toFixed(2));
-                    if (total == 0) {
-                        $('.checkout').fadeOut(fadeTime);
-                    } else {
-                        $('.checkout').fadeIn(fadeTime);
-                    }
-                    $('.totals-value').fadeIn(fadeTime);
-                });
-            }
-
-
-            /* Update quantity */
-            function updateQuantity(quantityInput) {
-                /* Calculate line price */
-                var productRow = $(quantityInput).parent().parent();
-                var price = parseFloat(productRow.children('.product-price').text());
-                var quantity = $(quantityInput).val();
-                var linePrice = price * quantity;
-
-                /* Update line price display and recalc cart totals */
-                productRow.children('.product-line-price').each(function() {
-                    $(this).fadeOut(fadeTime, function() {
-                        $(this).text($.number(linePrice,2));
-                        recalculateCart();
-                        $(this).fadeIn(fadeTime);
-                    });
-                });
-            }
-
-
-            /* Remove item from cart */
-            function removeItem(removeButton) {
-                /* Remove row from DOM and recalc cart total */
-                var productRow = $(removeButton).parent().parent();
-                productRow.slideUp(fadeTime, function() {
-                    productRow.remove();
-                    recalculateCart();
-                });
-            }
 
         });//end of document).ready
     </script>

@@ -64,7 +64,7 @@ class OrderController extends Controller
                     Purchase::create([
                         'product_id' => $products->id,
                         'quantity'   => $products->qty,
-                        'price'      => $products->price,
+                        'price'      => number_format($products->model->exchange_rate,2),
                         'order_id'   => $orders->id,
                     ]);
                     

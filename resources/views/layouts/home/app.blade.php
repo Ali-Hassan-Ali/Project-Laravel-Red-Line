@@ -157,7 +157,7 @@
                     title: "@lang('dashboard.added_successfully')",
                     type: "success",
                     icon: "success",
-                    icon: '{{ asset("home_files/images/success.png") }}',
+                    icon: "{{ asset('home_files/images/success.png') }}",
                     buttons: false,
                     timer: 15000
                 }); //end of  swal
@@ -168,7 +168,8 @@
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     success: function(data) {
 
-                    }, error: function(data) {
+                    }, 
+                    error: function(data) {
                         console.log(data);
                     },
                 });//end of ajax
@@ -179,7 +180,6 @@
             setInterval(function() {
 
                 $("#cart-content").load(window.location.href + " #cart-content");
-                $("#cart-total").load(window.location.href + " #cart-total");
         
             }, 1000);
 

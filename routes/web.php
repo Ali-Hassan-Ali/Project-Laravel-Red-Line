@@ -72,16 +72,11 @@ function () {
     });
 
     Route::get('/aa', function() {
-
-      $aa = Currency::convert()
-        ->from('USD')
-        ->to('SDG')
-        ->amount(100)
-        ->throw()
-        ->get();
-      return number_format($aa,2);
-      /// return view('welcome');
+      
+      return view('welcome');
 
     });
+
+    Route::post('aa', 'WelcomController@aa')->name('aa');
 
 });//LaravelLocalization

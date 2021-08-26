@@ -82,5 +82,65 @@
             @yield('content')
         </main>
     </div>
+
+    <!-- jquery -->
+    <script src="{{ asset('home_files/js/jquery-3.3.1.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+    
+            $("#forms").submit( function(e) {
+                e.preventDefault();
+
+                var formData = new FormData(this);
+
+                var url    = $(this).attr('action');
+                var method = $(this).attr('method');
+                var data   = $(this).serialize();
+                var items  = $(this).serializeArray();
+
+                $.each(items, function(index,item) {
+                    
+                    $('#' + item.name).removeClass('is-invalid');
+
+                    $('#' + item.name + '-error').text('');
+
+                });//end of each
+
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: formData,
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        alert(data);
+                        if (data.success == true) {
+
+                            $.each(items, function(index,item) {
+
+                                $('#' + item.name).text('');
+
+                            });//end of each
+
+                        }//end of if
+
+                    }, error: function(data) {
+
+                        $.each(data.responseJSON.errors, function(name,message) {
+
+                            $('#' + name).addClass('is-invalid');
+
+                            $('#' + name + '-error').text(message);
+
+                        });//end of each
+                    },
+                });//end of ajax
+
+            });//end of submit
+
+        })//end of document ready function
+    </script>
 </body>
 </html>

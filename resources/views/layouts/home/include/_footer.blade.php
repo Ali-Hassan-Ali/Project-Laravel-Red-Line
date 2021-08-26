@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="social-flix col-md-4 px-0 ml-3 ml-md-0 mx-md-auto wow bounceInUp" data-wow-duration="2s" data-wow-offset="0">
+                <div class="social-flix col-md-4 px-0 ml-3 ml-md-0 mx-md-auto wow zoomOut" data-wow-duration="2s" data-wow-offset="0">
                     <ul class="list-contact mt-5 pb-5 px-3 mr-sm-5" style="list-style: none">
                         <li>
                             <a href="tel:{{ setting('phone') }}" class="text-light">

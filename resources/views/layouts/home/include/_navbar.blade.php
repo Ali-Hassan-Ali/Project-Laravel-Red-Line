@@ -23,7 +23,7 @@
                                         <img src="{{ $product->model->image_path }}" class="px-3 border-image" alt="" width="100">
                                         <small class="text-flix">{{ $product->model->name }}
                                             <br>@lang('home.quantity') - {{ $product->qty }}
-                                            <br>@lang('home.price') - {{ number_format($product->model->exchange_rate * $product->qty,2) }}
+                                            <br>@lang('home.price') - {{ app()->getLocale() == 'ar' ? 'ج س' :  'SDG' }} : {{ number_format($product->model->exchange_rate * $product->qty,2) }}
                                         </small>
                                     </div>
 
@@ -65,7 +65,7 @@
                   <span class="closebtn" onclick="closeSearch()" title="Close Overlay">×</span>
                   <div class="overlay-content container justify-content-center mt-2">
                     <form action="{{ route('autocomplete') }}" method="get">
-                          <input id="searching" class="typeahead form-control col-10 justify-content-center" type="search">
+                          <input id="searching" class="typeahead form-control col-12 justify-content-center" type="search">
                     </form>
                   </div>
                 </div>

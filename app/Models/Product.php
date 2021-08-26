@@ -61,6 +61,6 @@ class Product extends Model
         //     ->amount($this->price)
         //     ->get();
 
-    }//end of get profit attribute
+    }//end of get exchange rate attribute
 
 }//end of model

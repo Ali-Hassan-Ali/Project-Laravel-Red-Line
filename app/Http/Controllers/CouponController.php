@@ -14,16 +14,21 @@ class CouponController extends Controller
         
         try {
 
-            $coupon = Cupon::where('name', $request->coupon_code)->first();
+            if (request()->ajax()) {
+                
 
-            if ($coupon == null || $coupon->end <= date("Y-m-d")) {
-          
-                return response()->json('error');
-            }
+                $coupon = Cupon::where('name', $request->coupon_code)->first();
 
-            session()->put('coupon',$coupon->value);
-          
-            return response()->json(['success' => true]);
+                if ($coupon == null || $coupon->end <= date("Y-m-d")) {
+              
+                    return response()->json('error');
+                }
+
+                session()->put('coupon',$coupon->value);
+              
+                return response()->json(['success' => true]);
+
+            }//end of ajax
 
 
         } catch (\Exception $e) {
@@ -36,9 +41,21 @@ class CouponController extends Controller
 
     public function destroy()
     {
-        $coupon = session()->forget('coupon');
+        try {
 
-        return response()->json(['success' => true]);
+            if (request()->ajax()) {
+                
+                $coupon = session()->forget('coupon');
+
+                return response()->json(['success' => true]);
+
+            }//end of ajax
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of destroy
 

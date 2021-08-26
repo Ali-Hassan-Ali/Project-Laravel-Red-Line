@@ -24,38 +24,75 @@ class ProductController extends Controller
 
     public function add_card(Request $request,$product)
     {
-        $product = Product::FindOrFail($product);
 
-        $product = Cart::add($product->id, $product->name, 1 , $product->price)
-            ->associate('App\Models\Product');
+        try {
 
-        return response()->json($product);
+            if (request()->ajax()) {
+
+                $product = Product::FindOrFail($product);
+
+                $product = Cart::add($product->id, $product->name, 1 , $product->price)
+                    ->associate('App\Models\Product');
+
+                return response()->json($product);
+
+            }//end of if ajax
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of function
 
     public function update(Request $request, $id)
     {   
+        try {
 
-        $product = Product::where('id', $request->id)->first();
+            if (request()->ajax()) {
 
-        if (Product::where('quantity',$request->quantity)->exists()) {
+                $product = Product::where('id', $request->id)->first();
 
-            return response()->json(['success' => true]);
-            
-        } else {
+                if (Product::where('quantity',$request->quantity)->exists()) {
 
-            $cart = Cart::update($id, $request->quantity);
+                    return response()->json(['success' => true]);
+                    
+                } else {
 
-            return response()->json($cart);
-        }//end fo if
+                    $cart = Cart::update($id, $request->quantity);
+
+                    return response()->json($cart);
+
+                }//end fo if exists
+
+            }//end of ajax
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
 
     }//end of function
 
     public function destroy($id)
     {
-        $cart = Cart::content()->where('rowId', $id)->first();
-        Cart::remove($id);
-        return response()->json($cart);
+        try {
+
+            if (request()->ajax()) {
+
+                $cart = Cart::content()->where('rowId', $id)->first();
+                Cart::remove($id);
+                return response()->json(['success' => true]);
+
+            }//end of ajax
+
+        } catch (\Exception $e) {
+
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+
+        }//end try
     
     }//end of function
 

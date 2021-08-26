@@ -192,7 +192,7 @@
                         </ul>
                     </li>
 
-                    {{--<!-- User Account: style can be found in dropdown.less -->--}}
+                    {{-- User Account: style can be found in dropdown.less --}}
                     <li class="dropdown user user-menu">
 
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -201,7 +201,7 @@
                         </a>
                         <ul class="dropdown-menu" style="margin-top: 13px;">
 
-                            {{--<!-- User image -->--}}
+                            {{-- !User image  --}}
                             <li class="user-header">
                                 <img src="{{ auth()->user()->image_path }}" class="img-circle" alt="User Image">
 
@@ -211,19 +211,23 @@
                                 </p>
                             </li>
 
-                            {{--<!-- Menu Footer-->--}}
+                             {{-- Menu Footer --}}
                             <li class="user-footer">
+                                
                                 @if (auth()->user()->id == 1)
                                     
                                     <a href="{{ route('dashboard.admin.edit',auth()->user()->id) }}" class="btn btn-default btn-flat">@lang('dashboard.edit_admin')</a>
 
                                 @endif
+
                                 <a href="{{ route('logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">@lang('dashboard.logout')</a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
+
+                                <a href="/" class="btn btn-default btn-flat">@lang('home.home')</a>
 
                             </li>
                         </ul>
@@ -242,16 +246,16 @@
 
 </div><!-- end of wrapper -->
 
-{{--<!-- Bootstrap 3.3.7 -->--}}
+{{-- Bootstrap 3.3.7 --}}
 <script src="{{ asset('dashboard_files/js/bootstrap.min.js') }}"></script>
 
 {{--icheck--}}
 <script src="{{ asset('dashboard_files/plugins/icheck/icheck.min.js') }}"></script>
 
-{{--<!-- FastClick -->--}}
+{{-- FastClick --}}
 <script src="{{ asset('dashboard_files/js/fastclick.js') }}"></script>
 
-{{--<!-- AdminLTE App -->--}}
+{{-- AdminLTE App --}}
 <script src="{{ asset('dashboard_files/js/adminlte.min.js') }}"></script>
 
 {{--ckeditor standard--}}

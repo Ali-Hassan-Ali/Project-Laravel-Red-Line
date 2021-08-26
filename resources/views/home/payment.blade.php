@@ -83,11 +83,11 @@
                                             <h5>@lang('home.totle_price') : 
                                                 @if (session()->has('coupon'))
 
-                                                    {{ Cart::subtotal() - session()->get('coupon') }}
+                                                    {{ app()->getLocale() == 'ar' ? 'ج س' :  'SDG' }} : {{ Cart::subtotal() - session()->get('coupon') }}
 
                                                 @else
 
-                                                    {{ Cart::subtotal() }}
+                                                    {{ app()->getLocale() == 'ar' ? 'ج س' :  'SDG' }} : {{ Cart::subtotal() }}
 
                                                 @endif
                                             </h5>
